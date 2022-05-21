@@ -23,6 +23,7 @@ import Activities from "./pages/Activities/Activities";
 import CreateActivities from "./pages/Activities/CreateActivities";
 import CreateActivityNext from "./pages/Activities/CreateActivityNext";
 import Settings from "./pages/Settings/Settings";
+import Schedule from "./pages/Schedule/Schedule";
 
 function App() {
 
@@ -55,6 +56,9 @@ function App() {
 
                   {/*settings*/}
                   <Route path="/settings" element={<Settings />} />
+
+                  {/* Schedule */}
+                  <Route path="/schedule" element={<Schedule />} />
               </Route>
 
               {/*home slider start*/}
