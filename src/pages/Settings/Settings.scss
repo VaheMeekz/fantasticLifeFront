@@ -1,0 +1,54 @@
+.settings_section_slice {
+
+
+
+  .upload_image_slice {
+    padding: 40px;
+    border-right: 1px solid #b0b0b0;
+    height: 50%;
+  }
+
+  .upload_image_block {
+    width: 200px;
+    height: 200px;
+    background: #F3F3F3;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  sup {
+    color: red;
+  }
+
+  .settings_btn {
+    background: #19A49C;
+    padding: 8px 75px;
+    border: none;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+
+    &:hover {
+      background: #37daab;
+      transition: 0.4s;
+    }
+  }
+
+  .form_settings {
+    padding: 38px;
+  }
+
+  .settings_section_name {
+    padding: 30px 40px;
+  }
+
+  .settings_section_main {
+
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+  }
+}

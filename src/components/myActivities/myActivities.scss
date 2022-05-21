@@ -1,0 +1,163 @@
+.my_activities_slice {
+
+  color: black;
+  font-family: Poppins;
+
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: auto;
+    min-height: 100vw;
+  }
+
+  h2 {
+    padding: 20px 0px;
+    text-align: center;
+  }
+
+  .card-row {
+    display: flex;
+    justify-content: space-around;
+    margin:  0px 10px;
+  }
+
+  .card_activities {
+    //width: 414px;
+    //padding: 20px;
+    //margin: 10px;
+    margin: 30px auto;
+    cursor: pointer;
+    transition: 0.4s;
+    border: 1px solid #d7d7d7;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    background-color: white;
+
+    &:hover {
+      transform: scale(1.02, 1.02);
+      box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+    }
+  }
+
+  .card_activities:hover {
+    box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.15);
+  }
+  .card_activities > img {
+    border-radius: 2px;
+    max-width: 100%;
+    margin-bottom: 10px;
+    height: auto;
+  }
+
+  .card_activities h3 {
+    //color: purple;
+  }
+
+  .card_activities p {
+    color: #757575;
+    line-height: 1.5;
+    padding-top: 10px;
+  }
+
+  .coming_hours {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .up_coming {
+      color: #03C83E;
+    }
+    .up_hours {
+      color: #FF0000;
+    }
+
+  }
+
+
+  .mini_location {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 13px;
+    border-bottom: 1px solid #dddddd;
+    width: 51%;
+    grid-gap: 10px;
+
+    span {
+      color: #10275A;
+    }
+  }
+
+  .bool_slice {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .bool_slice_image {
+      display: flex;
+      grid-gap: 5px;
+
+      .bool_text {
+        display: flex;
+        flex-direction: column;
+        .bool_text_day {
+          color: #19A49C;
+          font-size: 18px;
+        }
+      }}
+
+    .user_slice {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        text-align: center;
+      }
+    }
+  }
+
+.secret_slice {
+  img {
+    margin: 0 auto;
+  }
+
+}
+  .boll_day {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 5px;
+
+    bool_day_hour {
+      font-size: 15px;
+      color: #848484;
+    }
+  }
+
+  .saturday_text {
+    font-size: 15px;
+    color: black !important;
+    font-family: Poppins;
+    width: 90%;
+    margin: 0 auto;
+    line-height: 1 !important;
+    font-weight: 300;
+  }
+
+
+  .card_active_last{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 27px;
+  }
+
+  .card_activities_two h3 {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 17px;
+    font-weight: 400;
+  }
+
+}

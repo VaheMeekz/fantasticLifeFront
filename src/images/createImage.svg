@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="247" height="50" viewBox="0 0 247 50">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1" y1="0.5" x2="0" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#19a49c"/>
+      <stop offset="1" stop-color="#1ce8a4"/>
+    </linearGradient>
+  </defs>
+  <g id="Сгруппировать_13612" data-name="Сгруппировать 13612" transform="translate(-1555 -216)">
+    <text id="Let_s_make_this_day_productive" data-name="Let’s make this day productive" transform="translate(1555 247)" fill="#19a49c" font-size="20" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Create New Team</tspan></text>
+    <g id="Сгруппировать_12190" data-name="Сгруппировать 12190" transform="translate(3121 -5065)">
+      <g id="Сгруппировать_12189" data-name="Сгруппировать 12189" transform="translate(-1369 5275)">
+        <circle id="Эллипс_142" data-name="Эллипс 142" cx="25" cy="25" r="25" transform="translate(0 6)" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Сгруппировать_10636" data-name="Сгруппировать 10636" transform="translate(-1532 4640)">
+        <g id="Сгруппировать_10630" data-name="Сгруппировать 10630" transform="translate(4.882 4.548)">
+          <path id="Path" d="M2.186,3.689h15.3a2.037,2.037,0,0,0,2.186-1.844A2.037,2.037,0,0,0,17.491,0H2.186A2.037,2.037,0,0,0,0,1.844,2.037,2.037,0,0,0,2.186,3.689Z" transform="translate(173.118 659.105)" fill="#fff"/>
+          <path id="Path-2" data-name="Path" d="M0,2.186v15.3a2.037,2.037,0,0,0,1.844,2.186,2.037,2.037,0,0,0,1.844-2.186V2.186A2.037,2.037,0,0,0,1.844,0,2.037,2.037,0,0,0,0,2.186Z" transform="translate(181.112 651.453)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

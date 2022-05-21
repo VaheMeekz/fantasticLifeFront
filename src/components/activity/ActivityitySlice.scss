@@ -1,0 +1,48 @@
+.card_activity_gaping {
+  grid-gap: 10px;
+}
+
+.ball_text {
+  font-size: 20px;
+  font-family: Poppins;
+
+}
+
+.ball_text_paragraph {
+  color:#4D4C4C;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.info_section_ball {
+  grid-gap: 20px;
+}
+
+.organization_info {
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.org_img {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.activity_date {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity_date_hour {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity_date_km_min {
+  display: flex;
+  align-items: center;
+}
+
+.activity_date_slice {
+  justify-content: space-evenly;
+}

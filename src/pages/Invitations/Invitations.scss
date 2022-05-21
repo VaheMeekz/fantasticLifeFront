@@ -1,0 +1,26 @@
+.invitations_section {
+  padding: 2rem;
+}
+
+
+.card_invitations {
+  border: 1px solid #b0b0b0 !important;
+
+}
+
+.teams_activities {
+  grid-gap: 10px;
+  padding: 5px;
+  border-radius: 15px;
+
+  h4 {
+    background: #EEF0F6;
+    border-bottom: 3px solid transparent;
+    border-radius: 5px;
+    &:hover {
+      border-bottom: 3px solid #19A49C;
+      transition: left 500ms ease-in-out, right 500ms ease-in-out;
+    }
+
+  }
+}

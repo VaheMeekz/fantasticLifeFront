@@ -1,0 +1,47 @@
+.card_team {
+  border: none !important;
+  margin: 10px auto !important;
+
+  &:hover {
+    border: none !important;
+    box-shadow: none !important;
+    transform: scale(0.9999, 0.9999);
+  }
+
+}
+
+.card_teams {
+  position: relative !important;
+
+  .absolute {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 15px;
+  }
+}
+
+
+.team_title {
+  font-size: 35px;
+  font-weight: 300;
+  font-family: Poppins;
+  color: black;
+}
+
+
+@media only screen and (max-width: 500px) {
+  .team_slice_image {
+    display: none;
+  }
+
+  .card_team {
+    p {
+      font-size: 18px;
+    }
+
+    img {
+      width: 70%;
+    }
+  }
+}

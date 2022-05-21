@@ -1,0 +1,306 @@
+.main {
+  width: 100%;
+}
+
+#style-1::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #d7d7d7;
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px #d7d7d7;
+  background-color: #555;
+}
+
+.chatMain {
+  width: 100%;
+  display: flex;
+}
+
+.receiversBox {
+  width: 40%;
+  padding: 15px;
+  height: 90vh;
+}
+
+.inboxBox {
+  display: flex;
+}
+
+.notificationBox {
+  margin-left: 20px;
+  padding: 7px;
+  background: lightgray;
+  border-radius: 5px;
+  color: darkgreen;
+  font-size: 16px;
+}
+
+.searchBox {
+  margin: 10px 0 10px 0;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 13px;
+  top: 13px;
+}
+
+.searchInpust {
+  width: 80%;
+  padding: 10px 0 10px 35px;
+  border: 0;
+  border-radius: 5px;
+  outline: 0;
+  background: lightgrey;
+  font-size: 16px;
+}
+
+.receiversList {
+  width: 100%;
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+.receiver {
+  width: 80%;
+  background: white;
+  margin: 20px 0 0 5px;
+  display: flex;
+  padding: 10px 5px;
+  border: 1px solid wheat;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 1px lightgray;
+
+  &:hover {
+    box-shadow: 1px 1px 1px 1px rgb(12, 91, 85),
+    -1px -1px 1px 1px rgb(12, 91, 85);
+  }
+}
+
+.activeReceiver{
+  width: 80%;
+  background: white;
+  margin: 20px 0 0 5px;
+  display: flex;
+  padding: 10px 5px;
+  border: 1px solid rgb(12, 91, 85);
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.checkBox {
+  width: 10%;
+}
+
+.receiverImageBox {
+  width: 20%;
+  margin: 0 10px 0 10px;
+  img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+}
+
+.receiverInfo {
+  width: 70%;
+  padding: 0 10px 0 0;
+}
+
+.receiverCredentials {
+  display: flex;
+  justify-content: space-between;
+
+  .dateCredentials {
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
+
+.receiverCredentials div p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.shortMessageBox {
+  font-size: 16px;
+  color: lightslategray;
+}
+
+.dialogBox {
+  width: 60%;
+  padding: 50px 15px;
+  height: 90vh;
+  border-left: 2px solid lightgray;
+}
+
+.receiverMessageInfo {
+  display: flex;
+  height: 10vh;
+}
+
+.receiverCredentialsDialog {
+  padding: 15px;
+
+  h3 {
+    font-size: 25px;
+  }
+
+  p {
+    color: lightslategray;
+  }
+}
+
+.messagesBox {
+  height: 70vh;
+  overflow-y: scroll;
+}
+
+.messageWriteBox {
+  input {
+    margin-top: 5px;
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    outline: 0;
+    border: 1px solid lightslategray;
+    border-right: 0;
+    border-radius: 5px 0px 0px 5px;
+  }
+
+  button {
+    margin-top: 5px;
+    width: 10%;
+    padding: 6px 10px 10px 10px;
+    font-size: 16px;
+    outline: 0;
+    border: 1px solid rgb(12, 91, 85);
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+    background: none;
+  }
+}
+
+.recImage{
+  width: 60px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+//-----------------------------------------------message-------------------------------------------------------
+
+.message {
+  display: flex;
+  padding: 10px;
+}
+
+.own {
+  flex-direction: row-reverse;
+  color: white;
+}
+
+.imgBox {
+  display: flex;
+  align-items: flex-end;
+
+  img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  }
+}
+
+
+.ownMessageTextBox {
+  width: 50%;
+  background: rgb(12, 91, 85);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.messageTextBox {
+  width: 40%;
+  border: 1px solid rgb(12, 91, 85);
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.hr{
+  margin: 10px 0;
+}
+
+.dateBox {
+  display: flex;
+  font-size: 15px;
+  font-weight: bold;
+  .pinBox {
+    margin: 0 10px 0 10px;
+
+    img {
+      cursor: pointer;
+    }
+  }
+}
+
+.like {
+  cursor: pointer;
+}
+
+.unsetBox {
+  background: lightslategray;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 10px 0 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.messageDeleteBtn{
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 18px;
+  color: maroon;
+  background: none;
+  border: 1px solid maroon;
+  border-radius: 5px;
+  outline: 0;
+  cursor: pointer;
+}
+
+.messageDeleteBtn:hover{
+  color: white;
+  background: maroon;
+  transition: .3s;
+}
+
+.cancelBtn{
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 18px;
+  color: rgb(12, 91, 85);
+  background: none;
+  border: 1px solid rgb(12, 91, 85);
+  border-radius: 5px;
+  outline: 0;
+  cursor: pointer;
+}
+
+.cancelBtn:hover{
+  color: white;
+  background: rgb(12, 91, 85);
+  transition: .3s;
+}

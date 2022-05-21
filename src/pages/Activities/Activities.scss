@@ -1,0 +1,233 @@
+.activity_section{
+
+
+
+.activity_text_slice {
+  display: flex;
+  flex-direction: column;
+}
+
+  .activity_section_block {
+    padding: 30px;
+  }
+
+  .activity_text {
+    color: #A1A5B7;
+    font-family: Poppins;
+    font-size: 18px;
+  }
+
+  #Search{
+    height:49px;
+    font-family: Poppins;
+    background: #19A49C;
+    border:none;
+    padding-left:48px;
+    font-weight: 300;
+    padding-top:1px;
+    font-size:18px;
+    border-radius: 15px;
+    color:white;
+    background-repeat:no-repeat;
+    background-position:center;outline:0;
+  }
+
+  #Search::-webkit-search-cancel-button{
+    position:relative;
+    right:20px;
+  }
+
+  #Search::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+
+  #Search:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+  }
+
+  #Search::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+  }
+
+  .simple_steps_text {
+    color: #181C32;
+    font-size: 20px;
+    font-family: Poppins;
+    font-width: 300;
+    margin-left: 5%;
+  }
+
+  .card_activities_body_one {
+    background: #81E89E;
+    min-height: 220px;
+    position: relative;
+    border-radius: 18px;
+    img {
+      position: absolute;
+      top: -50px;
+      margin: 0 0 0 -80px;
+    }
+  }
+  .card_activities_body_two {
+    background: #FFAB2B;
+    min-height: 220px;
+    width: 100%;
+    position: relative;
+    border-radius: 18px;
+
+    img {
+      position: absolute;
+      top: -50px;
+      margin: 0 0 0 -80px;
+    }
+  }
+
+  .card_activities_body_three {
+    background: #7D88E7;
+    min-height: 220px;
+    position: relative;
+    border-radius: 18px;
+    img {
+      position: absolute;
+      top: -50px;
+      margin: 0 0 0 -80px;
+    }
+  }
+
+  .card_activities {
+    margin: 30px auto;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    transition: 0.4s;
+
+  }
+
+
+  .card_activities:hover {
+    transform: scale(0.98, 0.98);
+
+  }
+
+  .text_activity_smoles {
+    color: white !important;
+    font-size: 20px;
+    font-family: Poppins;
+    font-weight: 300;
+    position: absolute;
+    bottom: 40px;
+    margin: 0 0 0 -40px;
+  }
+
+  .text_activity_long {
+    color: white !important;
+    font-size: 20px;
+    font-family: Poppins;
+    font-weight: 300;
+    position: absolute;
+    bottom: 40px;
+    margin: 0 0 0 -100px;
+  }
+  .text_activity_long_review {
+    color: white !important;
+    font-size: 20px;
+    font-family: Poppins;
+    font-weight: 300;
+    position: absolute;
+    bottom: 40px;
+    margin: 0 0 0 0;
+  }
+
+  .lets_go {
+    cursor: pointer;
+    &:hover {
+      color: #19A49C;
+      transition: 0.3s;
+    }
+  }
+
+  .activity_form {
+    input {
+      margin: 0.5rem;
+    }
+    textarea {
+      margin: 0.5rem;
+    }
+    select {
+      margin: 0.5rem;
+    }
+    label {
+      margin-left: 1rem;
+    }
+    width: 30%;
+
+    button {
+      background: #2DEDB4;
+      color: #fff;
+      padding: 7px 90px;
+      border: none;
+      border-radius: 10px;
+      margin: 0 auto;
+      display: flex;
+
+      &:hover {
+        background: #19A49C;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .container_form {
+    min-height: 500px;
+  }
+
+  .input_slice_absolute {
+    position: relative;
+
+    @media only screen and (max-width:340px) {
+      margin: 0px 0 0px -45px;
+    }
+    @media only screen and (max-width:300px) {
+      margin: 0px 0 0px -55px;
+    }
+
+    i {
+      position: absolute;
+      margin: 10px 0px 0 32px;
+      font-size: 24px;
+      color: white;
+    }
+  }
+
+  .map_select_img {
+    cursor: pointer;
+  }
+  .map_section_slice {
+    padding: 7px 60px;
+    display: flex;
+    align-items: center;
+    grid-gap: 22px;
+  }
+  .pin_slice {
+    padding: 0 35px;
+
+  }
+  .form_check_custom {
+    display: flex;
+    grid-gap: 15px;
+    margin: 0 0 10px 0px;
+  }
+
+  .pin_slice_btn {
+    padding: 8px 90px;
+    cursor: pointer;
+    background: #46F5CA;
+    border-radius: 10px;
+    border:none;
+  }
+
+  .this_activity {
+    padding: 0 60px;
+  }
+}

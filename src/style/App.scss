@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Mulish:wght@600&family=Poppins:ital,wght@0,500;0,700;0,800;1,600&family=Zen+Old+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=KoHo:wght@500&family=Mulish:wght@600&family=Poppins:ital,wght@0,500;0,700;0,800;1,600&family=Zen+Old+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+//global styles
+
+#root {
+    background: #FFFFFF;
+}
+a {
+    text-decoration: none !important;
+}
+
+body {
+    background: #FFFFFF;
+}
+
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+    width: 50% !important;
+}
+
+.css-1aquho2-MuiTabs-indicator {
+    background: #19A49C !important;
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color: #19A49C !important;
+    outline: none !important;
+}
+
+.css-19kzrtu {
+    padding: 32px !important;
+}
+
+
+.error {
+    color: #fb0000;
+    font-size: 0.75rem;
+    text-align: left;
+}
+
+//.checkbox {
+//    display: flex;
+//    justify-content: flex-start;
+//    align-items: center;
+//    margin-top: 1rem;
+//}
+
+//
+//input[type="checkbox"] {
+//    width: fit-content;
+//    margin-right: 0.5rem;
+//    transform: scale(1.25);
+//}
+
+input.input-error,
+select.input-error {
+    border-color: #fc8181;
+}
+
+button:disabled {
+    opacity: 0.35;
+}
+
+.form-control:focus {
+    border-color: #81E89E !important;
+    box-shadow: 0 0 0 0.15rem rgba(9, 95, 9, 0.25);
+}

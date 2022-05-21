@@ -1,0 +1,19 @@
+.card_invitations_activity {
+  border: none;
+  &:hover {
+    border: none !important;
+    transform: scale(0.9999, 0.9999);
+  }
+
+
+  .card_invitations_activity_see {
+    font-size: 18px;
+    font-family: Poppins;
+    cursor: pointer;
+
+    &:hover {
+      color: #19A49C;
+      transition: 0.3s;
+    }
+  }
+}
