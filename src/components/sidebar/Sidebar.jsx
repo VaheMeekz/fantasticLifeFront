@@ -63,7 +63,7 @@ const Sidebar = () => {
               <span>Teams</span>
             </li>
           </Link>
-          <Link to="teams" style={{ textDecoration: "none" }}>
+          <Link to="schedule" style={{ textDecoration: "none" }}>
             <li>
               <img src={schedule} />
               <span>Schedule</span>

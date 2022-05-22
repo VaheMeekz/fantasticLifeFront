@@ -53,10 +53,12 @@ const Navbar = () => {
 
           </div>
 
-          {/*<div ref={node}>*/}
-          {/*  <Burger open={open} setOpen={setOpen} />*/}
-          {/*  <Menu open={open} setOpen={setOpen} />*/}
-          {/*</div>*/}
+          <div ref={node}>
+            <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+          </div>
+
+
         </div>
       </div>
     </div>

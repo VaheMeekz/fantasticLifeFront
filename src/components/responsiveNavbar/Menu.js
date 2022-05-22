@@ -1,3 +1,6 @@
+import "./navbarStyle.scss"
+
+
 import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
@@ -13,12 +16,16 @@ const StyledMenu = styled.nav`
   grid-gap: 35px;
   text-align: left;
   padding: 1.5rem;
+  display: none;
   z-index: 10;
   position: absolute;
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
-
+  
+  @media (max-width: 1250px) {
+    display: flex;
+  }
   @media (max-width: 576px) {
     width: 100%;
   }
@@ -28,7 +35,7 @@ const StyledMenu = styled.nav`
     font-style: normal;
     margin: 0 auto;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 27px;
     line-height: 100%;
     display: flex;
     align-items: center;
@@ -40,7 +47,8 @@ const StyledMenu = styled.nav`
     }
 
     &:hover {
-      color: #343078;
+      color: #46F5CA;
+      transition: 0.4s;
     }
   }
   span {
@@ -50,6 +58,7 @@ const StyledMenu = styled.nav`
   }
   i {
     color: darkred;
+    font-size: 40px;
   }
 `;
 
@@ -65,7 +74,7 @@ const StyledDiv = styled.div`
 
 const Menu = ({ open ,setOpen}) => {
     return (
-        <StyledMenu open={open}>
+        <StyledMenu className="styled_menu_nav" open={open}>
             <StyledDiv>
             <span>LOGO</span>
             <i onClick={() => setOpen(!open)} className="fa-solid fa-rectangle-xmark"></i>
