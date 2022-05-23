@@ -1,5 +1,5 @@
 export const CHANGE_PASSWORD  = 'CHANGE_PASSWORD '
-export const SIGN_IN_POST = 'SIGN_IN_POST'
+export const SIGN_UP_POST = 'SIGN_UP_POST'
 export const CHANGE_PASSWORD_SEND = 'CHANGE_PASSWORD_SEND'
 export const GET_AUTH = 'GET_AUTH'
 export const SHOW_LOADER = 'GET_AUTH'

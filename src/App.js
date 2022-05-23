@@ -24,6 +24,7 @@ import CreateActivities from "./pages/Activities/CreateActivities";
 import CreateActivityNext from "./pages/Activities/CreateActivityNext";
 import Settings from "./pages/Settings/Settings";
 import Schedule from "./pages/Schedule/Schedule";
+import SignUpCode from "./pages/signup/SignUpCode";
 
 function App() {
 
@@ -68,6 +69,7 @@ function App() {
               {/*sign_in and signup start*/}
               <Route path="/signin" element={<Signin />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/signupCode" element={<SignUpCode />} />
               {/*sign_in and signup start*/}
 
               {/*activity start*/}

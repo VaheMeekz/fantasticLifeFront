@@ -4,8 +4,8 @@ export const errorTypes = {
     text: 'Text'
 }
 
-export const API_URI = "http://localhost:5000/api"
+export const API_URI = "http://localhost:5000/api/v1"
 
-export const token = localStorage.getItem("myToken")
+export const token = localStorage.getItem("myTokenSport")
 
 export const myUrl = "http://localhost:3000"

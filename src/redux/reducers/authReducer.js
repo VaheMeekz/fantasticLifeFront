@@ -1,4 +1,4 @@
-import { SIGN_IN_POST,GET_AUTH } from "../types"
+import { SIGN_UP_POST,GET_AUTH } from "../types"
 
 const initialState = {
     auth: false,
@@ -10,7 +10,7 @@ const initialState = {
 
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SIGN_IN_POST:
+        case SIGN_UP_POST:
             return {
                 ...state,
                 auth:true,
