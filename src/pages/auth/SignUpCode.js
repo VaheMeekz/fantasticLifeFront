@@ -3,24 +3,26 @@ import "./SignUp.scss"
 
 
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
-import {Box} from "@mui/material";
-import MaterialUiPhoneNumber from "material-ui-phone-number";
-import ReactPhoneInput from "react-phone-input-2";
+// import {Box} from "@mui/material";
+// import MaterialUiPhoneNumber from "material-ui-phone-number";
+// import ReactPhoneInput from "react-phone-input-2";
+import { useNavigate } from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
 import {goSendCode, goSignUp} from "../../redux/actions/authAction";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 // custom imports
-
 
 
 const SignUpCode = () => {
     // console.log(email,type,'Hakobik')
     const dispatch = useDispatch()
-    const [openwhatsapp,setOpenwhatsapp] = useState(false)
-    const [openmail,setOpenMail] = useState(false)
+    let navigate = useNavigate();
     const [userData,setUserData] = useState()
     console.log(userData,'Arjuk')
+    const sendRegisterData = useSelector(state => state.authReducer.sendCode)
+
+    console.log(sendRegisterData,'hacker')
 
     const [error, setError] = useState(false)
     const [data, setData] = useState({
@@ -35,23 +37,17 @@ const SignUpCode = () => {
     console.log(parse_data,'parse_data')
 
 
-    const openwhatsappHandler = () => {
-        setOpenwhatsapp(!openwhatsapp)
-    }
-
-    const openmailHandler = () => {
-        setOpenMail(!openmail)
-    }
-
     const onChangeHandler = event => {
         data[event.target.name] = event.target.value;
         console.log(data,'data9999999999999999999')
+        data.type = parse_data.type
+        data.email = parse_data.email
         setData(data)
     }
 
     const sendCodeHandler = e => {
         e.preventDefault()
-        if (data.code) {
+        if (!data.code) {
             setError(true)
             setTimeout(() => {
                 setError(false)
@@ -59,6 +55,10 @@ const SignUpCode = () => {
         } else {
             dispatch(goSendCode(data))
         }
+    }
+
+    if(!sendRegisterData == 0) {
+        navigate(`/sendPassword/${sendRegisterData.id}`);
     }
 
 
@@ -91,12 +91,8 @@ const SignUpCode = () => {
                             <form onChange={onChangeHandler} onSubmit={sendCodeHandler}>
                                 {/*<input name="number" type="text"/>*/}
                                 <label htmlFor="">Code</label>
-                                <input name="type"  type="code"/>
+                                <input name="code"  type="text"/>
 
-
-                                <input name="email" value={parse_data.email} defaultValue={parse_data.email} type="hidden"/>
-                                <input name="type" value={parse_data.type}  defaultValue={parse_data.type} type="hidden"/>
-                                <input name="number" value={parse_data.number}  defaultValue={parse_data.number} type="hidden"/>
                                 <button type="submit">Send</button>
                             </form>
 
