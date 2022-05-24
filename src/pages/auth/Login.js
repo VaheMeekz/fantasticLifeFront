@@ -6,7 +6,7 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 // import {Box} from "@mui/material";
 // import MaterialUiPhoneNumber from "material-ui-phone-number";
 // import ReactPhoneInput from "react-phone-input-2";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
 import {goLogin, goSendCode, goSignUp} from "../../redux/actions/authAction";
 import {useDispatch, useSelector} from "react-redux";
@@ -31,7 +31,6 @@ const Login = () => {
         email:'',
         password: '',
     })
-
 
 
     const onChangeHandler = event => {
@@ -72,6 +71,9 @@ const Login = () => {
                                 <br/>
                             <div className="forgot-pass-form-slice">
                                 <h1>Forgot Password?</h1>
+                            </div>
+                            <div className="register_slice">
+                                <Link to="/signup" className="forgot-pass-link">Register</Link>
                             </div>
                         </div>
 

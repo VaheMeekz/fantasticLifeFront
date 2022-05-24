@@ -111,9 +111,10 @@ function App() {
         )
     }
 
+    console.log(token,'testToken')
   return (
     <div>
-        {token ? userDashboard() : notAuth()}
+        {(token && token !== undefined ) ? userDashboard() : notAuth()}
     </div>
   );
 }

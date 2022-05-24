@@ -46,7 +46,6 @@ const GetActive = () => {
                         <img src={amnfootball} alt="image"/>
                        <p>Build  Your Team</p>
                     </div>
-
                 </div>
             </div>
         </div>

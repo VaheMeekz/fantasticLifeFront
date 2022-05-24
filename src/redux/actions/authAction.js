@@ -59,7 +59,6 @@ export const goSendCode = (data) => {
 };
 
 export const enterPassword = (data) => {
-    alert('Aguero')
     return (dispatch) => {
         axios
             .post(`${API_URI}/users/credentials`, data)
@@ -106,6 +105,8 @@ export const goLogin = (data) => {
                     showConfirmButton: false,
                     timer: 1500,
                 });
+
+                window.location.href = `${myUrl}`;
             })
             .catch((e) => {
                 Swal.fire({

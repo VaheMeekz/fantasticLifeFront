@@ -5,9 +5,9 @@ import "./Signin.scss"
 import React from 'react';
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import {Link} from "react-router-dom";
 
 // custom imports
-
 
 
 const SignUp = () => {
@@ -46,6 +46,10 @@ const SignUp = () => {
                                     </div>
                                     <div className="forgot">
                                         <a href="#" className="forgot-pass-link">Forgot Password?</a>
+                                    </div>
+                                    <br/>
+                                    <div className="forgot_register">
+                                        <Link href="#" className="forgot-pass-link">Register</Link>
                                     </div>
                                 </div>
                                 <div className="form-group">
