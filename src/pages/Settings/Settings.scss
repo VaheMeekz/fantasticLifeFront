@@ -1,7 +1,6 @@
 .settings_section_slice {
 
 
-
   .upload_image_slice {
     padding: 40px;
     border-right: 1px solid #b0b0b0;
@@ -16,7 +15,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img {
+      max-width: 210px;
+      max-height: 210px;
+      object-fit: cover;
+    }
   }
+
 
   sup {
     color: red;
@@ -50,5 +56,78 @@
     @media only screen and (max-width: 600px) {
       flex-direction: column;
     }
+  }
+}
+
+.loader {
+  margin: 20px 0;
+}
+
+.avatarBox {
+  position: relative;
+}
+
+.uploadBtn {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  cursor: pointer;
+  outline: none;
+  background: none;
+  border: 0;
+
+  input {
+    display: none;
+  }
+}
+
+.passBox {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  right: 5%;
+  bottom: 16%;
+  cursor: pointer;
+}
+
+.deactivateBtn{
+  background: maroon;
+  padding: 8px 75px;
+  border: 1px solid maroon;
+  margin: 0 auto;
+  border-radius: 10px;
+  color: white;
+}
+
+.deactivateBtn:hover{
+  border: 1px solid maroon;
+  background: white;
+  color: maroon;
+  font-weight: bold;
+  transition: .8s;
+}
+
+.cancleBtn {
+  background: #19A49C;
+  padding: 8px 75px;
+  border: none;
+  margin: 0 auto;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+
+  &:hover {
+    background: #37daab;
+    transition: 0.4s;
+  }
+}
+
+.openBox{
+  display: flex;
+  justify-content: space-between;
+  img{
+    cursor: pointer;
   }
 }

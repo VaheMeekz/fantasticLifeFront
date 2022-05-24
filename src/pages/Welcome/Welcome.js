@@ -16,6 +16,7 @@ import onboardingTwo from "../../images/teenagers_on_bikes.png"
 import onboardingThree from "../../images/onboardingThree.png"
 import onboardingFor from "../../images/onboardingFor.png"
 import circle from "../../images/circle.svg"
+import {Link} from "react-router-dom";
 
 const Welcome = () => {
     return (
@@ -48,7 +49,7 @@ const Welcome = () => {
                        </div>
                        <div className="slider_image_skip">
                            <img src={onboardingOne} alt="onboarding"/>
-                            <span><a href="#">skip</a></span>
+                            <span><Link to="login">skip</Link></span>
                        </div>
                    </div>
 
@@ -76,7 +77,7 @@ const Welcome = () => {
                         </div>
                         <div className="slider_image_skip">
                             <img src={onboardingTwo} alt="onboarding"/>
-                            <span><a href="#">skip</a></span>
+                            <span><Link to="login">skip</Link></span>
                         </div>
 
                     </div>
@@ -99,7 +100,7 @@ const Welcome = () => {
                         </div>
                         <div className="slider_image_skip">
                             <img src={onboardingThree} alt="onboarding"/>
-                            <span><a href="#">skip</a></span>
+                            <span><Link to="/login">skip</Link></span>
                         </div>
 
                     </div>

@@ -21,9 +21,10 @@ const Login = () => {
     const loginData = useSelector(state => state.authReducer.loginData)
 
     console.log(loginData,'loginData')
-    if(loginData.lastName == null || loginData.firstName == null) {
+    if(!loginData.length == 0 && (loginData.lastName == null || loginData.firstName == null)) {
         navigate('/settings')
     }
+
 
     const [error, setError] = useState(false)
     const [data, setData] = useState({
@@ -58,45 +59,27 @@ const Login = () => {
                     <div className="left-inner">
 
                         <div className="sign-in-form active">
-                            <h1>Sign Up</h1>
-                            <div className="social-buttons">
-                                <a href="#" title="Sign in via Google">
-                                    <i className="fa-brands fa-google"></i>
-                                </a>
-
-                                <a href="#" title="Sign in via Facebook">
-                                    <i className="fa-brands fa-facebook-f"></i>
-                                </a>
-                                <a href="#" title="Sign in via Linkedin">
-                                    <i className="fa-brands fa-linkedin-in"></i>
-                                </a>
-                            </div>
-
-                            <div className="seperator" >
-                                <span>or</span>
-                            </div>
-
+                            <h1>Sign In</h1>
 
                             <form onChange={onChangeHandler} onSubmit={sendCodeHandler}>
-                                {/*<input name="number" type="text"/>*/}
                                 <label htmlFor="">Email or Phone Number</label>
-                                <input name="email" type="email"/>
+                                <input required name="email" className="form-control" type="email"/>
 
                                 <label htmlFor="">password</label>
-                                <input name="password"  type="password"/>
-
+                                <input name="password" required  className="form-control" type="password"/><br/>
                                 <button type="submit">Send</button>
                             </form>
-
+                                <br/>
+                            <div className="forgot-pass-form-slice">
+                                <h1>Forgot Password?</h1>
+                            </div>
                         </div>
 
-                        <div className="forgot-pass-form">
-                            <h1>Forgot Password?</h1>
-                        </div>
+
                     </div>
                 </div>
-                <div className="right"></div>
 
+                <div className="right"></div>
 
             </div>
             <div className="effect-wrap">
