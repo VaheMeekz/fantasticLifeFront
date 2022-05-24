@@ -36,8 +36,7 @@ const Welcome = () => {
                    <div className="slider_container_one">
                        <div className="slider_container_text">
                            <nav>
-                               <a href="#">test 1</a>
-                               <a href="#">test 2</a>
+                               <h4>This Active Life</h4>
                            </nav>
 
                            <h2>You</h2>
@@ -64,8 +63,7 @@ const Welcome = () => {
                     <div className="slider_container_two">
                         <div className="slider_container_text">
                             <nav>
-                                <a href="#">test 1</a>
-                                <a href="#">test 2</a>
+                                <h4>This Active Life</h4>
                             </nav>
 
                             <h2>Together</h2>
@@ -81,14 +79,19 @@ const Welcome = () => {
                         </div>
 
                     </div>
+
+                    <div className="effect-wrap">
+                        <div className="effect effect-3">
+
+                        </div>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
 
                     <div className="slider_container_three">
                         <div className="slider_container_text">
                             <nav>
-                                <a href="#">test 1</a>
-                                <a href="#">test 2</a>
+                                <h4>This Active Life</h4>
                             </nav>
 
                             <h2>Together</h2>
@@ -103,6 +106,11 @@ const Welcome = () => {
                             <span><Link to="/login">skip</Link></span>
                         </div>
 
+                    </div>
+                    <div className="effect-wrap">
+                        <div className="effect effect-3">
+
+                        </div>
                     </div>
                 </SwiperSlide>
 

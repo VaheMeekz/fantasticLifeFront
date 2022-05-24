@@ -1,14 +1,8 @@
-// styles
 import "./Activities.scss"
-
 import React from 'react';
-
-// custom imports
 import Navbar from "../../components/navbar/Navbar";
 import create_activity from "../../images/create_activity.svg"
 import FormActivity from "../../components/forms/FormActivity";
-
-
 
 
 const CreateActivities = () => {
@@ -52,9 +46,9 @@ const CreateActivities = () => {
                 </div>
             </div><br/>
 
-        <div className="container_form container-fluid px-5">
-            <FormActivity />
-        </div>
+            <div className="container_form container-fluid px-5">
+                <FormActivity />
+            </div>
 
 
         </div>

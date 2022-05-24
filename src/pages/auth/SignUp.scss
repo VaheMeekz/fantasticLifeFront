@@ -313,3 +313,46 @@
     font-size: 19px;
   }
 }
+
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.css-1ujnqem-MuiTabs-root {
+  width: 65% !important;
+  margin: 0 auto !important;
+}
+
+.css-1vw5i9y-MuiButtonBase-root-MuiTab-root {
+  text-transform: lowercase !important;
+}
+
+.react-tel-input {
+  //margin: 0 0 0 67px !important;
+}
+
+.css-19kzrtu {
+  padding: 40px !important;
+  @media (max-width:510px) {
+    width: 70% !important;
+    margin: 0 auto !important;
+  }
+}
+
+.MuiTypography-root, .MuiTypography-body1, .css-ahj2mt-MuiTypography-root {
+  display: flex;
+  justify-content: center;
+  grid-gap: 20px;
+}
+
+@media (max-width: 550px) {
+  .css-heg063-MuiTabs-flexContainer {
+    flex-direction: column !important;
+    grid-gap: 20px !important;
+  }
+  #full-width-tabpanel-0 {
+    width: 50% !important;
+    margin: 0 auto !important;
+  }
+}

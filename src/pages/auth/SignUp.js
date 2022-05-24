@@ -129,29 +129,9 @@ const SignUp = () => {
                                 >
                                     <TabPanel value={value} index={0} dir={theme.direction}>
                                         <form onSubmit={signUpHandler}>
-                                            <div className="form-check">
-                                                <input className="form-check-input" type="radio"
-                                                       id="exampleRadios1" value="option1" checked />
-
-                                            </div>
-                                            <div className="form-check">
-                                                <input className="form-check-input" type="radio"
-                                                       id="exampleRadios2" value="option2" />
-
-                                            </div>
 
                                            <ReactPhoneInput name="number" defaultCountry="no" excludeCountries={["us", "ca"]} />
-
-                                            <div className="form-group remember-forgot">
-                                                <div className="remember">
-                                                    <input type="checkbox" id="yes"  value="yes"
-                                                           className="form-checkbox" />
-                                                        <label htmlFor="yes">Remeber me</label>
-                                                </div>
-                                                <div className="forgot">
-                                                    <a href="#" className="forgot-pass-link">Forgot Password?</a>
-                                                </div>
-                                            </div>
+                                                <br/>
                                             <div className="form-group">
                                                 <button type="submit">SIGN UP</button>
                                             </div>
@@ -163,11 +143,11 @@ const SignUp = () => {
 
                                     <TabPanel value={value} index={1} dir={theme.direction}>
                                         <form onChange={onChangeHandlerEmail } onSubmit={signUpHandler}>
-                                            <label htmlFor="">type</label>
                                             <input name="type" defaultValue="2" value='2'  type="hidden"/>
-                                            <label htmlFor="">Email</label>
-                                            <input name="email"  type="text"/>
-                                            <button className="email_signup_button" type="submit">Send</button>
+                                            <label htmlFor="">Your Email</label>
+                                            <input className="form-control mt-2" name="email"  type="email" required/>
+                                            <br/>
+                                            <button className="email_signup_button" type="submit">Sign Up</button>
                                         </form>
                                     </TabPanel>
                                 </SwipeableViews>

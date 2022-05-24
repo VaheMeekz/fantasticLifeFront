@@ -100,7 +100,7 @@ const Settings = () => {
             .post(`https://api.cloudinary.com/v1_1/armcoding/image/upload`, formData)
             .then((res) => {
                 arrOfImages.push(res.data.url);
-                dispatch(changeAvatar(res.data.url))
+                dispatch(changeAvatar(id,res.data.url))
             });
     };
 

@@ -23,6 +23,9 @@
 
   border: 30px solid #19A49C;
   height: 100vh;
+  @media (max-width: 852px) {
+    border: 5px solid #19A49C;
+  }
   h1 {
     font-size: 23px;
     font-family: Poppins;
@@ -64,12 +67,19 @@
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
     height: 100%;
+
+    @media (max-width:1082px) {
+      grid-template-columns:repeat(1, 1fr) ;
+    }
   }
   .left {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 3rem;
+    @media (max-width:600px) {
+      padding: 0;
+    }
 
     @include transition;
 
@@ -224,19 +234,20 @@
   }
 
   button {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     background-color: #19A49C;
     color: var(--color-white);
     border: 0;
     padding: 0.4rem 1rem;
-    margin: 0 auto;
-    width: 70%;
+    margin: 0 auto !important;
+    width: 70% !important;
     border-radius: 6px;
     font-weight: 400;
     font-size: 15px;
-    cursor: pointer;
+    cursor: pointer !important;
+    transition: all 0.3s ease-out;
 
     @include transition;
 
@@ -251,6 +262,10 @@
     justify-content: center;
     color: var(--color-white);
     background-size: cover;
+
+    @media (max-width: 1082px) {
+      display: none;
+    }
 
     svg {
       margin: auto;
@@ -299,3 +314,4 @@
     top: -105px;
   }
 }
+

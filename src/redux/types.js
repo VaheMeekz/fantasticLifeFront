@@ -17,3 +17,4 @@ export const ENTER_PASSWORD = 'ENTER_PASSWORD'
 export const LOGIN_DATA = 'LOGIN_DATA'
 export const CHANGE_AVATAR = 'CHANGE_AVATAR'
 export const GET_USER_SINGLE = 'GET_USER_SINGLE'
+export const GET_SPORTS = "GET_SPORTS"

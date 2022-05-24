@@ -8,7 +8,8 @@ export const getSingleUser = (id) => {
         const response = await axios.get(`${baseUrl}/users/single`, {
             params: {
                 id
-            }});
+            }
+        });
         dispatch({
             type: GET_USER_SINGLE,
             payload: response.data,
@@ -16,31 +17,42 @@ export const getSingleUser = (id) => {
     };
 };
 
-export const changeAvatar = (image) => {
-    return {
-        type:CHANGE_AVATAR,
-        payload:image
+export const changeAvatar = (id, image) => {
+    return async (dispatch) => {
+        const response = await axios.post(`${baseUrl}/users/changeAvatar`, {
+            id,
+            image
+        })
+        dispatch({
+            type: CHANGE_AVATAR,
+            payload: image
+        })
     }
 }
 
 export const changeCredentials = (data) => {
     return async (dispatch) => {
-        const response = await axios.post(`${baseUrl}/users/edit`,data)
-        if(!response.data.err){
+        const response = await axios.post(`${baseUrl}/users/edit`, data)
+        if (!response.data.err) {
+            Swal.fire({
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000,
+            });
             dispatch({
-                type:GET_USER_SINGLE,
-                payload:response.data
+                type: GET_USER_SINGLE,
+                payload: response.data
             })
         }
     }
 }
 
-export const changePasswordAc = (id,oldPass,newPass) => {
+export const changePasswordAc = (id, oldPass, newPass) => {
     return async (dispatch) => {
-        const response =await axios.post(`${baseUrl}/users/changePassword`,{
+        const response = await axios.post(`${baseUrl}/users/changePassword`, {
             id,
-            oldPassword:oldPass,
-            newPassword:newPass
+            oldPassword: oldPass,
+            newPassword: newPass
         })
         console.log(response)
         Swal.fire({
@@ -54,7 +66,7 @@ export const changePasswordAc = (id,oldPass,newPass) => {
 
 export const deactiveteAccount = (id) => {
     return async (dispatch) => {
-        const response = await axios.post(`${baseUrl}/users/deactivate`,{
+        const response = await axios.post(`${baseUrl}/users/deactivate`, {
             id
         })
         Swal.fire({
