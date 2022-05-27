@@ -2,12 +2,13 @@ import {CHANGE_AVATAR, GET_USER_SINGLE} from "../types"
 import axios from "axios";
 import {baseUrl} from "../../config/config";
 import Swal from "sweetalert2";
+import {userId} from "../../utils/keys";
 
-export const getSingleUser = (id) => {
+export const getSingleUser = () => {
     return async (dispatch) => {
         const response = await axios.get(`${baseUrl}/users/single`, {
             params: {
-                id
+                id:userId
             }
         });
         dispatch({

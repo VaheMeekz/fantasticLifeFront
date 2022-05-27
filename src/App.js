@@ -27,9 +27,25 @@ import Schedule from "./pages/Schedule/Schedule";
 import SignUpCode from "./pages/auth/SignUpCode";
 import SendPassword from "./pages/auth/SendPassword";
 import Login from "./pages/auth/Login"
-import { token } from "./utils/keys";
+import { token,API_URI,userId } from "./utils/keys";
+import {useDispatch, useSelector} from "react-redux";
+import {useCallback, useEffect, useState} from "react";
+import axios from "axios";
+import {getUsers} from "./redux/actions/getUsersAction";
 
 function App() {
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.getUsers.userData)
+    const [submitting, setSubmitting] = useState(true)
+    const [data,setData] = useState()
+    const [query, setQuery] = useState("react hooks")
+
+    console.log(user,'Nu pagadi')
+
+    useEffect(() => {
+        dispatch(getUsers());
+    }, []);
+
     const notAuth = () => {
         return (
             <Routes>

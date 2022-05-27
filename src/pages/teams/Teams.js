@@ -1,123 +1,228 @@
 // styles
 import "./Teams.scss"
 
-import React from 'react';
+import React, {useEffect} from 'react';
 
 // custom imports
 import Navbar from "../../components/navbar/Navbar";
 import teamImg from "../../images/teamimage.svg"
 import creteImage from "../../images/createImage.svg"
 import dumbbells from "../../images/dumbbells.svg"
+import {useDispatch, useSelector} from "react-redux";
+import {createTeam, getSingleUser} from "../../redux/actions/teamAction";
+import Skeleton from "@mui/material/Skeleton";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import {getSportsThunk} from "../../redux/actions/activityAction";
+import {useState} from "react";
+import upload_img from "../../images/upload_img.svg";
+import upload from "../../images/upload.svg";
+import axios from "axios";
+import {changeAvatar} from "../../redux/actions/settingAction";
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 600,
+    bgcolor: 'background.paper',
+    border: '2px solid #19A49C',
+    borderRadius: "10px",
+    boxShadow: 24,
+    p: 4,
+};
 
 
 const Teams = () => {
+    let id = 1;
+    const dispatch = useDispatch();
+    const sports = useSelector(state => state.ActivityReducer.sports)
+    const [open, setOpen] = useState(false);
+    const [name, setName] = useState("")
+    const [sport, setSport] = useState(null);
+    const [image, setImage] = useState(null);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const teams = useSelector(state => state?.teamReducer.myTeams)
+    const loading = useSelector(state => state?.teamReducer.loading)
 
-    const arr = [
-        {id:1,teamName:"test",members:"1"},
-        {id:2,teamName:"test",members:"9"},
-        {id:3,teamName:"test",members:"80"},
-        {id:4,teamName:"test",members:"18"},
-        {id:5,teamName:"test",members:"5"},
-        {id:6,teamName:"test",members:"3"},
-        {id:7,teamName:"test",members:"10"},
-        {id:8,teamName:"test",members:"9"},
-        {id:9,teamName:"test",members:"8"},
+    useEffect(() => {
+        dispatch(getSingleUser(id))
+        dispatch(getSportsThunk())
+    }, [])
 
-    ]
-    return (
-        <div>
-            <Navbar/>
+    const handleFile = (e) => {
+        let files = [];
+        Object.keys(e.target.files).map((f) => {
+            if (f === "Length") return;
+            files.push(e.target.files[0]);
+        });
+        uploadImage(files);
+    };
 
-            <div className="container-fluid">
-                <div className="row">
-                                <div className="col-xl-4 col-md-6 col-sm-12">
-                                    <div className="card_card card_team">
-                                        <div className="card-body">
-                                            <div className="d-flex text-muted">
-                                                <div className="d-flex justify-content-around flex-grow-1 overflow-hidden">
-                                                    <img className="team_slice_image" src={teamImg} alt="team"/>
-                                                    <p className="text-truncate mb-0 team_title">
-                                                        My Teams
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    let arrOfImages = [];
+    const uploadImage = (files) => {
+        const formData = new FormData();
+        formData.append("file", files[0]);
+        formData.append("upload_preset", "armcodingImage");
+        formData.append("cloud_name", "armcoding");
+        axios
+            .post(`https://api.cloudinary.com/v1_1/armcoding/image/upload`, formData)
+            .then((res) => {
+                arrOfImages.push(res.data.url);
+                setImage(res.data.url)
+            });
+    };
 
-                    <div className="col-xl-4 col-md-6 col-sm-12">
-                        <div className="card_card card_team">
-                            <div className="card-body">
-                                <div className="d-flex text-muted">
-                                    <div className="flex-shrink-0 me-3 align-self-center">
-                                    </div>
-                                    <div className="p-2 flex-grow-1 overflow-hidden">
-                                        <p className="text-truncate mb-0">
-                                            Sort by
-                                        </p>
-                                        <select className="form-select" aria-label="Default select example">
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
+    const handleCreateTeam = () => {
+        if (name !== "" && image !== null && sport !== null) {
+            dispatch(createTeam(name, image, sport, id))
+        }
+    }
+    return (<div>
+        <Navbar/>
+
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-xl-4 col-md-6 col-sm-12">
+                    <div className="card_card card_team">
+                        <div className="card-body">
+                            <div className="d-flex text-muted">
+                                <div className="d-flex justify-content-around flex-grow-1 overflow-hidden">
+                                    <img className="team_slice_image" src={teamImg} alt="team"/>
+                                    <p className="text-truncate mb-0 team_title">
+                                        My Teams
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div className="col-xl-4 col-md-6 col-sm-12">
-                        <div className="card_card card_team">
-                            <div className="card-body">
-                                <div className="p-4 d-flex text-muted">
-                                    <div className="flex-shrink-0 me-3 align-self-center">
-                                    </div>
-                                    <div className="flex-grow-1 overflow-hidden">
-                                        <img src={creteImage} alt="image"/>
-                                    </div>
+                <div className="col-xl-4 col-md-6 col-sm-12">
+                    <div className="card_card card_team">
+                        <div className="card-body">
+                            <div className="d-flex text-muted">
+                                <div className="flex-shrink-0 me-3 align-self-center">
+                                </div>
+                                <div className="p-2 flex-grow-1 overflow-hidden">
+                                    <p className="text-truncate mb-0">
+                                        Sort by
+                                    </p>
+                                    <select className="form-select" aria-label="Default select example">
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-xl-4 col-md-6 col-sm-12">
+                    <div className="card_card card_team">
+                        <div className="card-body">
+                            <div className="p-4 d-flex text-muted">
+                                <div className="flex-shrink-0 me-3 align-self-center">
+                                </div>
+                                <div className="flex-grow-1 overflow-hidden">
+                                    <img src={creteImage} alt="image" onClick={handleOpen}/>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-          <div className="container-fluid">
-              <div className="row">
-                  {
-                      arr.map((members) => {
-                          return (
-                              <div key={members.id} className="col-xl-4 col-md-6 col-sm-12">
-                                  <div className="card_card card_teams">
-                                      <div className="card-body">
-                                          <div className="d-flex text-muted">
-                                              <div className="d-flex justify-content-around flex-grow-1 overflow-hidden">
-                                                  <div>
-                                                  <p className="mb-1">{members.teamName}</p>
-                                                  <p className="text-truncate mb-0"><span className="text-success me-2"> {members.members}<i
-                                                      className="ri-arrow-right-up-line align-bottom ms-1"></i></span> From previous
-                                                  </p>
-                                                  </div>
-                                                        <div>
-                                                            <img src={dumbbells} alt="image"/>
-                                                        </div>
-
-                                                     <span className="absolute"><i className="fa-solid fa-ellipsis-vertical"></i></span>
-
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          )
-                      })
-                  }
-
-              </div>
-          </div>
-
         </div>
-);
+
+        <div className="container-fluid">
+            <div className="row">
+                {loading ? ([...Array(15)].map((x, i) => <Skeleton variant="rectangular" width={500} height={30}
+                                                                   className="loader"
+                                                                   key={i}/>)) : teams.map((members) => {
+                    return (<div key={members.id} className="col-xl-4 col-md-6 col-sm-12">
+                        <div className="card_card card_teams">
+                            <div className="card-body">
+                                <div className="d-flex text-muted">
+                                    <div
+                                        className="d-flex justify-content-around flex-grow-1 overflow-hidden">
+                                        <div>
+                                            <p className="mb-1">{members.teamName}</p>
+                                            <p className="text-truncate mb-0"><span
+                                                className="text-success me-2"> {members.members}<i
+                                                className="ri-arrow-right-up-line align-bottom ms-1"></i></span> From
+                                                previous
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <img src={dumbbells} alt="image"/>
+                                        </div>
+
+                                        <span className="absolute"><i
+                                            className="fa-solid fa-ellipsis-vertical"></i></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>)
+                })}
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={style}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            CreateNewTeam
+                        </Typography>
+                        <Box>
+                            <div className="mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Team name</label>
+                                <input type="text" className="form-control" value={name}
+                                       onChange={e => setName(e.target.value)}
+                                       placeholder="first name"/>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Team sport</label>
+                                <select className="form-select" aria-label="Default select example"
+                                        onChange={e => setSport(e.target.value)}>
+                                    <option value={null}>Open this select menu</option>
+                                    {sports && sports?.map(i => {
+                                        return (<option value={i.id} key={i.id}>{i.sportName}</option>)
+                                    })}
+                                </select>
+                            </div>
+                            <div className="uploadBox">
+                                <div className="first">
+                                    {/*<div className="uploadBtn">*/}
+                                    <button color="secondary" variant="contained" component="label">
+                                        Upload
+                                        <input type="file" onChange={handleFile}/>
+                                    </button>
+                                    {/*</div>*/}
+                                </div>
+                                <div className="second">
+                                    {image !== null && <img src={image}/>
+
+                                    }
+                                </div>
+                            </div>
+                            <div>
+                                <button className="settings_btn" onClick={handleCreateTeam}>Create</button>
+                            </div>
+
+                        </Box>
+                    </Box>
+                </Modal>
+            </div>
+        </div>
+
+    </div>);
 };
 
 export default Teams;

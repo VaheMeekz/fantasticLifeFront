@@ -1,8 +1,7 @@
-import axios from 'axios'
-
-export function getUsers(postData) {
-    return axios.get(
-        ``,
-        postData
-    )
-}
+// import apiClient from "../helpers/apiClient";
+//
+// class UsersService {
+//     getAllUsers = () => apiClient().get("users");
+// }
+//
+// export default new UsersService();

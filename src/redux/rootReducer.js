@@ -8,6 +8,7 @@ import {addTechnicianReducer} from "./reducers/addTechnicianReducer";
 import {ActivityReducer} from "./reducers/activityReducer";
 import {chatReducer} from "./reducers/chatReducer";
 import {settingsReducer} from "./reducers/settingReducer";
+import {teamReducer} from "./reducers/teamReducer";
 
 
 
@@ -20,5 +21,6 @@ export const rootReducer = combineReducers({
     addTechnicianReducer,
     ActivityReducer,
     chatReducer,
-    settingsReducer
+    settingsReducer,
+    teamReducer
 });

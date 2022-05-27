@@ -1,15 +1,18 @@
 import axios from "axios";
-import {API_URI, token} from "../../utils/keys";
-import {GET_USERS} from "../types";
+import {API_URI, token,userId} from "../../utils/keys";
+import {GET_USER} from "../types";
 
 export function getUsers() {
     return async dispatch => {
-        const response = await axios.get(`${API_URI}/users/`,{
-            headers: {'Authorization': `Bearer ${token}`}
-        })
+        const response = await axios.get(`${API_URI}/users/single`,
+            {
+                params:{
+                    id:userId
+                }
+            })
         dispatch({
-            type: GET_USERS,
-            payload: response.data.users
+            type: GET_USER,
+            payload: response.data
         })
     }
 }

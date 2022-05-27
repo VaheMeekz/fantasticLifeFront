@@ -4,7 +4,6 @@ import { API_URI, myUrl } from "../../utils/keys";
 import {SIGN_UP_POST, GO_SEND_CODE, ENTER_PASSWORD, LOGIN_DATA} from "../types";
 
 export const goSignUp = (data) => {
-    alert('yaya')
     sessionStorage.setItem('dataUser',JSON.stringify(data))
     return (dispatch) => {
         axios
@@ -12,6 +11,7 @@ export const goSignUp = (data) => {
             .then((res) => {
                 dispatch({ type: SIGN_UP_POST, payload: res.data });
                 localStorage.setItem("myTokenSport", res.data.token);
+                localStorage.setItem("userId",res.data.id)
                 console.log(res.data,'res')
                 Swal.fire({
                     icon: "success",
@@ -33,12 +33,13 @@ export const goSignUp = (data) => {
 };
 
 export const goSendCode = (data) => {
-    alert('yaya')
     return (dispatch) => {
         axios
             .post(`${API_URI}/users/`, data)
             .then((res) => {
                 dispatch({ type: GO_SEND_CODE, payload: res.data });
+                localStorage.setItem("myTokenSport", res.data.token);
+                localStorage.setItem("userId",res.data.id)
                 console.log(res.data,'res')
                 Swal.fire({
                     icon: "success",
@@ -70,7 +71,6 @@ export const enterPassword = (data) => {
                     showConfirmButton: false,
                     timer: 1500,
                 });
-                console.log(res.data,'res.datares.datares.data')
             })
             .catch((e) => {
                 Swal.fire({
@@ -99,6 +99,7 @@ export const goLogin = (data) => {
                 }
                 dispatch({ type: LOGIN_DATA, payload: res.data });
                 localStorage.setItem("myTokenSport", res.data.token);
+                localStorage.setItem("userId",res.data.id)
                 Swal.fire({
                     icon: "success",
                     title: "Success",

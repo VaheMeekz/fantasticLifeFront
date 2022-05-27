@@ -53,8 +53,8 @@
 
   .settings_section_main {
 
-    @media only screen and (max-width: 600px) {
-      flex-direction: column;
+    @media only screen and (max-width: 767px) {
+      flex-direction: column !important;
     }
   }
 }

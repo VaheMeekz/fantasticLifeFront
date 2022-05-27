@@ -18,3 +18,6 @@ export const LOGIN_DATA = 'LOGIN_DATA'
 export const CHANGE_AVATAR = 'CHANGE_AVATAR'
 export const GET_USER_SINGLE = 'GET_USER_SINGLE'
 export const GET_SPORTS = "GET_SPORTS"
+export const GET_USER = "GET_USER"
+export const GET_USER_ACTIVITY = "GET_USER_ACTIVITY"
+export const GET_MY_TEAMS = 'GET_MY_TEAMS'

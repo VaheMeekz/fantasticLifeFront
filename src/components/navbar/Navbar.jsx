@@ -11,6 +11,10 @@ import Burger from "../responsiveNavbar/Burger";
 import Menu from "../responsiveNavbar/Menu";
 import MessageSlice from "./MessageSlice";
 import Notification from "./Notification";
+import {settingsReducer} from "../../redux/reducers/settingReducer";
+import {useSelector} from "react-redux";
+// import {useEffect} from "@types/react";
+import {getSingleUser} from "../../redux/actions/settingAction";
 
 const useOnClickOutside = (ref, handler) => {
   React.useEffect(() => {
@@ -27,15 +31,21 @@ const useOnClickOutside = (ref, handler) => {
 };
 
 
+
 const Navbar = () => {
 
   const [open, setOpen] = React.useState(false);
   const node = React.useRef();
   useOnClickOutside(node, () => setOpen(false));
+  const user = useSelector(state => state.getUsers.userData)
+
 
   return (
     <div className="navbar">
       <div className="wrapper">
+        <div className="logo_navbar">
+          LOGO
+        </div>
         <div className="search">
           {/*<img src={homeBottomIcon} alt="icon"/>*/}
           Monday - 11 January
@@ -48,7 +58,8 @@ const Navbar = () => {
             <div className="item_language">
               <MessageSlice />
               <Notification />
-              <div>John Joe + avatar IO</div>
+              <div>{user.firstName}</div>
+              <div className="user_avatar"><img src={user.image} alt="user image"/></div>
             </div>
 
           </div>
@@ -57,7 +68,6 @@ const Navbar = () => {
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />
           </div>
-
 
         </div>
       </div>

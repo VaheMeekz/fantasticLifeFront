@@ -25,6 +25,7 @@ import upload from "../../images/upload.svg"
 import eye from "../../images/eye.svg"
 import top from "../../images/arrowTop.svg"
 import bottom from "../../images/arrowBottom.svg"
+import {userId} from "../../utils/keys";
 
 
 const style = {
@@ -40,7 +41,7 @@ const style = {
     p: 4,
 };
 const Settings = () => {
-    let id = 1
+    let id = userId
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const user = useSelector(state => state.settingsReducer.user)
@@ -78,7 +79,7 @@ const Settings = () => {
     })
 
     useEffect(() => {
-        dispatch(getSingleUser(id))
+        dispatch(getSingleUser())
     }, [])
 
     const handleFile = (e) => {

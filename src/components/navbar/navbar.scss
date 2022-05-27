@@ -19,6 +19,9 @@
         margin-left: 5%;
         padding: 3px;
         gap: 6rem;
+        @media (max-width:1249px) {
+          display: none;
+        }
   
         input {
           border: none;
@@ -53,6 +56,9 @@
           align-items: center;
           margin-right: 20px;
           position: relative;
+          @media (max-width: 1249px) {
+            display: none;
+          }
   
           .icon {
             font-size: 20px;
@@ -104,7 +110,24 @@
 .notification_section {
   i {
     font-size: 30px;
+
     color: black;
   }
 }
 // notification end
+
+
+// user avatar
+.user_avatar img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo_navbar {
+  display: none;
+  @media (max-width: 1249px) {
+    display: block;
+  }
+}
