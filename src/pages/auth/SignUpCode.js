@@ -15,14 +15,11 @@ import {useDispatch, useSelector} from "react-redux";
 
 
 const SignUpCode = () => {
-    // console.log(email,type,'Hakobik')
     const dispatch = useDispatch()
     let navigate = useNavigate();
     const [userData,setUserData] = useState()
-    console.log(userData,'Arjuk')
     const sendRegisterData = useSelector(state => state.authReducer.sendCode)
 
-    console.log(sendRegisterData,'hacker')
 
     const [error, setError] = useState(false)
     const [data, setData] = useState({
@@ -34,12 +31,10 @@ const SignUpCode = () => {
 
     let data_user = sessionStorage.getItem('dataUser')
     let parse_data = JSON.parse(data_user)
-    console.log(parse_data,'parse_data')
 
 
     const onChangeHandler = event => {
         data[event.target.name] = event.target.value;
-        console.log(data,'data9999999999999999999')
         data.type = parse_data.type
         data.email = parse_data.email
         setData(data)

@@ -7,19 +7,20 @@ import React, {useEffect} from 'react';
 import Navbar from "../../components/navbar/Navbar";
 import teamImg from "../../images/teamimage.svg"
 import creteImage from "../../images/createImage.svg"
-import dumbbells from "../../images/dumbbells.svg"
 import {useDispatch, useSelector} from "react-redux";
-import {createTeam, getSingleUser} from "../../redux/actions/teamAction";
+import {createTeam, deleteTeamAC, getSingleUser} from "../../redux/actions/teamAction";
 import Skeleton from "@mui/material/Skeleton";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {getSportsThunk} from "../../redux/actions/activityAction";
 import {useState} from "react";
-import upload_img from "../../images/upload_img.svg";
-import upload from "../../images/upload.svg";
 import axios from "axios";
-import {changeAvatar} from "../../redux/actions/settingAction";
+import {userId} from "../../utils/keys";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import {useNavigate} from "react-router-dom";
+import TeamItem from "../../components/teamItem/TeamItem";
 
 const style = {
     position: 'absolute',
@@ -36,7 +37,7 @@ const style = {
 
 
 const Teams = () => {
-    let id = 1;
+    let id = userId;
     const dispatch = useDispatch();
     const sports = useSelector(state => state.ActivityReducer.sports)
     const [open, setOpen] = useState(false);
@@ -52,6 +53,7 @@ const Teams = () => {
         dispatch(getSingleUser(id))
         dispatch(getSportsThunk())
     }, [])
+
 
     const handleFile = (e) => {
         let files = [];
@@ -79,8 +81,15 @@ const Teams = () => {
     const handleCreateTeam = () => {
         if (name !== "" && image !== null && sport !== null) {
             dispatch(createTeam(name, image, sport, id))
+            setOpen(false)
+            setName("")
+            setImage("")
+            setSport("")
         }
     }
+
+
+
     return (<div>
         <Navbar/>
 
@@ -142,32 +151,9 @@ const Teams = () => {
             <div className="row">
                 {loading ? ([...Array(15)].map((x, i) => <Skeleton variant="rectangular" width={500} height={30}
                                                                    className="loader"
-                                                                   key={i}/>)) : teams.map((members) => {
+                                                                   key={i}/>)) : teams?.map((members) => {
                     return (<div key={members.id} className="col-xl-4 col-md-6 col-sm-12">
-                        <div className="card_card card_teams">
-                            <div className="card-body">
-                                <div className="d-flex text-muted">
-                                    <div
-                                        className="d-flex justify-content-around flex-grow-1 overflow-hidden">
-                                        <div>
-                                            <p className="mb-1">{members.teamName}</p>
-                                            <p className="text-truncate mb-0"><span
-                                                className="text-success me-2"> {members.members}<i
-                                                className="ri-arrow-right-up-line align-bottom ms-1"></i></span> From
-                                                previous
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <img src={dumbbells} alt="image"/>
-                                        </div>
-
-                                        <span className="absolute"><i
-                                            className="fa-solid fa-ellipsis-vertical"></i></span>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       <TeamItem members={members}/>
                     </div>)
                 })}
                 <Modal
@@ -185,7 +171,7 @@ const Teams = () => {
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Team name</label>
                                 <input type="text" className="form-control" value={name}
                                        onChange={e => setName(e.target.value)}
-                                       placeholder="first name"/>
+                                       placeholder="Name"/>
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Team sport</label>
@@ -199,17 +185,13 @@ const Teams = () => {
                             </div>
                             <div className="uploadBox">
                                 <div className="first">
-                                    {/*<div className="uploadBtn">*/}
                                     <button color="secondary" variant="contained" component="label">
                                         Upload
                                         <input type="file" onChange={handleFile}/>
                                     </button>
-                                    {/*</div>*/}
                                 </div>
                                 <div className="second">
-                                    {image !== null && <img src={image}/>
-
-                                    }
+                                    <img src={image !== null ? image : null}/>
                                 </div>
                             </div>
                             <div>

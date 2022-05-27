@@ -20,7 +20,6 @@ const Login = () => {
     const [userData,setUserData] = useState()
     const loginData = useSelector(state => state.authReducer.loginData)
 
-    console.log(loginData,'loginData')
     if(!loginData.length == 0 && (loginData.lastName == null || loginData.firstName == null)) {
         navigate('/settings')
     }

@@ -20,7 +20,6 @@ const SendPassword = () => {
     const navigate = useNavigate()
     let { id } = useParams();
     const enter_password_data = useSelector(state => state.authReducer.enterPassword)
-    console.log(enter_password_data,'enter_password_data')
     const [userData,setUserData] = useState()
 
     const [error, setError] = useState(false)
@@ -33,7 +32,6 @@ const SendPassword = () => {
 
     const onChangeHandler = event => {
         data[event.target.name] = event.target.value;
-        console.log(data,'data9999999999999999999')
         data.id = id
         setData(data)
     }

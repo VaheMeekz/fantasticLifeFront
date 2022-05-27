@@ -21,3 +21,4 @@ export const GET_SPORTS = "GET_SPORTS"
 export const GET_USER = "GET_USER"
 export const GET_USER_ACTIVITY = "GET_USER_ACTIVITY"
 export const GET_MY_TEAMS = 'GET_MY_TEAMS'
+export const GET_SINGLE_TEAM = "GET_SINGLE_TEAM"

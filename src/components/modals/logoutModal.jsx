@@ -7,6 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {Link} from "react-router-dom";
+import {logoutAC} from "../../redux/actions/authAction";
+import {userId} from "../../utils/keys";
+import {useDispatch} from "react-redux";
 
 const style = {
     position: 'absolute',
@@ -22,19 +25,16 @@ const style = {
 };
 
 export default function LogoutModal() {
+    const dispatch = useDispatch()
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    // const clearData = () => {
-    //     try {
-    //         sessionStorage.clear()
-    //
-    //     }
-    //     catch (err) {
-    //         console.error('err',err)
-    //     }
-    // }
+    const logout = () => {
+        dispatch(logoutAC(userId))
+        localStorage.removeItem("myTokenSport")
+        localStorage.removeItem("userId")
+    }
 
     return (
         <div>
@@ -56,7 +56,7 @@ export default function LogoutModal() {
                         className="font_family"
                         variant="contained"
                         color="error"
-                        onClick={() => sessionStorage.clear()}>
+                        onClick={logout}>
                         Log out
                     </Button>
                         </Link>

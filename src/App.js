@@ -32,6 +32,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {getUsers} from "./redux/actions/getUsersAction";
+import TeamDetail from "./pages/TeamDetail/TeamDetail";
 
 function App() {
     const dispatch = useDispatch()
@@ -39,9 +40,6 @@ function App() {
     const [submitting, setSubmitting] = useState(true)
     const [data,setData] = useState()
     const [query, setQuery] = useState("react hooks")
-
-    console.log(user,'Nu pagadi')
-
     useEffect(() => {
         dispatch(getUsers());
     }, []);
@@ -91,6 +89,7 @@ function App() {
                     <Route path={'/activities'} element={<Activities/>}/>
                     {/*activities end*/}
                     <Route path="/teams" element={<Teams />} />
+                    <Route path="/teams/:id" element={<TeamDetail/>}/>
                     <Route path="/invitations" element={<Invitations />} />
 
                     {/*create activity*/}
@@ -127,7 +126,6 @@ function App() {
         )
     }
 
-    console.log(token,'testToken')
   return (
     <div>
         {(token && token !== undefined ) ? userDashboard() : notAuth()}

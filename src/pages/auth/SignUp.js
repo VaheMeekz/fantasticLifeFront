@@ -81,7 +81,6 @@ const SignUp = () => {
     const onChangeHandlerEmail = event => {
         data[event.target.name] = event.target.value;
         data.type = "2"
-        console.log(data,'data')
         setData(data)
     }
 

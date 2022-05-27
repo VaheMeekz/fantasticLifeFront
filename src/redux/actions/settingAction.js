@@ -55,7 +55,6 @@ export const changePasswordAc = (id, oldPass, newPass) => {
             oldPassword: oldPass,
             newPassword: newPass
         })
-        console.log(response)
         Swal.fire({
             // icon: "success",
             title: response.data.message,

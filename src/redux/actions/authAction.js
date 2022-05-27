@@ -2,6 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { API_URI, myUrl } from "../../utils/keys";
 import {SIGN_UP_POST, GO_SEND_CODE, ENTER_PASSWORD, LOGIN_DATA} from "../types";
+import {baseUrl} from "../../config/config";
 
 export const goSignUp = (data) => {
     sessionStorage.setItem('dataUser',JSON.stringify(data))
@@ -12,7 +13,6 @@ export const goSignUp = (data) => {
                 dispatch({ type: SIGN_UP_POST, payload: res.data });
                 localStorage.setItem("myTokenSport", res.data.token);
                 localStorage.setItem("userId",res.data.id)
-                console.log(res.data,'res')
                 Swal.fire({
                     icon: "success",
                     title: "Success",
@@ -40,7 +40,6 @@ export const goSendCode = (data) => {
                 dispatch({ type: GO_SEND_CODE, payload: res.data });
                 localStorage.setItem("myTokenSport", res.data.token);
                 localStorage.setItem("userId",res.data.id)
-                console.log(res.data,'res')
                 Swal.fire({
                     icon: "success",
                     title: "Success",
@@ -119,3 +118,11 @@ export const goLogin = (data) => {
             });
     };
 };
+
+export const logoutAC = (id) => {
+    return async (dispatch)=>{
+        const response = await axios.post(`${baseUrl}/users/logout`, {
+            id
+        })
+    }
+}
