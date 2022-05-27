@@ -8,6 +8,11 @@
 
 }
 
+.active_card{
+  border-bottom: 6px solid #19A49C;
+  border-radius: 5px;
+}
+
 .teams_activities {
   grid-gap: 10px;
   padding: 5px;
@@ -15,12 +20,19 @@
 
   h4 {
     background: #EEF0F6;
-    border-bottom: 3px solid transparent;
+    //border-bottom: 3px solid transparent;
     border-radius: 5px;
+
     &:hover {
       border-bottom: 3px solid #19A49C;
       transition: left 500ms ease-in-out, right 500ms ease-in-out;
     }
 
   }
+}
+
+.activeTab {
+  border-bottom: 3px solid #19A49C;
+  border-radius: 5px;
+  color: #19A49C;
 }

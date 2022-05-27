@@ -9,6 +9,7 @@ import {ActivityReducer} from "./reducers/activityReducer";
 import {chatReducer} from "./reducers/chatReducer";
 import {settingsReducer} from "./reducers/settingReducer";
 import {teamReducer} from "./reducers/teamReducer";
+import {InviteReducer} from "./reducers/inviteReducer";
 
 
 
@@ -22,5 +23,6 @@ export const rootReducer = combineReducers({
     ActivityReducer,
     chatReducer,
     settingsReducer,
-    teamReducer
+    teamReducer,
+    InviteReducer
 });
