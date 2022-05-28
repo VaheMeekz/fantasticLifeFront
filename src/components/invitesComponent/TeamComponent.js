@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import sendInvation from "../../images/sentInvation.svg";
 import requestInvation from "../../images/requestInvation.svg";
 import "../../pages/Invitations/Invitations.scss"
+import InvitesRequests from "./InvitesRequests";
+import SendTeamInvite from "./SendTeamInvite";
 
 const TeamComponent = ({sendedTeam,myInvitesTeam}) => {
     const [show,setShow] = useState(true)
@@ -11,6 +13,7 @@ const TeamComponent = ({sendedTeam,myInvitesTeam}) => {
     const showMy = () => {
         setShow(false)
     }
+
     return (
         <div>
             <h2>Team Invites</h2>
@@ -46,7 +49,7 @@ const TeamComponent = ({sendedTeam,myInvitesTeam}) => {
                 </div>
             </div>
             {
-                show ? "sended" : "my"
+                show ? <SendTeamInvite items={sendedTeam}/> : <InvitesRequests items={myInvitesTeam}/>
             }
         </div>
     );

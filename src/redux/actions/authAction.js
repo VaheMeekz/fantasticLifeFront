@@ -1,9 +1,8 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { API_URI, myUrl } from "../../utils/keys";
-import {SIGN_UP_POST, GO_SEND_CODE, ENTER_PASSWORD, LOGIN_DATA} from "../types";
+import {SIGN_UP_POST, GO_SEND_CODE, ENTER_PASSWORD, LOGIN_DATA, GET_ALL_USERS} from "../types";
 import {baseUrl} from "../../config/config";
-
 export const goSignUp = (data) => {
     sessionStorage.setItem('dataUser',JSON.stringify(data))
     return (dispatch) => {
@@ -123,6 +122,20 @@ export const logoutAC = (id) => {
     return async (dispatch)=>{
         const response = await axios.post(`${baseUrl}/users/logout`, {
             id
+        })
+    }
+}
+
+export const allUsersAC = (search) => {
+    return async (dispatch) => {
+        const response = await axios.get(`${baseUrl}/users`,{
+            params:{
+                search
+            }
+        })
+        dispatch({
+            type:GET_ALL_USERS,
+            payload:response
         })
     }
 }

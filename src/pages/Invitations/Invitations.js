@@ -6,7 +6,6 @@ import React, {useEffect, useState} from 'react';
 // custom imports
 import Navbar from "../../components/navbar/Navbar";
 import teamImg from "../../images/teamimage.svg"
-import InvitationsTable from "../../components/tables/IivitationsTable";
 import {useDispatch, useSelector} from "react-redux";
 import {userId} from "../../utils/keys";
 import {
@@ -90,9 +89,6 @@ const Invitations = () => {
                         :
                         <ActivityComponent myInvitesActive={myInvitesActive} sendedActive={sendedActive}/>
                 }
-                {/*<div className="container-fluid">*/}
-                {/*    <InvitationsTable/>*/}
-                {/*</div>*/}
             </div>
         </>
     );

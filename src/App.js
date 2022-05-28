@@ -33,6 +33,7 @@ import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {getUsers} from "./redux/actions/getUsersAction";
 import TeamDetail from "./pages/TeamDetail/TeamDetail";
+import TeamInvite from "./pages/teamInvite/TeamInvite";
 
 function App() {
     const dispatch = useDispatch()
@@ -90,6 +91,7 @@ function App() {
                     {/*activities end*/}
                     <Route path="/teams" element={<Teams />} />
                     <Route path="/teams/:id" element={<TeamDetail/>}/>
+                    <Route path="/teamInvite/:id" element={<TeamInvite/>}/>
                     <Route path="/invitations" element={<Invitations />} />
 
                     {/*create activity*/}
