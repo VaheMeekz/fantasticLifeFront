@@ -25,6 +25,7 @@ import LogoutModal from "../modals/logoutModal";
 // import {useSelector} from "react-redux";
 import axios from "axios";
 import {API_URI, token} from "../../utils/keys";
+import AccordionSidebar from "./accordion";
 
 const Sidebar = () => {
 
@@ -50,10 +51,11 @@ const Sidebar = () => {
               <span>Invitations</span>
             </li>
           </Link>
-          <Link to="/activities" style={{ textDecoration: "none" }}>
+
+          <Link to="#" style={{ textDecoration: "none" }}>
             <li>
               <img src={activities} />
-              <span>Activities</span>
+              <span><AccordionSidebar /></span>
             </li>
           </Link>
 

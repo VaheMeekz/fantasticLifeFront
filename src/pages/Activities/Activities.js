@@ -47,8 +47,10 @@ const Activities = () => {
                                 <div className="p-4 d-flex text-muted input_slice_absolute">
                                     <div className="flex-shrink-0 me-3 align-self-center">
                                     </div>
-                                    <input id="Search" type="search" placeholder="Search For An Activity"/>
-                                    <i className="fa-solid fa-magnifying-glass"></i>
+                                    <Link to="/activityMap">
+                                        <i className="fa-solid fa-magnifying-glass"></i>
+                                        <button className="activity_map_btn">Search For An Activity</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

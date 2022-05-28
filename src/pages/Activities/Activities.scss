@@ -194,8 +194,7 @@
 
     i {
       position: absolute;
-      margin: 10px 0px 0 32px;
-      font-size: 24px;
+      margin: 11px 0px 0 8px;
       color: white;
     }
   }
@@ -229,5 +228,18 @@
 
   .this_activity {
     padding: 0 60px;
+  }
+}
+
+.activity_map_btn {
+  background: #19A49C;
+  color: white;
+  border: none;
+  padding: 8px 30px;
+  border-radius: 10px;
+
+  &:hover {
+    transition: 0.5s;
+    background: #0c716a;
   }
 }
