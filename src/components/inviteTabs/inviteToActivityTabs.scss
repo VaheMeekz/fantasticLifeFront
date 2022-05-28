@@ -1,0 +1,54 @@
+.tabs_slice {
+
+
+  .css-1vw5i9y-MuiButtonBase-root-MuiTab-root {
+    background: #EEF0F6 !important;
+    color: black !important;
+  }
+
+  .MuiTypography-root, .MuiTypography-body1, .css-ahj2mt-MuiTypography-root {
+    justify-content: start !important;
+    flex-direction: column !important;
+  }
+
+  .invite_members_block {
+    display: flex;
+    justify-content: space-around;
+
+    .block_one, .block_two {
+      width: 150px;
+      height: 150px;
+      background: #F5F5F5;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      grid-gap: 15px;
+      flex-direction: column;
+      border-radius: 10px;
+      align-items: center;
+    }
+
+    .block_active_class {
+      border: 2px solid #19A49C;
+    }
+  }
+
+  .block_one_contact {
+    width: 70px;
+    height: 70px;
+    background: #F0A58E;
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+  .block_two_email {
+    width: 70px;
+    height: 70px;
+    background: #858FE9;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

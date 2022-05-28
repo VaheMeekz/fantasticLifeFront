@@ -1,6 +1,7 @@
 import axios from "axios";
 import {baseUrl} from "../../config/config";
 import {ACTIVITY_INVITES, ACTIVITY_SENDED, GET_MY_INVITES, SENDEDT_INVITE} from "../types";
+import Swal from "sweetalert2";
 
 //---------------------------------------------------team
 export const getMyInvites = (id) => {
@@ -29,6 +30,51 @@ export const mySendInvites = (id) => {
             payload: response.data,
         });
     };
+}
+
+export const createTeamInvite = (team_id, receiver_id, message, sender_id) => {
+    return async (dispatch) => {
+        const response = await axios.post(`${baseUrl}/invite`, {
+            team_id, receiver_id, message, sender_id
+        })
+        Swal.fire({
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2000,
+        });
+    }
+}
+
+export const inviteAcceptAC = (id, teamId) => {
+    return async (dispatch) => {
+        const response = await axios.post(`${baseUrl}/invite/accept`, {
+            id, teamId
+        })
+    }
+}
+
+export const inviteRejectAC = (id) => {
+    return async (dispatch) => {
+        const response = await axios.post(`${baseUrl}/invite/reject`, {
+            id
+        })
+    }
+}
+
+export const inviteWithEmail = (email, message) => {
+    return async (dispatch) => {
+        const response = await axios.post(`${baseUrl}/invite/withEmail`, {
+            email, message
+        })
+        if (response.data.answer == true) {
+            Swal.fire({
+                icon: "success",
+                title: "Success",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+    }
 }
 //------------------------------------------acivity
 

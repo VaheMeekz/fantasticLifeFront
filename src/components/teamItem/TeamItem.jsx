@@ -6,6 +6,9 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {deleteTeamAC} from "../../redux/actions/teamAction";
 import {userId} from "../../utils/keys";
+
+
+
 const TeamItem = ({members}) => {
     let id = userId;
     const navigate = useNavigate()

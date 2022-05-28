@@ -18,7 +18,7 @@ import GetActive from "./pages/getactive/GetActive";
 import ActivityMap from "./pages/activityMap/ActivityMap";
 import Teams from "./pages/teams/Teams";
 import Invitations from "./pages/Invitations/Invitations";
-import ChatMain from "./pages/Chat/ChatMain";
+// import ChatMain from "./pages/Chat/ChatMain";
 import Activities from "./pages/Activities/Activities";
 import CreateActivities from "./pages/Activities/CreateActivities";
 import CreateActivityNext from "./pages/Activities/CreateActivityNext";
@@ -33,6 +33,9 @@ import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {getUsers} from "./redux/actions/getUsersAction";
 import TeamDetail from "./pages/TeamDetail/TeamDetail";
+import InviteToActivity from "./pages/Activities/InviteToActivity";
+import TeamInvite from "./pages/teamInvite/TeamInvite";
+import ChatMain from "./pages/Chat/ChatMain";
 
 function App() {
     const dispatch = useDispatch()
@@ -84,12 +87,15 @@ function App() {
                     {/*map start*/}
                     <Route path="/activityMap" element={<ActivityMap />} />
                     {/*map end*/}
-                    <Route path={'/inbox'} element={<ChatMain/>}/>
+                    <Route path={'/inbox'} element={<ChatMain />}/>
                     {/*activities start*/}
                     <Route path={'/activities'} element={<Activities/>}/>
+                    <Route path={'/inviteToActivity'} element={<InviteToActivity/>}/>
+
                     {/*activities end*/}
                     <Route path="/teams" element={<Teams />} />
                     <Route path="/teams/:id" element={<TeamDetail/>}/>
+                    <Route path="/teamInvite/:id" element={<TeamInvite/>}/>
                     <Route path="/invitations" element={<Invitations />} />
 
                     {/*create activity*/}
@@ -116,7 +122,7 @@ function App() {
                 {/*sign_in and auth start*/}
 
                 {/*activity start*/}
-                <Route path="/select_activity" element={<SelectActivity />} />
+                {/*<Route path="/select_activity" element={<SelectActivity />} />*/}
                 {/*activity end*/}
 
                 {/*not found page start*/}

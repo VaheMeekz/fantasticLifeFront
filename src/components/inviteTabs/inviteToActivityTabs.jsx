@@ -1,0 +1,121 @@
+// styles
+
+import "./inviteToActivityTabs.scss"
+
+import * as React from 'react';
+import {useState} from 'react'
+import PropTypes from 'prop-types';
+import SwipeableViews from 'react-swipeable-views';
+import { useTheme } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
+// custom imports
+import contact_list from "../../images/contact_list.svg"
+import email_logo from "../../images/email_Icon.svg"
+
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`full-width-tabpanel-${index}`}
+            aria-labelledby={`full-width-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box sx={{ p: 3 }}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+    return {
+        id: `full-width-tab-${index}`,
+        'aria-controls': `full-width-tabpanel-${index}`,
+    };
+}
+
+export default function InviteToActivityTabs() {
+    const theme = useTheme();
+    const [value, setValue] = React.useState(0);
+    const [email,setEmail] = useState("0")
+    const [contactList,setContactList] = useState("0")
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    const handleChangeIndex = (index) => {
+        setValue(index);
+    };
+
+    return (
+        <Box className="tabs_slice" sx={{ bgcolor: 'background.paper', width: 500 }}>
+            <AppBar position="static">
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="secondary"
+                    textColor="inherit"
+                    variant="fullWidth"
+                    aria-label="full width tabs example"
+                >
+                    <Tab label="Invite" {...a11yProps(0)} />
+                    <Tab label="View Response(25)" {...a11yProps(1)} />
+                </Tabs>
+            </AppBar>
+            <SwipeableViews
+                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                index={value}
+                onChangeIndex={handleChangeIndex}>
+
+                <TabPanel value={value} index={0} dir={theme.direction}>
+                   <h6>Invite Members By</h6>
+                    <div className="invite_members_block">
+                        <div onClick={() => {
+                            setContactList('1')
+                            setEmail("0")}
+                             } className={`block_one ${contactList == "1" && 'block_active_class'}`}
+                        >
+                            <div  className="block_one_contact">
+                                <img src={contact_list} alt="image"/>
+                            </div>
+                            <span>Contact List</span>
+                        </div>
+                        <div onClick={() => {
+                            setEmail("2")
+                            setContactList("0")
+                        }} className={`block_two ${email == "2" && 'block_active_class'}`}>
+                            <div className="block_two_email">
+                                <img src={email_logo} alt="image"/>
+                            </div>
+                            <span>Email</span>
+                        </div>
+                    </div><br/>
+                    {contactList == "1" && <span>Contact list</span>}
+                    {email == "2" && <span>email list</span>}
+                </TabPanel>
+
+                <TabPanel value={value} index={1} dir={theme.direction}>
+                    <h6>View Interested People In Your Activity</h6><br/>
+                </TabPanel>
+
+            </SwipeableViews>
+        </Box>
+    );
+}
