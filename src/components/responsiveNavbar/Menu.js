@@ -98,17 +98,29 @@ const Menu = ({ open ,setOpen}) => {
             <Link to="/">
                 Dashboard
             </Link>
-            <Link to="/list">
-                Technics list
+            <Link to="/invitations">
+                Invitations
             </Link>
-            <Link to="/products">
-                Washing Machins
+            <Link to="/activities">
+               My activities
             </Link>
-            <Link to="/change">
-                change password
+            <Link to="/activityMap">
+                search for Activity
             </Link>
-            <Link to="/dashboard">
-                dashboard admin
+            <Link to="/teams">
+                Teams
+            </Link>
+            <Link to="/schedule">
+                Schedule
+            </Link>
+            <Link to="/inbox">
+                Inbox
+            </Link>
+            <Link to="/settings">
+                Settings
+            </Link>
+            <Link to="/settings">
+                Settings
             </Link>
 
             <div>
