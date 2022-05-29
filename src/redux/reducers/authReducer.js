@@ -5,7 +5,7 @@ import {
     ENTER_PASSWORD,
     LOGIN_DATA,
     GET_ALL_USERS,
-    GET_USER_DETAIL
+    GET_USER_DETAIL, GET_USER_DETAIL_HOURS
 } from "../types"
 
 const initialState = {
@@ -21,7 +21,8 @@ const initialState = {
     count: null,
     loading: true,
     otherUser:null,
-    otherLoading:true
+    otherLoading:true,
+    detailHowrs:null
 }
 
 export const authReducer = (state = initialState, action) => {
@@ -67,6 +68,11 @@ export const authReducer = (state = initialState, action) => {
             otherUser: action.payload,
             otherLoading: false
         }
+        case GET_USER_DETAIL_HOURS:
+            return {
+                ...state,
+                detailHowrs: action.payload
+            }
         default:
             return state
     }

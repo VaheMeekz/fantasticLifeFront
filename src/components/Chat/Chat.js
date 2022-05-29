@@ -11,6 +11,7 @@ import defaultAvatar from "../../images/defaultAvatar.svg"
 import axios from "axios"
 import {baseUrl} from "../../config/config";
 import {io} from "socket.io-client";
+import {userId} from "../../utils/keys";
 
 const Chat = () => {
     const dispatch = useDispatch()
@@ -21,7 +22,7 @@ const Chat = () => {
     const messages = useSelector(state => state.chatReducer.messages)
     const [allMessages, setAllMessages] = useState([])
     const [receiverId, setReceiverId] = useState(null)
-    const id = localStorage.getItem("id")
+    const id = userId;
     const [messagesLength, setMessageLength] = useState(0)
     const [message, setMessage] = useState('')
     const [search, setSearch] = useState(null)

@@ -1,0 +1,49 @@
+.detailBox{
+  padding: 30px 20px;
+}
+
+.infoBox{
+  display: flex;
+ img{
+   width: 150px;
+   height: 150px;
+   margin-right: 15px;
+   border-radius: 10px;
+ }
+}
+
+.messageButton{
+  padding: 5px 10px;
+  border: 1px solid #19A49C;
+  background: white;
+  border-radius: 5px;
+  color: #19A49C;
+  font-weight: bolder;
+  &:hover{
+    background: #19A49C;
+    color: white;
+    transition: .5s;
+}
+}
+
+.messageTextarea{
+  border: 1px solid #19A49C;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 5px 10px;
+  margin: 20px 0;
+}
+
+.cancelBtn{
+  padding: 5px 10px;
+  border: 1px solid maroon;
+  background: white;
+  border-radius: 5px;
+  color: maroon;
+  font-weight: bolder;
+  &:hover{
+    background: maroon;
+    color: white;
+    transition: .5s;
+  }
+}

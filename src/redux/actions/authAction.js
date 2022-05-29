@@ -7,7 +7,7 @@ import {
     ENTER_PASSWORD,
     LOGIN_DATA,
     GET_ALL_USERS,
-    GET_USER_DETAIL
+    GET_USER_DETAIL, GET_USER_DETAIL_HOURS
 } from "../types";
 import {baseUrl} from "../../config/config";
 export const goSignUp = (data) => {
@@ -156,6 +156,20 @@ export const detailUserAC = (id) => {
         });
         dispatch({
             type: GET_USER_DETAIL,
+            payload: response.data,
+        });
+    };
+}
+
+export const detailUserHourAC = (id) => {
+    return async (dispatch) => {
+        const response = await axios.get(`${baseUrl}/activity/myActivity`, {
+            params: {
+                id:userId
+            }
+        });
+        dispatch({
+            type: GET_USER_DETAIL_HOURS,
             payload: response.data,
         });
     };
