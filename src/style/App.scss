@@ -12,6 +12,10 @@ a {
 
 body {
     background: #FFFFFF;
+
+    @media (max-width:375px) {
+        overflow-x: hidden;
+    }
 }
 
 
@@ -65,4 +69,8 @@ button:disabled {
 .form-control:focus {
     border-color: #81E89E !important;
     box-shadow: 0 0 0 0.15rem rgba(9, 95, 9, 0.25);
+}
+
+.css-1izfg5m {
+    width: 50% !important;
 }

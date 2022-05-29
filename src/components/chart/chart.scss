@@ -93,3 +93,23 @@
   line-height: 26px;
   color: #FFFFFF;
 }
+
+.pie_charts_section {
+  display: flex;
+  grid-gap: 10px;
+}
+
+.pie_charts_slice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.invite_count_block {
+  text-indent: 30px;
+}
+.invite_all_count {
+  font-size: 18px;
+  color: #0c716a;
+  margin-left: 10px;
+  font-width: 400;
+}

@@ -1,4 +1,12 @@
-import {SIGN_UP_POST, GET_AUTH, GO_SEND_CODE, ENTER_PASSWORD, LOGIN_DATA, GET_ALL_USERS} from "../types"
+import {
+    SIGN_UP_POST,
+    GET_AUTH,
+    GO_SEND_CODE,
+    ENTER_PASSWORD,
+    LOGIN_DATA,
+    GET_ALL_USERS,
+    GET_USER_DETAIL, GET_USER_DETAIL_HOURS
+} from "../types"
 
 const initialState = {
     auth: false,
@@ -11,7 +19,10 @@ const initialState = {
     loginData: [],
     allUsers: null,
     count: null,
-    loading: true
+    loading: true,
+    otherUser:null,
+    otherLoading:true,
+    detailHowrs:null
 }
 
 export const authReducer = (state = initialState, action) => {
@@ -50,6 +61,17 @@ export const authReducer = (state = initialState, action) => {
                 allUsers: action.payload.data.paginateUsers,
                 count: action.payload.data.count,
                 loading: false
+            }
+        case GET_USER_DETAIL:
+            return {
+                ...state,
+                otherUser: action.payload,
+                otherLoading: false
+            }
+        case GET_USER_DETAIL_HOURS:
+            return {
+                ...state,
+                detailHowrs: action.payload
             }
         default:
             return state

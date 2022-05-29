@@ -32,6 +32,7 @@ const StyledBurger = styled.button`
 
     :first-child {
       transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
+      width: 65%;
     }
 
     :nth-child(2) {
@@ -41,9 +42,12 @@ const StyledBurger = styled.button`
 
     :nth-child(3) {
       transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0)")};
+      width: 75%;
     }
   }
 `;
+
+// const Notification = styled.i
 
 const Burger = ({ open, setOpen }) => {
     return (

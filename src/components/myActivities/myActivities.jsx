@@ -9,6 +9,7 @@ import bool from "../../images/boal.svg"
 import secret from "../../images/secret.svg"
 import user from "../../images/user.svg"
 import BasicTabs from "../../tabs/TabPanel";
+import CounterWidgetOne from "../chart/PieChartOne";
 
 const MyActivities = () => {
     return (
@@ -17,7 +18,7 @@ const MyActivities = () => {
                 <section className="card-row">
                     <div>
                         <h5>Up Coming Activity</h5>
-                    <article className="card_activities">
+                    <article className="card_activities"><br/>
                             <div className="coming_hours">
                                 <i className="fa-solid fa-arrow-right-long"
                                 style={{color:"#03C83E"}}></i>
@@ -72,7 +73,8 @@ const MyActivities = () => {
                     <div>
                         <h5>Up Coming Activity <span>9 Received Requests</span></h5>
                         <article className="card_activities">
-                            <BasicTabs />
+                            {/*<BasicTabs />*/}
+                            <CounterWidgetOne />
                         </article>
                     </div>
 

@@ -49,7 +49,7 @@ const ActivatesStatistic = () => {
                 </div>
 
                 <div className="column right_slice">
-                    <h2>2nd Content Area</h2>
+                    <h2>2nd Content Area</h2><br/>
                     <div className="dashboard_right_slice">
                         <div>
                             <img src={completed} alt="completed"/>

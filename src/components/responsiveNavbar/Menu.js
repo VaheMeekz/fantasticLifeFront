@@ -82,19 +82,18 @@ const StyledDiv = styled.div`
 
 const Menu = ({ open ,setOpen}) => {
 
-    const user = useSelector(state => state.getUsers.userData)
+    // const user = useSelector(state => state.getUsers.userData)
     return (
         <StyledMenu className="styled_menu_nav" open={open}>
             <StyledDiv>
-            <span>LOGO</span>
             <i onClick={() => setOpen(!open)} className="fa-solid fa-rectangle-xmark"></i>
             </StyledDiv>
-            <div>
-                <MessageSlice />
-                <Notification className="notification_mobile" />
-                <NameUser>{user.firstName}</NameUser>
-                <div className="responsive_navbar_image"><img src={user.image} alt=""/></div>
-            </div>
+            {/*<div>*/}
+            {/*    <MessageSlice />*/}
+            {/*    <Notification className="notification_mobile" />*/}
+            {/*    <NameUser>{user.firstName}</NameUser>*/}
+            {/*    <div className="responsive_navbar_image"><img src={user.image} alt=""/></div>*/}
+            {/*</div>*/}
             <Link to="/">
                 Dashboard
             </Link>
@@ -122,13 +121,6 @@ const Menu = ({ open ,setOpen}) => {
             <Link to="/settings">
                 Settings
             </Link>
-
-            <div>
-                {/*<img src={homeBottomIcon} alt="icon"/>*/}
-                Monday - 11 January
-                <h4>եղանակ ---- <i className="fa-solid fa-cloud-bolt"></i></h4>
-                <h4><i className="fa-solid fa-location-pin"></i>Location</h4>
-            </div>
 
 
         </StyledMenu>

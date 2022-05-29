@@ -49,16 +49,18 @@
   
       .items {
         display: flex;
+        width: 100%;
         align-items: center;
+        justify-content: space-between;
   
         .item {
           display: flex;
           align-items: center;
           margin-right: 20px;
           position: relative;
-          @media (max-width: 1249px) {
-            display: none;
-          }
+          //@media (max-width: 1249px) {
+          //  display: none;
+          //}
   
           .icon {
             font-size: 20px;
@@ -92,7 +94,7 @@
 
   .item_language {
     display: flex;
-    grid-gap: 5px;
+    grid-gap: 10px;
   }
   }
 

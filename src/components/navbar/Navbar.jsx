@@ -6,7 +6,7 @@ import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 
 // custom imports
 
-import homeBottomIcon from "../../images/homeBottomIcon.svg"
+// import homeBottomIcon from "../../images/homeBottomIcon.svg"
 import Burger from "../responsiveNavbar/Burger";
 import Menu from "../responsiveNavbar/Menu";
 import MessageSlice from "./MessageSlice";
@@ -15,6 +15,7 @@ import {settingsReducer} from "../../redux/reducers/settingReducer";
 import {useSelector} from "react-redux";
 // import {useEffect} from "@types/react";
 import {getSingleUser} from "../../redux/actions/settingAction";
+import default_avatar from "../../images/user.png"
 
 const useOnClickOutside = (ref, handler) => {
   React.useEffect(() => {
@@ -43,9 +44,6 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="wrapper">
-        <div className="logo_navbar">
-          LOGO
-        </div>
         <div className="search">
           {/*<img src={homeBottomIcon} alt="icon"/>*/}
           Monday - 11 January
@@ -54,20 +52,22 @@ const Navbar = () => {
         </div>
         <div className="items">
 
+          <div ref={node}>
+            <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+          </div>
+
           <div className="item">
             <div className="item_language">
               <MessageSlice />
               <Notification />
               <div>{user.firstName}</div>
-              <div className="user_avatar"><img src={user.image} alt="user image"/></div>
+              <div className="user_avatar"><img src={user?.image == null ? default_avatar : user?.image} alt="user image"/></div>
             </div>
 
           </div>
 
-          <div ref={node}>
-            <Burger open={open} setOpen={setOpen} />
-            <Menu open={open} setOpen={setOpen} />
-          </div>
+
 
         </div>
       </div>

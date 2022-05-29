@@ -23,19 +23,28 @@
     display: flex;
     justify-content: space-around;
     margin:  0px 10px;
+    flex-wrap: wrap;
+
+    @media (max-width:650px) {
+      flex-direction: column;
+    }
   }
 
   .card_activities {
-    //width: 414px;
-    //padding: 20px;
-    //margin: 10px;
     margin: 30px auto;
     cursor: pointer;
     transition: 0.4s;
+    min-height: 250px;
     border: 1px solid #d7d7d7;
     border-radius: 10px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
     background-color: white;
+
+    @media (max-width:505px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
     &:hover {
       transform: scale(1.02, 1.02);

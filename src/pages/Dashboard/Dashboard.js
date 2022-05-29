@@ -8,7 +8,7 @@ import MyActivities from "../../components/myActivities/myActivities";
 
 // custom imports
 import Calendar from "../../components/calendar/calendar"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 // import TeamItem from "../../components/teamItem/TeamItem";
 // import Menu from "@mui/material/Menu";
 // import MenuItem from "@mui/material/MenuItem";
@@ -16,26 +16,67 @@ import img_test from "../../images/abela.svg"
 import {useEffect, useState} from "react";
 import axios from "axios";
 import dumbl from "../../images/dumbbells.svg"
+import weather from "../../images/Partly Cloudy.svg"
 import {API_URI, userId} from "../../utils/keys";
 
 const Dashboard = () => {
+    let navigate = useNavigate();
     const [user, setUser] = useState();
+    const [getActivity,setGetActivity] = useState()
+    console.log(getActivity,'getActivity')
 
+    // get single user info
     const fetchPost = async () => {
         try {
             const response = await axios(`${API_URI}/users/single`,
                 {params:{id:userId}});
-            setUser(response.data);
+                setUser(response.data);
+            console.log(typeof response.data.firstName === 'string' && typeof response.data.lastName === 'string')
+            console.log(typeof response.data.firstName,response.data.lastName,"Vazgenchik")
+            if(typeof response.data.firstName === 'string' && typeof response.data.lastName === 'string') {
+                return "ok"
+            } else {
+                navigate(`/settings`);
+            }
         } catch (err) {console.error(err);}
     };
+
+
+
+    // get my activity
+    const getMyActivity = async () => {
+        try {
+            const response = await axios(`${API_URI}/activity/myActivity`,
+                {params:{id:userId}});
+            setGetActivity(response.data);
+
+        } catch (err) {console.error(err);}
+    };
+
     useEffect(()=> {
         fetchPost();
     }, [0])
+
+    useEffect(()=> {
+        getMyActivity();
+    }, [0])
+
 
 
     return (
         <>
             <Navbar/>
+            <div className="responsive_weather">
+                <div className="responsive_weather_and_day">
+                    <h5>Today</h5>
+                    <h6>Monday - 11 January</h6>
+                </div>
+
+                <div className="weather_block">
+                    <img src={weather} alt="image"/>
+                    <span>15  C*</span>
+                </div>
+            </div>
         <div className="admin_dashboard">
             <ActivatesStatistic />
             <MyActivities />

@@ -7,11 +7,12 @@ import React from 'react';
 import Navbar from "../../components/navbar/Navbar";
 import inviteToActivity from "../../images/inviteToActivity.svg";
 import {Link} from "react-router-dom";
-// import creteImage from "../../images/createImage.svg";
+
 import InviteToActivityTabs from "../../components/inviteTabs/inviteToActivityTabs";
 
 
 const InviteToActivity = () => {
+
     return (
         <div className="invite_to_activity">
             <Navbar /><br/>
@@ -35,11 +36,11 @@ const InviteToActivity = () => {
                     <div className="col-xl-4 col-md-6 col-sm-12">
                         <div className="card_card card_team">
 
-                                <div className="p-4 d-flex text-muted">
-                                    <Link to="/activityMap">
+                            <div className="p-4 d-flex text-muted">
+                                <Link to="/activityMap">
                                     <button className="invite_to_activity_btn">Search For An Activity</button>
-                                    </Link>
-                                </div>
+                                </Link>
+                            </div>
 
                         </div>
                     </div>

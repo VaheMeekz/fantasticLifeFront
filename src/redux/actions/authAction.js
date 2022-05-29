@@ -1,7 +1,14 @@
 import axios from "axios";
 import Swal from "sweetalert2";
-import { API_URI, myUrl } from "../../utils/keys";
-import {SIGN_UP_POST, GO_SEND_CODE, ENTER_PASSWORD, LOGIN_DATA, GET_ALL_USERS} from "../types";
+import {API_URI, myUrl, userId} from "../../utils/keys";
+import {
+    SIGN_UP_POST,
+    GO_SEND_CODE,
+    ENTER_PASSWORD,
+    LOGIN_DATA,
+    GET_ALL_USERS,
+    GET_USER_DETAIL, GET_USER_DETAIL_HOURS
+} from "../types";
 import {baseUrl} from "../../config/config";
 export const goSignUp = (data) => {
     sessionStorage.setItem('dataUser',JSON.stringify(data))
@@ -138,4 +145,32 @@ export const allUsersAC = (search) => {
             payload:response
         })
     }
+}
+
+export const detailUserAC = (id) => {
+    return async (dispatch) => {
+        const response = await axios.get(`${baseUrl}/users/single`, {
+            params: {
+                id:userId
+            }
+        });
+        dispatch({
+            type: GET_USER_DETAIL,
+            payload: response.data,
+        });
+    };
+}
+
+export const detailUserHourAC = (id) => {
+    return async (dispatch) => {
+        const response = await axios.get(`${baseUrl}/activity/myActivity`, {
+            params: {
+                id:userId
+            }
+        });
+        dispatch({
+            type: GET_USER_DETAIL_HOURS,
+            payload: response.data,
+        });
+    };
 }

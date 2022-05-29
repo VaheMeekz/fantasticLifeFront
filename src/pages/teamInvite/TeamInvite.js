@@ -11,10 +11,10 @@ import list from "../../images/contact_list.svg"
 import email from "../../images/email_Icon.svg"
 import search from "../../images/search.svg"
 import {allUsersAC} from "../../redux/actions/authAction";
-import closeIcon from "../../images/inbox.svg"
+import closeIcon from "../../images/close.svg"
 // poxelu entaka !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 import userImage from "../../images/user.svg"
-import add from "../../images/inbox.svg"
+import add from "../../images/add.svg"
 // poxelu entaka !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 import Swal from "sweetalert2";
 import {createTeamInvite, inviteWithEmail} from "../../redux/actions/inviteAction";

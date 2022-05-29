@@ -36,6 +36,7 @@ import TeamDetail from "./pages/TeamDetail/TeamDetail";
 import InviteToActivity from "./pages/Activities/InviteToActivity";
 import TeamInvite from "./pages/teamInvite/TeamInvite";
 import ChatMain from "./pages/Chat/ChatMain";
+import UserDetail from "./pages/userDetail/UserDetail";
 
 function App() {
     const dispatch = useDispatch()
@@ -90,8 +91,7 @@ function App() {
                     <Route path={'/inbox'} element={<ChatMain />}/>
                     {/*activities start*/}
                     <Route path={'/activities'} element={<Activities/>}/>
-                    <Route path={'/inviteToActivity'} element={<InviteToActivity/>}/>
-
+                    <Route path={'/inviteToActivity/:id'} element={<InviteToActivity/>}/>
                     {/*activities end*/}
                     <Route path="/teams" element={<Teams />} />
                     <Route path="/teams/:id" element={<TeamDetail/>}/>
@@ -107,6 +107,9 @@ function App() {
 
                     {/* Schedule */}
                     <Route path="/schedule" element={<Schedule />} />
+
+                    {/*    user detail*/}
+                    <Route path="/user/:id" element={<UserDetail/>}/>
                 </Route>
 
                 {/*home slider start*/}

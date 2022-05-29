@@ -8,13 +8,16 @@ import TextField from '@mui/material/TextField';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {DatePicker} from '@mui/x-date-pickers/DatePicker';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import {TimePicker} from '@mui/x-date-pickers/TimePicker';
 import {useNavigate} from "react-router-dom";
+import MenuItem from "@mui/material/MenuItem";
+import {FormControl, InputLabel, Select} from "@mui/material";
+import {userId} from "../../utils/keys";
 // custom imports
 
 
 const BasicForm = () => {
-    let id = 1;
+    let id = userId;
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const sports = useSelector(state => state.ActivityReducer.sports)
@@ -24,6 +27,7 @@ const BasicForm = () => {
     const [sport, setSport] = useState(null)
     const [curDate, setDate] = useState(null)
     const [time, setTime] = useState(null)
+    const [endTime, setEndTime] = useState(null)
     const [count, setCount] = useState(null)
 
 
@@ -34,7 +38,7 @@ const BasicForm = () => {
     const handlerSend = (e) => {
         e.preventDefault()
         console.log(time, "...")
-        dispatch(createActivityAC(id,name,description,sport,curDate,time,count))
+        dispatch(createActivityAC(id, name, description, sport, curDate, endTime, time, count))
         navigate('/createActivityNext')
     }
     return (
@@ -82,7 +86,6 @@ const BasicForm = () => {
                     </LocalizationProvider>
                 </div>
                 <div className="col-xl-6 col-md-6 col-sm-12">
-                    <label htmlFor="age">Time</label>
                     {/*<select className="form-select" aria-label="Default select example" style={{width: "92%"}}>*/}
                     {/*    <option selected>Open this select menu</option>*/}
                     {/*    <option value="1">One</option>*/}
@@ -90,16 +93,76 @@ const BasicForm = () => {
                     {/*    <option value="3">Three</option>*/}
                     {/*</select>*/}
 
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <TimePicker
-                            label="Basic example"
+                    <FormControl sx={{m: 1, minWidth: 80}}>
+                        <InputLabel id="demo-simple-select-autowidth-label">Start</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-autowidth-label"
+                            id="demo-simple-select-autowidth"
                             value={time}
-                            onChange={(newValue) => {
-                                setTime(newValue);
-                            }}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </LocalizationProvider>
+                            onChange={e => setTime(e.target.value)}
+                            autoWidth
+                            label="Start"
+                        >
+                            <MenuItem value="null">
+                                <em>Select start time</em>
+                            </MenuItem>
+                            <MenuItem value={"5"}>05:00</MenuItem>
+                            <MenuItem value={"6"}>06:00</MenuItem>
+                            <MenuItem value={"7"}>07:00</MenuItem>
+                            <MenuItem value={"8"}>08:00</MenuItem>
+                            <MenuItem value={"9"}>09:00</MenuItem>
+                            <MenuItem value={"10"}>10:00</MenuItem>
+                            <MenuItem value={"11"}>11:00</MenuItem>
+                            <MenuItem value={"12"}>12:00</MenuItem>
+                            <MenuItem value={"13"}>13:00</MenuItem>
+                            <MenuItem value={"14"}>14:00</MenuItem>
+                            <MenuItem value={"15"}>15:00</MenuItem>
+                            <MenuItem value={"16"}>16:00</MenuItem>
+                            <MenuItem value={"17"}>17:00</MenuItem>
+                            <MenuItem value={"18"}>18:00</MenuItem>
+                            <MenuItem value={"19"}>19:00</MenuItem>
+                            <MenuItem value={"20"}>20:00</MenuItem>
+                            <MenuItem value={"21"}>21:00</MenuItem>
+                            <MenuItem value={"22"}>22:00</MenuItem>
+                            <MenuItem value={"23"}>23:00</MenuItem>
+                            <MenuItem value={"24"}>24:00</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <FormControl sx={{m: 1, minWidth: 80}}>
+                        <InputLabel id="demo-simple-select-autowidth-label">Start</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-autowidth-label"
+                            id="demo-simple-select-autowidth"
+                            value={endTime}
+                            onChange={e => setEndTime(e.target.value)}
+                            autoWidth
+                            label="End"
+                        >
+                            <MenuItem value="null">
+                                <em>Select start time</em>
+                            </MenuItem>
+                            <MenuItem value={"5"}>05:00</MenuItem>
+                            <MenuItem value={"6"}>06:00</MenuItem>
+                            <MenuItem value={"7"}>07:00</MenuItem>
+                            <MenuItem value={"8"}>08:00</MenuItem>
+                            <MenuItem value={"9"}>09:00</MenuItem>
+                            <MenuItem value={"10"}>10:00</MenuItem>
+                            <MenuItem value={"11"}>11:00</MenuItem>
+                            <MenuItem value={"12"}>12:00</MenuItem>
+                            <MenuItem value={"13"}>13:00</MenuItem>
+                            <MenuItem value={"14"}>14:00</MenuItem>
+                            <MenuItem value={"15"}>15:00</MenuItem>
+                            <MenuItem value={"16"}>16:00</MenuItem>
+                            <MenuItem value={"17"}>17:00</MenuItem>
+                            <MenuItem value={"18"}>18:00</MenuItem>
+                            <MenuItem value={"19"}>19:00</MenuItem>
+                            <MenuItem value={"20"}>20:00</MenuItem>
+                            <MenuItem value={"21"}>21:00</MenuItem>
+                            <MenuItem value={"22"}>22:00</MenuItem>
+                            <MenuItem value={"23"}>23:00</MenuItem>
+                            <MenuItem value={"24"}>24:00</MenuItem>
+                        </Select>
+                    </FormControl>
                 </div>
             </div>
 

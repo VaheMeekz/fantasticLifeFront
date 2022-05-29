@@ -10,3 +10,20 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+
+
+
+
+.responsive_navbar {
+  display: flex;
+  justify-content: space-around;
+
+  .responsive_navbar_left {
+    display: flex;
+  }
+
+  .responsive_navbar_right {
+    display: flex;
+  }
+}
