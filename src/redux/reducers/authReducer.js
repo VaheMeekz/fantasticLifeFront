@@ -1,4 +1,12 @@
-import {SIGN_UP_POST, GET_AUTH, GO_SEND_CODE, ENTER_PASSWORD, LOGIN_DATA, GET_ALL_USERS} from "../types"
+import {
+    SIGN_UP_POST,
+    GET_AUTH,
+    GO_SEND_CODE,
+    ENTER_PASSWORD,
+    LOGIN_DATA,
+    GET_ALL_USERS,
+    GET_USER_DETAIL
+} from "../types"
 
 const initialState = {
     auth: false,
@@ -11,7 +19,9 @@ const initialState = {
     loginData: [],
     allUsers: null,
     count: null,
-    loading: true
+    loading: true,
+    otherUser:null,
+    otherLoading:true
 }
 
 export const authReducer = (state = initialState, action) => {
@@ -51,6 +61,12 @@ export const authReducer = (state = initialState, action) => {
                 count: action.payload.data.count,
                 loading: false
             }
+        case GET_USER_DETAIL:
+        return {
+            ...state,
+            otherUser: action.payload,
+            otherLoading: false
+        }
         default:
             return state
     }

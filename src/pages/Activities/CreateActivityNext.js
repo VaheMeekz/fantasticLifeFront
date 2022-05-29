@@ -7,17 +7,28 @@ import React, {useState} from 'react';
 import Navbar from "../../components/navbar/Navbar";
 import location from "../../images/location.svg"
 import LocationPickerExample from "../../components/map/LPicker";
-import  location_adderss from "../../images/pin.svg"
+import location_adderss from "../../images/pin.svg"
 import open from "../../images/open.svg"
 import chopen from "../../images/chopen.svg"
 import ActivatySlice from "../../components/activity/ActivatySlice";
-
-
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {addActivityCredentials} from "../../redux/actions/activityAction";
 
 
 export const CreateActivities = () => {
-    const [openMap,setOpenMap] = useState(false)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const [openMap, setOpenMap] = useState(false)
+    const [vis, setVis] = useState(null)
 
+
+    const handlerAddCredentials = () => {
+        if(vis !==null) {
+            dispatch(addActivityCredentials(vis))
+            navigate(`/inviteToActivity/${localStorage.getItem("activityId")}`)
+        }
+    }
     return (
         <div className="activity_section">
             <Navbar/>
@@ -54,16 +65,17 @@ export const CreateActivities = () => {
                         </div>
                     </div>
                 </div>
-            </div><br/>
+            </div>
+            <br/>
             <div className="map_section_slice">
                 Select your Address <img
-                                        className="map_select_img"
-                                        onClick={() => setOpenMap(!openMap)}
-                                        src={location_adderss}
-                                        alt="location"/>
-            {
-                openMap == true  ? <LocationPickerExample /> : null
-            }
+                className="map_select_img"
+                onClick={() => setOpenMap(!openMap)}
+                src={location_adderss}
+                alt="location"/>
+                {
+                    openMap == true ? <LocationPickerExample/> : null
+                }
             </div>
             <div className="container-fluid this_activity">
                 <div className="row pin_slice">
@@ -72,25 +84,25 @@ export const CreateActivities = () => {
                         <br/>
                         <div className="form-check form_check_custom">
                             <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                   id="flexRadioDefault1" />
+                                   id="flexRadioDefault1" value={true} onClick={e => setVis(e.target.value)}/>
                             <img src={open} alt="img"/>
-                                <label className="form-check-label" htmlFor="flexRadioDefault1">
-                                    Visible Only To Invited Users
-                                </label>
+                            <label className="form-check-label" htmlFor="flexRadioDefault1">
+                                Visible Only To Invited Users
+                            </label>
                         </div>
                         <div className="form-check form_check_custom">
                             <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                   id="flexRadioDefault2" checked />
+                                   id="flexRadioDefault2"  value={false} onClick={e => setVis(e.target.value)}/>
                             <img src={chopen} alt="img"/>
-                                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                    Visible To Everyone & Searchable On The Map
-                                </label>
+                            <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                Visible To Everyone & Searchable On The Map
+                            </label>
                         </div>
                     </div>
 
                 </div>
                 <br/>
-                <button className="pin_slice_btn">
+                <button className="pin_slice_btn" onClick={handlerAddCredentials} disabled={vis == null ? true : false}>
                     Next
                 </button>
 
@@ -101,7 +113,7 @@ export const CreateActivities = () => {
             </div>
 
             <div className="container-fluid">
-                <ActivatySlice />
+                <ActivatySlice/>
             </div>
         </div>
     );

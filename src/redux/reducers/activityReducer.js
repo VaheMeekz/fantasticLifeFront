@@ -1,8 +1,11 @@
-import {GET_ACTIVITY_MAP, GET_SPORTS} from "../types";
+import {GET_ACTIVITY_MAP, GET_SPORTS, GET_USER_ACTIVITY} from "../types";
 
 const initialState = {
     activity:null,
-    sports:null
+    sports:null,
+    myCreatedActivity:null,
+    myActivity:null,
+    loading:true
 }
 
 export const ActivityReducer = (state = initialState, action) => {
@@ -16,6 +19,13 @@ export const ActivityReducer = (state = initialState, action) => {
                 ...state,
                 sports: action.payload
             }
+        case GET_USER_ACTIVITY:{
+            return {
+                myActivity: action.payload.myActivity,
+                myCreatedActivity: action.payload.myCreatedActivity,
+                loading: false
+            }
+        }
         default:
             return state
     }

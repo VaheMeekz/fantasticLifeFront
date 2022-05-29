@@ -50,6 +50,15 @@ export const inviteAcceptAC = (id, teamId) => {
         const response = await axios.post(`${baseUrl}/invite/accept`, {
             id, teamId
         })
+        Swal.fire({
+            icon: "success",
+            title: "Success",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+        setTimeout(() => {
+            window.location.reload(false);
+        }, 1500);
     }
 }
 
@@ -58,6 +67,15 @@ export const inviteRejectAC = (id) => {
         const response = await axios.post(`${baseUrl}/invite/reject`, {
             id
         })
+        Swal.fire({
+            icon: "success",
+            title: "Success",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+        setTimeout(() => {
+            window.location.reload(false);
+        }, 1500);
     }
 }
 
@@ -104,4 +122,47 @@ export const mySendActivityInvites = (id) => {
             payload: response.data,
         });
     };
+}
+
+export const createActivityInvite = (activity_id, sender_id, message, recivier_id) => {
+    return async (dispatch) => {
+        const response = await axios.post(`${baseUrl}/activityInvite`, {
+            activity_id, sender_id, message, recivier_id
+        })
+        Swal.fire({
+            icon: "success",
+            title: "Success",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
+}
+
+export const activityAcceptC = (sender_id, activity_id, recivier_id) => {
+    return async (dispatch) => {
+        const response = await axios.post(`${baseUrl}/activityInvite/accept`, {
+            sender_id, activity_id, recivier_id
+        })
+        Swal.fire({
+            icon: "success",
+            title: "Success",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
+}
+
+export const activityRejectAC = (sender_id, activity_id, recivier_id) => {
+    console.log(sender_id, activity_id, recivier_id);
+    return async (dispatch) => {
+        const response = await axios.post(`${baseUrl}/activityInvite/reject`, {
+            sender_id, activity_id, recivier_id
+        })
+        Swal.fire({
+            icon: "success",
+            title: "Success",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
 }

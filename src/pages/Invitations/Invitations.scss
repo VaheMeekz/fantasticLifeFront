@@ -36,3 +36,56 @@
   border-radius: 5px;
   color: #19A49C;
 }
+
+.inviteBox{
+  width: 20%;
+  border: 1px solid #19A49C;
+  border-radius: 5px;
+  padding: 10px;
+
+  .infoBox{
+    display: flex;
+
+    .nameBox{
+      margin-left: 15px;
+    }
+  }
+
+  .buttonsBox{
+    display: flex;
+    justify-content: flex-end;
+    button{
+      margin-left: 15px;
+      font-weight: bold;
+    }
+
+    .reject{
+      background: white;
+      border: 1px solid maroon;
+      border-radius: 5px;
+      padding: 5px 10px;
+      color: maroon;
+
+      &:hover{
+        background: maroon;
+        transition: .5s;
+        color: white;
+      }
+    }
+
+    .accept{
+      background: white;
+      border: 1px solid #19A49C;
+      border-radius: 5px;
+      padding: 5px 10px;
+      color: #19A49C;
+
+      &:hover{
+        background: #19A49C;
+        transition: .5s;
+        color: white;
+      }
+    }
+  }
+}
+

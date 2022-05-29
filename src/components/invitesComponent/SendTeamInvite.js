@@ -4,7 +4,7 @@ const SendTeamInvite = ({items}) => {
     return (
         <div className="sendersBox">
             {
-                items.map(i=>{
+                items?.map(i=>{
                     return(
                         <div key={i.id} className="senderBox">
                             <div className="senderImgBox">

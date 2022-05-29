@@ -7,11 +7,12 @@ import React from 'react';
 import Navbar from "../../components/navbar/Navbar";
 import inviteToActivity from "../../images/inviteToActivity.svg";
 import {Link} from "react-router-dom";
-// import creteImage from "../../images/createImage.svg";
+
 import InviteToActivityTabs from "../../components/inviteTabs/inviteToActivityTabs";
 
 
 const InviteToActivity = () => {
+
     return (
         <div className="invite_to_activity">
             <Navbar /><br/>
