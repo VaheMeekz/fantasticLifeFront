@@ -52,8 +52,11 @@ function App() {
     }, []);
 
     useEffect(()=>{
-        socket.current = io("ws://localhost:8900");
-        socket.current.emit("addUser", userId);
+        if(token)
+        {
+            socket.current = io("ws://localhost:8900")
+            socket.current.emit("addUser", userId)
+        }
     },[])
 
     const notAuth = () => {

@@ -153,7 +153,6 @@ export const activityAcceptC = (sender_id, activity_id, recivier_id) => {
 }
 
 export const activityRejectAC = (sender_id, activity_id, recivier_id) => {
-    console.log(sender_id, activity_id, recivier_id);
     return async (dispatch) => {
         const response = await axios.post(`${baseUrl}/activityInvite/reject`, {
             sender_id, activity_id, recivier_id

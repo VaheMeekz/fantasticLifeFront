@@ -111,7 +111,6 @@ export const deleteTeamMateAC = (teamId, teamMeteId) => {
         const response = await axios.post(`${baseUrl}/team/deleteTeammate`, {
             id: teamId, creator_id: userId, teamMeteId
         })
-        console.log(response,"++++++++++++++++++")
         if(!response.message) {
             dispatch({
                 type: GET_SINGLE_TEAM,

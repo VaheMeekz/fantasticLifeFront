@@ -17,6 +17,7 @@ import axios from "axios"
 import {baseUrl} from "../../config/config";
 import {io} from "socket.io-client";
 import {userId} from "../../utils/keys";
+import {getSingleUser} from "../../redux/actions/settingAction";
 
 const Chat = () => {
     const dispatch = useDispatch()
@@ -24,7 +25,7 @@ const Chat = () => {
     const notificationsCount = useSelector(state => state.chatReducer.notificationsCount)
     const loading = useSelector(state => state.chatReducer.loading)
     const receiversSearchResult = useSelector(state => state.chatReducer.receiversSearchResult)
-
+    const me = useSelector(state => state.settingsReducer.user)
     const socket = useRef();
     const messagesBox = useRef()
     const messages = useSelector(state => state.chatReducer.messages)
@@ -41,10 +42,11 @@ const Chat = () => {
         dispatch(getNotificationsAC(id))
         setAllMessages(messages)
         dispatch(getReceiversSearch(search))
+        dispatch(getSingleUser())
         // setMessageLength(messages.length)
     }, [messages, search])
 
-
+    console.log(me,"meeeeeeeeeeeeeeeeeeeeeeeee")
     useEffect(() => {
         setMessageLength(notificationsCount)
         setMessageLength(messagesLength + 1)
@@ -136,7 +138,7 @@ const Chat = () => {
                 <div className="searchBox">
                     <input className="searchInpust" placeholder="Search" value={search}
                            onChange={e => handleSearch(e)}/>
-                    <img src={searchIcon} alt="search" className="searchIcon"/>
+                    {/*<img src={searchIcon} alt="search" className="searchIcon"/>*/}
                 </div>
                 <div className="receiversList" id="style-1">
                     {
@@ -267,7 +269,6 @@ const Chat = () => {
                             <div className="receiverCredentialsDialog">
                                 <h3>
                                     {receiver !== null ? receiver.firstName : null}
-                                    {" "}
                                     {receiver !== null ? receiver.lastName : null}
                                 </h3>
                                 <p>  {receiver !== null ? receiver.email : null}</p>

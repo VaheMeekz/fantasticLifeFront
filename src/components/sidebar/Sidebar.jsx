@@ -61,7 +61,7 @@ const Sidebar = () => {
               {/*<span><AccordionSidebar /></span>*/}
 
               {accordionData.map(({ title, content }) => (
-                  <AccordionCustom title={title} content={content} />
+                  <AccordionCustom title={title} content={content} key={title.toString()}/>
               ))}
 
             </li>

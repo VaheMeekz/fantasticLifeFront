@@ -1,0 +1,14 @@
+.mediaChatBox{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .chatBox{
+    display: none;
+  }
+  .mediaChatBox{
+    display: block;
+  }
+}
+
+

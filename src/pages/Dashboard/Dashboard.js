@@ -24,7 +24,6 @@ const Dashboard = () => {
     const [user, setUser] = useState();
     const [getActivity,setGetActivity] = useState()
     const [getHistory, setGetHistory] = useState();
-    console.log(getActivity,'getActivity')
 
 
     // get single user info
@@ -33,8 +32,6 @@ const Dashboard = () => {
             const response = await axios(`${API_URI}/users/single`,
                 {params:{id:userId}});
                 setUser(response.data);
-            console.log(typeof response.data.firstName === 'string' && typeof response.data.lastName === 'string')
-            console.log(typeof response.data.firstName,response.data.lastName,"Vazgenchik")
             if(typeof response.data.firstName === 'string' && typeof response.data.lastName === 'string') {
                 return "ok"
             } else {

@@ -9,7 +9,7 @@ const AccordionCustom = ({ title, content }) => {
         <div className="accordion-item">
             <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
                 <div>{title}</div>
-                <div>{isActive ? <i className="fa-solid fa-angle-up"></i> : <i class="fa-solid fa-angle-down"></i>}</div>
+                <div>{isActive ? <i className="fa-solid fa-angle-up"></i> : <i className="fa-solid fa-angle-down"></i>}</div>
             </div>
             {isActive && <div className="accordion-content">
                 <Link to="activities" style={{ textDecoration: "none" }}>

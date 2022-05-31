@@ -20,7 +20,6 @@ const SignUpCode = () => {
     const [userData,setUserData] = useState()
     const sendRegisterData = useSelector(state => state.authReducer.sendCode)
 
-    console.log(sendRegisterData,'sendRegisterData')
 
     const [error, setError] = useState(false)
     const [data, setData] = useState({

@@ -25,7 +25,7 @@
 }
 
 .receiversBox {
-  width: 30%;
+  width: 100%;
   padding: 15px;
   height: 68vh;
 }
@@ -43,20 +43,21 @@
   font-size: 16px;
 }
 
-.searchBox {
+.searchBoxX {
+  width: 100% !important;
   margin: 10px 0 10px 0;
   position: relative;
 }
 
 .searchIcon {
   position: absolute;
-  left: 18px;
+  right: 18px;
   top: 15px;
 }
 
-.searchInpust {
-  width: 80%;
-  padding: 10px 0 20px 35px;
+.searchInpustX {
+  width: 90% !important;
+  padding: 10px 20px!important;
   border: 0;
   border-radius: 5px;
   outline: 0;
@@ -71,9 +72,9 @@
 }
 
 .receiver {
-  width: 80% !important;
+  width: 90%;
   background: white;
-  margin: 20px 0 0 5px;
+  margin: 20px 0 0 0;
   display: flex;
   padding: 10px 5px;
   border: 1px solid wheat;
@@ -110,6 +111,12 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
+
+    @media (max-width:375px ) {
+      width: 50px;
+      height: 50px;
+    }
+
   }
 }
 
@@ -128,10 +135,18 @@
   }
 }
 
+
+
 .receiverCredentials div p {
   font-size: 20px;
   font-weight: bold;
+
+  @media (max-width:375px ) {
+    font-size: 15px;
+    font-weight: normal !important;
+  }
 }
+
 
 .shortMessageBox {
   font-size: 16px;
@@ -139,7 +154,7 @@
 }
 
 .dialogBox {
-  width: 60%;
+  width: 100%;
   padding: 50px 15px;
   height: 50vh;
   border-left: 2px solid lightgray;
@@ -196,6 +211,22 @@
   width: 60px;
   height: 50px;
   border-radius: 50%;
+}
+
+
+.goBackBox{
+  button{
+    margin: 10px;
+    padding: 5px 15px;
+    background: white;
+    border: 1px solid #19A49C;
+    border-radius: 5px;
+
+    &:hover{
+      background: #19A49C;
+      transition: .5s;
+    }
+  }
 }
 
 //-----------------------------------------------message-------------------------------------------------------
