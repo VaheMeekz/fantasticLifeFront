@@ -108,3 +108,54 @@
   border-radius: 100%;
   margin:10px;
 }
+
+.editBtn{
+  margin: 10px 0;
+  padding: 5px 20px;
+  background: white;
+  border: 1px solid #19A49C;
+  border-radius: 5px;
+  color: #19A49C;
+  font-weight: bold;
+
+  &:hover{
+    background: #19A49C;
+    color: white;
+    transition: .5s;
+  }
+}
+
+.delBtn{
+  padding: 5px 20px;
+  background: white;
+  border: 1px solid #19A49C;
+  border-radius: 5px;
+  color: #19A49C;
+  font-weight: bold;
+
+  &:hover{
+    background: #19A49C;
+    color: white;
+    transition: .5s;
+  }
+}
+
+.danger{
+  color: maroon;
+}
+
+.DelBtn{
+  margin: 10px 0;
+  padding: 5px 20px;
+  background: white;
+  border: 1px solid maroon;
+  border-radius: 5px;
+  color: maroon;
+  font-weight: bold;
+
+  &:hover{
+    background: maroon;
+    color: white;
+    transition: .5s;
+  }
+}
