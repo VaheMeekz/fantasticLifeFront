@@ -14,12 +14,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from "axios";
 import {baseUrl} from "../../../config/config";
-import check from "../../../images/boal.svg"
-import dubleCheck from "../../../images/boal.svg"
+import check from "../../../images/check.svg"
+import dubleCheck from "../../../images/dubleCheck.svg"
 import {io} from "socket.io-client";
+import {userId} from "../../../utils/keys";
 
 const Message = ({message, own, id, image, like, see}) => {
-    const userId = localStorage.getItem("id")
     const socket = useRef();
     const [seen, setSeen] = useState(false)
     const [anchorEl, setAnchorEl] = useState(null);
@@ -100,9 +100,10 @@ const Message = ({message, own, id, image, like, see}) => {
             <hr className="hr"/>
             <div className="dateBox">
                 <div>13.06 10:27</div>
-                {!own ? (<div>
+                {!own ? (null) : (<div>
+                    {/*<div>
                     {
-                        currentSmile == null ?
+                        currentSmile !== null ?
                             <img src={smile} alt="smile" className="like" onClick={handleClick}
                                  style={{marginLeft: "5px"}}/> :
                             <img src={smiles.filter(i => i.id == currentSmile)[0]?.icon} className="like" alt="smile"
@@ -119,15 +120,15 @@ const Message = ({message, own, id, image, like, see}) => {
                                 alt="smile"/></MenuItem>)
                         })}
                     </Menu>
-                </div>) : (<div>
+                </div>*/}
                     <img src={del} alt="delete" className="like" onClick={() => {
                         setOPenDel(true);
                     }} style={{marginLeft: "5px"}}/>
-                    {
-                        like == null &&
-                        <img src={smiles.filter(i => i.id == like)[0]?.icon} className="like" alt="smile"
-                             style={{marginLeft: "5px"}}/>
-                    }
+                    {/*{*/}
+                    {/*    like == null &&*/}
+                    {/*    <img src={smiles.filter(i => i.id == like)[0]?.icon} className="like" alt="smile"*/}
+                    {/*         style={{marginLeft: "5px"}}/>*/}
+                    {/*}*/}
                 </div>)
                 }
                 <Dialog

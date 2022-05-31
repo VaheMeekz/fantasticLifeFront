@@ -1,7 +1,7 @@
 // styles
 import "./TeamDetail.scss"
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getSingleTeam} from "../../redux/actions/teamAction";
@@ -10,19 +10,25 @@ import Skeleton from "@mui/material/Skeleton";
 // custom imports
 import Navbar from "../../components/navbar/Navbar";
 import new_members from "../../images/invite_new_members.png"
+import {userId} from "../../utils/keys";
 
 const TeamDetailMain = () => {
     let {id} = useParams();
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [statusValue, setStatusValue] = useState()
+    console.log(statusValue);
     const team = useSelector(state => state?.teamReducer.singleTeam)
     const loading = useSelector(state => state?.teamReducer.loadSingle)
 
     useEffect(() => {
-        dispatch(getSingleTeam(id))
-    }, [])
+        if(statusValue == "null"){
+            dispatch(getSingleTeam(id))
+        }else {
+            dispatch(getSingleTeam(id, statusValue))
+        }
+    }, [statusValue])
 
-    console.log(team, "+++++++++++++++++")
     const SingleTeam = () => {
         return (
             <div className="team_slice">
@@ -65,12 +71,11 @@ const TeamDetailMain = () => {
                         <div><span>Members </span><span
                             className="members_count"> {team?.UserTeams.length} members</span></div>
                         <div>
-                            {/*<select className="form-select" aria-label="Default select example">*/}
-                            {/*    <option selected>Sort By</option>*/}
-                            {/*    <option value="1">One</option>*/}
-                            {/*    <option value="2">Two</option>*/}
-                            {/*    <option value="3">Three</option>*/}
-                            {/*</select>*/}
+                            <select className="form-select" onChange={e => setStatusValue(e.target.value)}>
+                                <option value={"null"}>All</option>
+                                <option value={true}>Online</option>
+                                <option value={false}>Offline</option>
+                                 </select>
                         </div>
                         <div className="members_slice_img">
                             <img src={new_members} alt="members" onClick={() => navigate(`/teamInvite/${id}`)}/>
@@ -85,6 +90,7 @@ const TeamDetailMain = () => {
                         <thead className="thead-dark thead_table">
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Avatar</th>
                             <th scope="col">First name</th>
                             <th scope="col">Last name</th>
@@ -98,6 +104,8 @@ const TeamDetailMain = () => {
                                     i.User.firstName == null ? null : (
                                         <tr key={index}>
                                             <th scope="row">{index + 1}</th>
+                                            <th scope="row">{i.User.id == userId || i.User?.status ?
+                                                <div className="online"></div> : <div className="ofline"></div>}</th>
                                             <td><img src={i.User.image} alt="avatar" style={{
                                                 width: "50px",
                                                 height: "50px"

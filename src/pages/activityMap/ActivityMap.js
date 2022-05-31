@@ -37,7 +37,7 @@ const ActivityMap = () => {
             <div className="container">
                 <GoogleMapReact
                     bootstrapURLKeys={{
-                        key: "AIzaSyBWg6Cq3oLYoSmMmBLg0EYXqNpIrR78JJQ"
+                        key: "AIzaSyCoNrtASAhs_wBH1KySbGvwTzUl1kjPVfk"
                     }}
                     defaultCenter={defaultProps.center}
                     defaultZoom={defaultProps.zoom}

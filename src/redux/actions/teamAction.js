@@ -36,10 +36,10 @@ export const createTeam = (name, image, sport_id, creator_id) => {
 }
 
 
-export const getSingleTeam = (id) => {
+export const getSingleTeam = (id,status) => {
     return async (dispatch) => {
         const response = await axios.get(`${baseUrl}/team/single`,{
-            params: {id}
+            params: {id,status}
         })
         dispatch({
             type:GET_SINGLE_TEAM,

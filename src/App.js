@@ -29,17 +29,19 @@ import SendPassword from "./pages/auth/SendPassword";
 import Login from "./pages/auth/Login"
 import { token,API_URI,userId } from "./utils/keys";
 import {useDispatch, useSelector} from "react-redux";
-import {useCallback, useEffect, useState} from "react";
-import axios from "axios";
+import { useEffect, useState, useRef} from "react";
 import {getUsers} from "./redux/actions/getUsersAction";
 import TeamDetail from "./pages/TeamDetail/TeamDetail";
 import InviteToActivity from "./pages/Activities/InviteToActivity";
 import TeamInvite from "./pages/teamInvite/TeamInvite";
 import ChatMain from "./pages/Chat/ChatMain";
 import UserDetail from "./pages/userDetail/UserDetail";
+import {io} from "socket.io-client";
 
 function App() {
     const dispatch = useDispatch()
+    const socket = useRef();
+
     const user = useSelector(state => state.getUsers.userData)
     const [submitting, setSubmitting] = useState(true)
     const [data,setData] = useState()
@@ -47,6 +49,11 @@ function App() {
     useEffect(() => {
         dispatch(getUsers());
     }, []);
+
+    useEffect(()=>{
+        socket.current = io("ws://localhost:8900");
+        socket.current.emit("addUser", userId);
+    },[])
 
     const notAuth = () => {
         return (

@@ -151,7 +151,7 @@ export const detailUserAC = (id) => {
     return async (dispatch) => {
         const response = await axios.get(`${baseUrl}/users/single`, {
             params: {
-                id:userId
+                id
             }
         });
         dispatch({

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import "./userDetail.scss"
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {detailUserAC, detailUserHourAC} from "../../redux/actions/authAction";
 import Skeleton from "@mui/material/Skeleton";
@@ -10,6 +10,7 @@ import {userId} from "../../utils/keys";
 const UserDetail = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const user = useSelector(state => state?.authReducer.otherUser)
     const loading = useSelector(state => state?.authReducer.otherLoading)
     const time = useSelector(state => state?.authReducer.detailHowrs)
@@ -28,6 +29,7 @@ const UserDetail = () => {
     const handlerSendMessage = () => {
         if (message !== "") {
             dispatch(createConversationAc(userId, id, message))
+            navigate('/inbox')
         }
     }
     return (<div className="detailBox">
