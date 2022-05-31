@@ -1,12 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react';
 import "../Chat.scss"
 import minin from "../../../images/boyMessage.svg"
-import smile from "../../../images/smile.svg"
 import sirt from "../../../images/sirt.svg"
 import disSirt from "../../../images/disSirt.svg"
 import lampushka from "../../../images/lapushka.svg"
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import del from "../../../images/delete.svg"
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -19,7 +16,7 @@ import dubleCheck from "../../../images/dubleCheck.svg"
 import {io} from "socket.io-client";
 import {userId} from "../../../utils/keys";
 
-const Message = ({message, own, id, image, like, see}) => {
+const Message = ({message, own, id, image, like, see,me}) => {
     const socket = useRef();
     const [seen, setSeen] = useState(false)
     const [anchorEl, setAnchorEl] = useState(null);
@@ -92,7 +89,7 @@ const Message = ({message, own, id, image, like, see}) => {
     return (<div className={own ? "message own" : "message"}>
         <div className="imgBox">
             {
-                own ? <img src={minin} alt="avatar"/> : <img src={image} alt="image"/>
+                own ? <img src={me?.image} alt="avatar"/> : <img src={image} alt="image"/>
             }
         </div>
         {!deleted ? (<div className={own ? "ownMessageTextBox" : "messageTextBox"}>

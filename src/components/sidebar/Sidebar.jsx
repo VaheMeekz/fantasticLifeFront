@@ -33,76 +33,76 @@ import {accordionData} from "../../utils/content";
 const Sidebar = () => {
 
   return (
-    <div className="sidebar">
-      <div className="top">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">LOGO</span>
-        </Link>
-      </div>
-
-      <div className="center">
-        <ul>
+      <div className="sidebar">
+        <div className="top">
           <Link to="/" style={{ textDecoration: "none" }}>
-            <li>
-              <img src={homeIcon} />
-              <span>Dashboard</span>
-            </li>
+            <span className="logo">LOGO</span>
           </Link>
-          <Link to="/invitations" style={{ textDecoration: "none" }}>
-            <li>
-              <img src={invitationsIcon} />
-              <span>Invitations</span>
-            </li>
-          </Link>
+        </div>
 
-          <Link to="#" style={{ textDecoration: "none" }}>
-            <li>
-              <img src={activities} />
-              {/*<span><AccordionSidebar /></span>*/}
+        <div className="center">
+          <ul>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <li>
+                <img src={homeIcon} />
+                <span>Dashboard</span>
+              </li>
+            </Link>
+            <Link to="/invitations" style={{ textDecoration: "none" }}>
+              <li>
+                <img src={invitationsIcon} />
+                <span>Invitations</span>
+              </li>
+            </Link>
 
-              {accordionData.map(({ title, content }) => (
-                  <AccordionCustom title={title} content={content} />
-              ))}
+            <Link to="#" style={{ textDecoration: "none" }}>
+              <li>
+                <img src={activities} />
+                {/*<span><AccordionSidebar /></span>*/}
 
-            </li>
-          </Link>
+                {accordionData.map(({ title, content }) => (
+                    <AccordionCustom title={title} content={content} key={title.toString()}/>
+                ))}
 
-          <Link to="teams" style={{ textDecoration: "none" }}>
-            <li>
-              <img src={teams} />
-              <span>Teams</span>
-            </li>
-          </Link>
-          <Link to="schedule" style={{ textDecoration: "none" }}>
-            <li>
-              <img src={schedule} />
-              <span>Schedule</span>
-            </li>
-          </Link>
-          <Link to="inbox" style={{ textDecoration: "none" }}>
-            <li>
-              <img src={inbox} />
-              <span>Inbox</span>
-            </li>
-          </Link>
-          <Link to="settings" style={{ textDecoration: "none" }}>
-            <li>
-              <img src={settings} />
-              <span>Settings</span>
-            </li>
-          </Link>
+              </li>
+            </Link>
+
+            <Link to="teams" style={{ textDecoration: "none" }}>
+              <li>
+                <img src={teams} />
+                <span>Teams</span>
+              </li>
+            </Link>
+            <Link to="schedule" style={{ textDecoration: "none" }}>
+              <li>
+                <img src={schedule} />
+                <span>Schedule</span>
+              </li>
+            </Link>
+            <Link to="inbox" style={{ textDecoration: "none" }}>
+              <li>
+                <img src={inbox} />
+                <span>Inbox</span>
+              </li>
+            </Link>
+            <Link to="settings" style={{ textDecoration: "none" }}>
+              <li>
+                <img src={settings} />
+                <span>Settings</span>
+              </li>
+            </Link>
 
 
-          <a to="#" style={{ textDecoration: "none" }}>
-            <li>
-              <img src={logOutIcon} />
-              <span><LogoutModal /></span>
-            </li>
-          </a>
-        </ul>
+            <a to="#" style={{ textDecoration: "none" }}>
+              <li>
+                <img src={logOutIcon} />
+                <span><LogoutModal /></span>
+              </li>
+            </a>
+          </ul>
+        </div>
+
       </div>
-
-    </div>
   );
 };
 

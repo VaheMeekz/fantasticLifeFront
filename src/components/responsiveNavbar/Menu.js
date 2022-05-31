@@ -37,12 +37,12 @@ const StyledMenu = styled.nav`
     font-family: 'Poppins';
     font-style: normal;
     margin: 0 auto;
-    font-weight: 500;
+    font-weight: 300;
     font-size: 27px;
     line-height: 100%;
     display: flex;
     align-items: center;
-    color: #FFFFFF;
+    color: #989cae;
 
     @media (max-width: 576px) {
       font-size: 1.5rem;

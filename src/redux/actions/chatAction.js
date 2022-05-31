@@ -54,7 +54,7 @@ export const createConversationAc = (sender_id, receiver_id, text) => {
         })
         Swal.fire({
             icon: "success",
-            title: "Oops...",
+            title: "Success",
             text: "Something went wrong!",
             timer: 1500,
         });

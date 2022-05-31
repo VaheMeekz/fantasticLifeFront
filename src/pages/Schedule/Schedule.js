@@ -20,7 +20,6 @@ export default function Schedule() {
     const dispatch = useDispatch()
     const myCreatedActivity = useSelector(state => state.ActivityReducer.myCreatedActivity)
     const myActivity = useSelector(state => state.ActivityReducer.myActivity)
-    console.log(myActivity);
     const loading = useSelector(state => state.ActivityReducer.loading)
     let [events, setEvents] = useState([])
 

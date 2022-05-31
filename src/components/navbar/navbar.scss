@@ -106,33 +106,57 @@
 
 
 .message_slice {
-  //select {
-  //  background: black;
-  //  color: white;
-  //  cursor: pointer;
-  //}
+  small {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: -5px;
+    right: 0px;
+    background: #FF0000;
+    position: absolute;
+  }
 
+  position: relative;
   i {
-
     font-size: 25px;
-    color: white !important;
-    filter:   drop-shadow(-1px -1px 0px  #1D1617)
-    drop-shadow(1px -1px 0px  #1D1617)
-    drop-shadow(1px 1px 0px #1D1617)
-    drop-shadow(-1px 1px 0px  #1D1617)
+    color: #545050 !important;
+    cursor: pointer;
+
+    &:hover {
+      filter: contrast(200%);
+      transition: 0.4s;
+    }
   }
 }
 
 
 // notification start
 .notification_section {
+
+  small {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: -5px;
+    right: 0px;
+    background: #FF0000;
+    position: absolute;
+  }
+
+  position: relative;
   i {
     font-size: 25px;
+    cursor: pointer;
     color: white;
-    filter:   drop-shadow(-1px -1px 0px  #1D1617)
-              drop-shadow(1px -1px 0px  #1D1617)
- drop-shadow(1px 1px 0px #1D1617)
- drop-shadow(-1px 1px 0px  #1D1617)
+    filter:  drop-shadow(-0px -0px 0px #1D1617)
+              drop-shadow(0px 0px 0px #1D1617)
+              drop-shadow(1px 1px 1px #1D1617)
+              drop-shadow(0px 0px 0px #1D1617);
+
+    //&:hover {
+    //  filter:drop-shadow(1px -1px 0px #1D1617) drop-shadow(0px 1px 0px #1D1617) drop-shadow(1px 1px 2px #1D1617) drop-shadow(0px 0px 0px #1D1617);
+    //  transition: 0.4s;
+    //}
   }
 
 }

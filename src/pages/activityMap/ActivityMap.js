@@ -30,7 +30,6 @@ const ActivityMap = () => {
     useEffect(() => {
         dispatch(getActivityThunk())
     }, [])
-    console.log(data);
     return (
         <div>
             <Navbar/>

@@ -75,7 +75,7 @@ const SignUpCode = () => {
                             <form className="form_signCode" onChange={onChangeHandler} onSubmit={sendCodeHandler}>
                                 {/*<input name="number" type="text"/>*/}
                                 <label htmlFor="">Code</label>
-                                <input name="code" className="code_send_input"  type="text"/><br/>
+                                <input required name="code" className="code_send_input"  type="text"/><br/>
                                 <button className="send_code_btn" type="submit">Send</button>
                             </form>
 

@@ -43,9 +43,17 @@ export const goSendCode = (data) => {
         axios
             .post(`${API_URI}/users/`, data)
             .then((res) => {
+                if(res.data.message == "Something went wrong") {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                        timer: 1500,
+                    });
+
+                    return
+                }
                 dispatch({ type: GO_SEND_CODE, payload: res.data });
-                // localStorage.setItem("myTokenSport", res.data.token);
-                // localStorage.setItem("userId",res.data.id)
                 Swal.fire({
                     icon: "success",
                     title: "Success",
@@ -69,6 +77,16 @@ export const enterPassword = (data) => {
         axios
             .post(`${API_URI}/users/credentials`, data)
             .then((res) => {
+                console.log(res,'Vahe_MAil')
+                if(res.data.error) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                        timer: 1500,
+                    });
+                    return
+                }
                 dispatch({ type: ENTER_PASSWORD, payload: res.data });
                 Swal.fire({
                     icon: "success",
@@ -97,7 +115,7 @@ export const goLogin = (data) => {
                     Swal.fire({
                         icon: "error",
                         title: "Oops...",
-                        text: "Something went wrong!",
+                        text: "user whit this email already exist !!",
                         timer: 1500,
                     });
                     return

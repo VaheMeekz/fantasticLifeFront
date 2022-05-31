@@ -24,7 +24,6 @@ const Dashboard = () => {
     const [user, setUser] = useState();
     const [getActivity,setGetActivity] = useState()
     const [getHistory, setGetHistory] = useState();
-    console.log(getActivity,'getActivity')
 
 
     // get single user info
@@ -32,9 +31,7 @@ const Dashboard = () => {
         try {
             const response = await axios(`${API_URI}/users/single`,
                 {params:{id:userId}});
-                setUser(response.data);
-            console.log(typeof response.data.firstName === 'string' && typeof response.data.lastName === 'string')
-            console.log(typeof response.data.firstName,response.data.lastName,"Vazgenchik")
+            setUser(response.data);
             if(typeof response.data.firstName === 'string' && typeof response.data.lastName === 'string') {
                 return "ok"
             } else {
@@ -65,7 +62,7 @@ const Dashboard = () => {
         } catch (err) {console.error(err);}
     };
 
-     // useEffects
+    // useEffects
     useEffect(()=> {
         fetchPost();
     }, [0])
@@ -94,43 +91,43 @@ const Dashboard = () => {
                     <span>15  C*</span>
                 </div>
             </div>
-        <div className="admin_dashboard">
-            <ActivatesStatistic />
-            <MyActivities />
-            <div className="row">
-                <div className="col-md-6">
-                    <div className="card-body">
-                       <div className="my_teams_slice">
-                           <h5>My Teams</h5>
-                           <span>5 members</span>
-                           <Link to="/teams">See</Link>
-                       </div><br/>
+            <div className="admin_dashboard">
+                <ActivatesStatistic />
+                <MyActivities />
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="card-body">
+                            <div className="my_teams_slice">
+                                <h5>My Teams</h5>
+                                <span>5 members</span>
+                                <Link to="/teams">See</Link>
+                            </div><br/>
 
-                        <div className="team_slice_dashboard">
-                            <div className="image_and_members">
-                                <img src={img_test} alt="image"/>
-                                <div className="team_slice_members">
-                                    <span>Team Name</span><br/>
-                                    <span>members</span>
+                            <div className="team_slice_dashboard">
+                                <div className="image_and_members">
+                                    <img src={img_test} alt="image"/>
+                                    <div className="team_slice_members">
+                                        <span>Team Name</span><br/>
+                                        <span>members</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <img src={dumbl} alt="image"/>
                                 </div>
                             </div>
 
-                            <div>
-                                <img src={dumbl} alt="image"/>
-                            </div>
+
                         </div>
-
-
                     </div>
-                </div>
-                <div className="col-md-6">
-                    <div className="card-body">
-                       <Link to="/schedule"><h5 className="calendar_title">My Activity Calendar</h5></Link><br/>
-                        <Calendar />
+                    <div className="col-md-6">
+                        <div className="card-body">
+                            <Link to="/schedule"><h5 className="calendar_title">My Activity Calendar</h5></Link><br/>
+                            <Calendar />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         </>
     );

@@ -17,8 +17,9 @@ import {useSelector} from "react-redux";
 
 
 const ActivatesStatistic = () => {
-
     const [user, setUser] = useState();
+    const [myActivityHour,setMyActivityHour] = useState()
+    const [activityMy,setActivityMy] = useState()
 
     const fetchPost = async () => {
         try {
@@ -27,9 +28,38 @@ const ActivatesStatistic = () => {
             setUser(response.data);
         } catch (err) {console.error(err);}
     };
+
+    const fetchPostActivityMy = async () => {
+        try {
+            const response = await axios(`${API_URI}/activity/myActivity`,
+                {params:{id:userId}});
+            setMyActivityHour(response.data);
+        } catch (err) {console.error(err);}
+    };
+
+
+    const fetchPostMyActivityTime = async () => {
+        try {
+            const response = await axios(`${API_URI}/activity/my`,
+                {params:{id:userId}});
+            setActivityMy(Object.keys(response.data).length)
+        } catch (err) {console.error(err);}
+    };
+
+
+
     useEffect(()=> {
         fetchPost();
     }, [0])
+
+    useEffect(()=> {
+        fetchPostActivityMy();
+    }, [0])
+
+    useEffect(()=> {
+        fetchPostMyActivityTime();
+    }, [0])
+
 
     return (
         <div className="wrapper_activity">
@@ -58,12 +88,12 @@ const ActivatesStatistic = () => {
                         </div>
                         <div>
                             <img src={completed_other} alt="completed"/>
-                            <span>20</span>
+                            <span>{activityMy}</span>
                             <span>Completed</span>
                         </div>
                         <div>
                             <img src={activity_minutes} alt="completed"/>
-                            <span>2H 15M</span>
+                            <span>{myActivityHour}H</span>
                             <span>Activty Minutes</span>
                         </div>
                     </div>

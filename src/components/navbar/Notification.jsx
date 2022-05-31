@@ -8,6 +8,7 @@ const Notification = () => {
         <div className="notification_section">
             <i className="fa-solid fa-bell"
             ></i>
+            <small></small>
         </div>
     );
 };

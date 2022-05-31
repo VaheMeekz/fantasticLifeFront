@@ -5,17 +5,19 @@ import Swal from "sweetalert2";
 import {userId} from "../../utils/keys";
 
 export const getSingleUser = () => {
-    return async (dispatch) => {
-        const response = await axios.get(`${baseUrl}/users/single`, {
-            params: {
-                id:userId
-            }
-        });
-        dispatch({
-            type: GET_USER_SINGLE,
-            payload: response.data,
-        });
-    };
+    if(userId) {
+        return async (dispatch) => {
+            const response = await axios.get(`${baseUrl}/users/single`, {
+                params: {
+                    id: userId
+                }
+            });
+            dispatch({
+                type: GET_USER_SINGLE,
+                payload: response.data,
+            });
+        };
+    }
 };
 
 export const changeAvatar = (id, image) => {
@@ -37,6 +39,7 @@ export const changeCredentials = (data) => {
         if (!response.data.err) {
             Swal.fire({
                 icon: "success",
+                title: response.data.message,
                 showConfirmButton: false,
                 timer: 2000,
             });

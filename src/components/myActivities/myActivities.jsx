@@ -1,7 +1,8 @@
 // styles
 import "./myActivities.scss"
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useSelector} from "react-redux";
 
 // custom imports
 import miniLocation from "../../images/miniSvg.svg"
@@ -11,7 +12,33 @@ import user from "../../images/user.svg"
 import BasicTabs from "../../tabs/TabPanel";
 import CounterWidgetOne from "../chart/PieChartOne";
 
+
 const MyActivities = () => {
+    const [time,SetTime] = useState()
+    const user = useSelector(state => state.getUsers.userData)
+
+
+    console.log(user,'ReactUser')
+
+    let dateTimeUTC = new Date(user?.updatedAt)
+    let thisDate = new Date()
+    let milliseconds = thisDate - dateTimeUTC
+    let seconds = Number(milliseconds) / 1000
+
+
+    function seconds_to_days(seconds)
+    { // day, h, m and s
+        var days     = Math.floor(seconds / (24*60*60));
+        seconds -= days    * (24*60*60);
+        var hours    = Math.floor(seconds / (60*60));
+        seconds -= hours   * (60*60);
+        var minutes  = Math.floor(seconds / (60));
+        seconds -= minutes * (60);
+          return  ((0<days)?(days+" day, "):"")+hours+"h, "+minutes+"min"
+    }
+
+
+    console.log(seconds_to_days(seconds),'seconds_to_days_hours_mins_secs_str')
     return (
         <div className="my_activities_slice">
             <main>
@@ -24,8 +51,8 @@ const MyActivities = () => {
                                 style={{color:"#03C83E"}}></i>
                                 <span className="up_coming">Up Coming</span>
                                 <i className="fa-solid fa-clock"></i>
-                                <span className="up_hours">6 Days</span>
-                                <span className="up_hours">5Hours</span>
+                                <span className="up_hours">{seconds_to_days(seconds)}</span>
+                                {/*<span className="up_hours">5Hours</span>*/}
                             </div>
                         <br/>
 
@@ -71,7 +98,7 @@ const MyActivities = () => {
                     </article>
                     </div>
                     <div>
-                        <h5>Up Coming Activity <span>9 Received Requests</span></h5>
+                        <h5>Up Coming Activity <span>Received Requests</span></h5>
                         <article className="card_activities">
                             {/*<BasicTabs />*/}
                             <CounterWidgetOne />
