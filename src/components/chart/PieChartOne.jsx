@@ -9,31 +9,48 @@ import {
     VictoryContainer,
     VictoryPie
 } from "victory";
+import axios from "axios";
+import {API_URI, userId} from "../../utils/keys";
+import {useEffect, useState} from "react";
 
 const CounterWidgetOne = () => {
+    const [getHistory, setGetHistory] = useState();
+    console.log(getHistory,'ok')
+    // get activity history
+    const getHistoryFetch = async () => {
+        try {
+            const response = await axios(`${API_URI}/activityInvite/singleHistory`,
+                {params:{id:userId,activity_id:userId}});
+            setGetHistory(response.data);
+        } catch (err) {console.error(err);}
+    };
+
+
+    useEffect(()=> {
+        getHistoryFetch();
+    }, [0])
+
+
     return (
         <>
-            <div className="invite_count_block">Total Sent <span className="invite_all_count">15</span></div>
+            <div className="invite_count_block">Total Sent
+                <span className="invite_all_count">
+                       {getHistory?.all}
+                </span>
+            </div>
 
     <div className="pie_charts_section">
         <div className="pie_charts_slice">
         <VictoryContainer width={200} height={150}>
             <VictoryPie
+                padAngle={0}
+                // used to hide labels
+                labelComponent={<span/>}
                 innerRadius={50}
                 radius={60}
-                labelComponent={<VictoryTooltip />}
-                width="200"
-                height="150"
-                data={[
-                    { x: 1, y: 80 }, { x: 2, y: 90 }
-                ]}
-                style={{
-                    data: { fill: ({ datum }) => {
-                            const color = datum.y > 30 ? "green" : "red";
-                            return datum.x === 1 ? color : "gray";
-                        }
-                    }
-                }}
+                width={200} height={150}
+                data={[{'key': "", 'y': getHistory?.all}, {'key': "", 'y': (100-getHistory?.reject + getHistory?.pending)} ]}
+                colorScale={["#19B3A6", "#EEEEEE" ]}
                 standalone={false}
             />
             <VictoryLabel
@@ -42,7 +59,7 @@ const CounterWidgetOne = () => {
                 x={150} y={100}
             />
         </VictoryContainer>
-            <span className="invite_all_count">30</span>
+            <span className="invite_all_count">{getHistory?.accept}</span>
             <span>Accepted</span>
         </div>
 
@@ -50,21 +67,14 @@ const CounterWidgetOne = () => {
         <div className="pie_charts_slice">
         <VictoryContainer width={200} height={150}>
             <VictoryPie
+                padAngle={0}
+                // used to hide labels
+                labelComponent={<span/>}
                 innerRadius={50}
                 radius={60}
-                labelComponent={<VictoryTooltip />}
-                width="200"
-                height="150"
-                data={[
-                    { x: 1, y: 120 }, { x: 2, y: 150 }
-                ]}
-                style={{
-                    data: { fill: ({ datum }) => {
-                            const color = datum.y > 30 ? "green" : "red";
-                            return datum.x === 1 ? color : "gray";
-                        }
-                    }
-                }}
+                width={200} height={150}
+                data={[{'key': "", 'y': getHistory?.all}, {'key': "", 'y': (100-getHistory?.accept + getHistory?.pending)} ]}
+                colorScale={["#19B3A6", "#EEEEEE" ]}
                 standalone={false}
             />
             <VictoryLabel
@@ -73,7 +83,7 @@ const CounterWidgetOne = () => {
                 x={150} y={100}
             />
         </VictoryContainer>
-            <span className="invite_all_count">3</span>
+            <span className="invite_all_count">{getHistory?.reject}</span>
             <span>Declined</span>
         </div>
 
@@ -82,21 +92,14 @@ const CounterWidgetOne = () => {
         <div className="pie_charts_slice">
         <VictoryContainer width={200} height={150}>
             <VictoryPie
+                padAngle={0}
+                // used to hide labels
+                labelComponent={<span/>}
                 innerRadius={50}
                 radius={60}
-                labelComponent={<VictoryTooltip />}
-                width="200"
-                height="150"
-                data={[
-                    { x: 1, y: 190 }, { x: 2, y: 300 }
-                ]}
-                style={{
-                    data: { fill: ({ datum }) => {
-                            const color = datum.y > 30 ? "green" : "red";
-                            return datum.x === 1 ? color : "gray";
-                        }
-                    }
-                }}
+                width={200} height={150}
+                data={[{'key': "", 'y': getHistory?.all}, {'key': "", 'y': (100-getHistory?.reject + getHistory?.accept)} ]}
+                colorScale={["#19B3A6", "#EEEEEE" ]}
                 standalone={false}
             />
             <VictoryLabel
@@ -105,7 +108,7 @@ const CounterWidgetOne = () => {
                 x={150} y={100}
             />
         </VictoryContainer>
-            <span className="invite_all_count">3</span>
+            <span className="invite_all_count">{getHistory?.reject}</span>
             <span>Pending</span>
         </div>
     </div>

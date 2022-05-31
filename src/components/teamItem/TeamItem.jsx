@@ -59,7 +59,6 @@ const TeamItem = ({members}) => {
                                 }}
                             >
                                 <MenuItem onClick={()=>navigate(`/teams/${members.id}`)}>View</MenuItem>
-                                <MenuItem onClick={() => deleteTeam(members.id)}>Delete</MenuItem>
                             </Menu>
                         </div>
                     </div>

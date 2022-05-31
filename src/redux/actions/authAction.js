@@ -17,8 +17,8 @@ export const goSignUp = (data) => {
             .post(`${API_URI}/users/checkNumber`, data)
             .then((res) => {
                 dispatch({ type: SIGN_UP_POST, payload: res.data });
-                localStorage.setItem("myTokenSport", res.data.token);
-                localStorage.setItem("userId",res.data.id)
+                // localStorage.setItem("myTokenSport", res.data.token);
+                // localStorage.setItem("userId",res.data.id)
                 Swal.fire({
                     icon: "success",
                     title: "Success",
@@ -44,8 +44,8 @@ export const goSendCode = (data) => {
             .post(`${API_URI}/users/`, data)
             .then((res) => {
                 dispatch({ type: GO_SEND_CODE, payload: res.data });
-                localStorage.setItem("myTokenSport", res.data.token);
-                localStorage.setItem("userId",res.data.id)
+                // localStorage.setItem("myTokenSport", res.data.token);
+                // localStorage.setItem("userId",res.data.id)
                 Swal.fire({
                     icon: "success",
                     title: "Success",
@@ -151,7 +151,7 @@ export const detailUserAC = (id) => {
     return async (dispatch) => {
         const response = await axios.get(`${baseUrl}/users/single`, {
             params: {
-                id:userId
+                id
             }
         });
         dispatch({

@@ -20,6 +20,7 @@ const SignUpCode = () => {
     const [userData,setUserData] = useState()
     const sendRegisterData = useSelector(state => state.authReducer.sendCode)
 
+    console.log(sendRegisterData,'sendRegisterData')
 
     const [error, setError] = useState(false)
     const [data, setData] = useState({
@@ -52,43 +53,30 @@ const SignUpCode = () => {
         }
     }
 
+    localStorage.setItem('sendRegisterData',sendRegisterData.id)
+
     if(!sendRegisterData == 0) {
-        navigate(`/sendPassword/${sendRegisterData.id}`);
+        navigate(`/sendPassword`);
     }
 
 
     return (
         <div className="signup_section">
             <div className="wrapper">
-                <div className="left">
-                    <div className="left-inner">
+                <div className="left_left">
+                    <div className="left-inner_left">
 
-                        <div className="sign-in-form active">
+                        <div className="sign-in-form_left active">
                             <h1>Sign Up</h1>
-                            <div className="social-buttons">
-                                <a href="#" title="Sign in via Google">
-                                    <i className="fa-brands fa-google"></i>
-                                </a>
-
-                                <a href="#" title="Sign in via Facebook">
-                                    <i className="fa-brands fa-facebook-f"></i>
-                                </a>
-                                <a href="#" title="Sign in via Linkedin">
-                                    <i className="fa-brands fa-linkedin-in"></i>
-                                </a>
-                            </div>
-
-                            <div className="seperator" >
-                                <span>or</span>
-                            </div>
+                            <p className="signup_code_text">A code has been sent to your email address</p>
+                            <br/>
 
 
-                            <form onChange={onChangeHandler} onSubmit={sendCodeHandler}>
+                            <form className="form_signCode" onChange={onChangeHandler} onSubmit={sendCodeHandler}>
                                 {/*<input name="number" type="text"/>*/}
                                 <label htmlFor="">Code</label>
-                                <input name="code"  type="text"/>
-
-                                <button type="submit">Send</button>
+                                <input name="code" className="code_send_input"  type="text"/><br/>
+                                <button className="send_code_btn" type="submit">Send</button>
                             </form>
 
 

@@ -24,7 +24,7 @@
  border: 30px solid #19A49C;
   height: 100vh;
   h1 {
-    font-size: 23px;
+    font-size: 26px;
     font-family: Poppins;
     line-height: 1.4rem;
   }
@@ -69,7 +69,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem;
+    //padding: 3rem;
 
     @include transition;
 
@@ -231,7 +231,8 @@
     color: var(--color-white);
     border: 0;
     padding: 0.25rem 1rem;
-    width: 100%;
+    font-family: Poppins;
+    width: 200px;
     border-radius: 6px;
     font-weight: 400;
     font-size: 15px;
@@ -296,6 +297,11 @@
     border-radius: 50%;
     left: -63px;
     top: -105px;
+
+  }
+
+  .css-1izfg5m {
+    width: 100% !important;
   }
 }
 
@@ -335,7 +341,7 @@
 .css-19kzrtu {
   padding: 40px !important;
   @media (max-width:510px) {
-    width: 70% !important;
+    width: 100% !important;
     margin: 0 auto !important;
   }
 }
@@ -346,13 +352,57 @@
   grid-gap: 20px;
 }
 
+.css-heg063-MuiTabs-flexContainer {
+  gap: 5px !important;
+}
+
 @media (max-width: 550px) {
   .css-heg063-MuiTabs-flexContainer {
     flex-direction: column !important;
     grid-gap: 20px !important;
   }
   #full-width-tabpanel-0 {
-    width: 50% !important;
+    //width: 50% !important;
     margin: 0 auto !important;
+  }
+
+  .login_form_media {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 4px;
+  }
+}
+
+
+.left_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form_signCode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 420px) {
+    gap: 10px;
+  }
+}
+
+.signup_code_text {
+  font-size: 18px !important;
+  font-family: Poppins !important;
+  margin: 3px !important;
+  color: #a9a9a9;
+}
+
+
+@media (max-width: 500px) {
+  .code_send_input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #a9a9a9;
   }
 }

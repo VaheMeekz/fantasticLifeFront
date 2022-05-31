@@ -4,7 +4,6 @@ import "./SignUp.scss"
 
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 // import {Box} from "@mui/material";
-// import MaterialUiPhoneNumber from "material-ui-phone-number";
 // import ReactPhoneInput from "react-phone-input-2";
 import {Link, useNavigate} from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
@@ -59,8 +58,8 @@ const Login = () => {
                         <div className="sign-in-form active">
                             <h1>Sign In</h1>
 
-                            <form onChange={onChangeHandler} onSubmit={sendCodeHandler}>
-                                <label htmlFor="">Email or Phone Number</label>
+                            <form className="login_form_media" onChange={onChangeHandler} onSubmit={sendCodeHandler}>
+                                <label htmlFor="">your Email</label>
                                 <input required name="email" className="form-control" type="email"/>
 
                                 <label htmlFor="">password</label>

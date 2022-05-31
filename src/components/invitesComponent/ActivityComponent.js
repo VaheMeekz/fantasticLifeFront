@@ -78,6 +78,7 @@ const ActivityComponent = ({myInvitesActive, sendedActive}) => {
                                                 }}/>
                                             </div>
                                             <div className="nameBox">
+                                                {i.Receiver?.id}
                                                 <h6>{i.Receiver?.firstName}</h6>
                                                 <p>{i.message}</p>
                                                 <p>{i.createdAt.substr(0, 10)}</p>

@@ -20,8 +20,8 @@ const StyledMenu = styled.nav`
   text-align: left;
   padding: 1.5rem;
   display: none;
-  z-index: 10;
-  position: absolute;
+  z-index: 99999;
+  position: fixed;
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;

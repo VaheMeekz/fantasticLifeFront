@@ -94,7 +94,13 @@
 
   .item_language {
     display: flex;
-    grid-gap: 10px;
+    align-items: center;
+    z-index: 9999;
+    grid-gap: 20px;
+
+    @media (max-width:400px) {
+      grid-gap: 10px;
+    }
   }
   }
 
@@ -105,16 +111,30 @@
   //  color: white;
   //  cursor: pointer;
   //}
+
+  i {
+
+    font-size: 25px;
+    color: white !important;
+    filter:   drop-shadow(-1px -1px 0px  #1D1617)
+    drop-shadow(1px -1px 0px  #1D1617)
+    drop-shadow(1px 1px 0px #1D1617)
+    drop-shadow(-1px 1px 0px  #1D1617)
+  }
 }
 
 
 // notification start
 .notification_section {
   i {
-    font-size: 30px;
-
-    color: black;
+    font-size: 25px;
+    color: white;
+    filter:   drop-shadow(-1px -1px 0px  #1D1617)
+              drop-shadow(1px -1px 0px  #1D1617)
+ drop-shadow(1px 1px 0px #1D1617)
+ drop-shadow(-1px 1px 0px  #1D1617)
   }
+
 }
 // notification end
 

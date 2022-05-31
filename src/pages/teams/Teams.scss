@@ -95,3 +95,11 @@ img{
     background-size: cover;
   }
 }
+
+.card_team_create {
+
+  &:hover {
+    filter: contrast(200%);
+    transition: 0.5s;
+  }
+}

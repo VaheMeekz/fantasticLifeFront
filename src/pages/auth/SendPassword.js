@@ -32,7 +32,7 @@ const SendPassword = () => {
 
     const onChangeHandler = event => {
         data[event.target.name] = event.target.value;
-        data.id = id
+        data.id = localStorage.getItem('sendRegisterData')
         setData(data)
     }
 
@@ -61,24 +61,7 @@ const SendPassword = () => {
 
                         <div className="sign-in-form active">
                             <h1>Sign Up</h1>
-                            <div className="social-buttons">
-                                <a href="#" title="Sign in via Google">
-                                    <i className="fa-brands fa-google"></i>
-                                </a>
-
-                                <a href="#" title="Sign in via Facebook">
-                                    <i className="fa-brands fa-facebook-f"></i>
-                                </a>
-                                <a href="#" title="Sign in via Linkedin">
-                                    <i className="fa-brands fa-linkedin-in"></i>
-                                </a>
-                            </div>
-
-                            <div className="seperator" >
-                                <span>or</span>
-                            </div>
-
-
+                            <br/>
                             <form onChange={onChangeHandler} onSubmit={sendCodeHandlerPassword}>
                                 <label htmlFor="">Your mail address</label>
                                 <input name="email" type="email" required/>
@@ -96,7 +79,6 @@ const SendPassword = () => {
                     </div>
                 </div>
                 <div className="right"></div>
-
 
             </div>
             <div className="effect-wrap">

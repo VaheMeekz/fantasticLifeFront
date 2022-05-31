@@ -1,0 +1,16 @@
+.accordion-item {
+  width: 100%;
+  background: #1e1e2d;
+  color: #989CAE;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 300;
+  //display: flex;
+}
+
+.accordion-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}

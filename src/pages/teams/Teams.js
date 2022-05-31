@@ -138,7 +138,7 @@ const Teams = () => {
                                 <div className="flex-shrink-0 me-3 align-self-center">
                                 </div>
                                 <div className="flex-grow-1 overflow-hidden">
-                                    <img src={creteImage} alt="image" onClick={handleOpen}/>
+                                    <img className="card_team_create" src={creteImage} alt="image" onClick={handleOpen}/>
                                 </div>
                             </div>
                         </div>

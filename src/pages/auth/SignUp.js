@@ -11,11 +11,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import MaterialUiPhoneNumber from "material-ui-phone-number";
+// import MaterialUiPhoneNumber from "material-ui-phone-number";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import {goSignUp} from "../../redux/actions/authAction";
 import { useDispatch } from "react-redux";
+import {Link} from "react-router-dom";
 
 // custom imports
 
@@ -103,10 +104,6 @@ const SignUp = () => {
 
                         <div className="sign-in-form active">
                             <h1>Sign Up</h1>
-
-
-
-
                             <Box sx={{ bgcolor: 'background.paper', width: 500 }}>
                                 <AppBar position="static">
                                     <Tabs
@@ -129,13 +126,26 @@ const SignUp = () => {
                                     <TabPanel value={value} index={0} dir={theme.direction}>
                                         <form onSubmit={signUpHandler}>
 
-                                           <ReactPhoneInput name="number" defaultCountry="no" excludeCountries={["us", "ca"]} />
+                                           <ReactPhoneInput
+                                               name="number"
+                                               defaultCountry="no"
+                                               inputStyle={{
+                                                   borderRadius: "3px",
+                                                   height: "44px",
+                                                   width: "100%"
+                                               }}
+                                               copyNumbersOnly={false}
+                                               enableSearch={true}
+                                               disableSearchIcon={true}
+                                               excludeCountries={["us", "ca"]}
+                                           />
                                                 <br/>
                                             <div className="form-group">
                                                 <button type="submit">SIGN UP</button>
                                             </div>
                                             <div className="create-aacount">
-                                                Do You Have An Account?   <a href="#" className="text-underline sign-up-form-btn">  Sign In</a>
+                                                Do You Have An Account?
+                                                <Link to="/login" className="text-underline sign-up-form-btn">Sign In</Link>
                                             </div>
                                         </form>
                                     </TabPanel>

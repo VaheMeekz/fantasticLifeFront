@@ -23,7 +23,9 @@ const Dashboard = () => {
     let navigate = useNavigate();
     const [user, setUser] = useState();
     const [getActivity,setGetActivity] = useState()
+    const [getHistory, setGetHistory] = useState();
     console.log(getActivity,'getActivity')
+
 
     // get single user info
     const fetchPost = async () => {
@@ -53,12 +55,27 @@ const Dashboard = () => {
         } catch (err) {console.error(err);}
     };
 
+    // get activity history
+
+    const getHistoryFetch = async () => {
+        try {
+            const response = await axios(`${API_URI}/activityInvite/singleHistory`,
+                {params:{id:userId,activity_id:userId}});
+            setGetHistory(response.data);
+        } catch (err) {console.error(err);}
+    };
+
+     // useEffects
     useEffect(()=> {
         fetchPost();
     }, [0])
 
     useEffect(()=> {
         getMyActivity();
+    }, [0])
+
+    useEffect(()=> {
+        getHistoryFetch();
     }, [0])
 
 

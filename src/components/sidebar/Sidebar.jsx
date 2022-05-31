@@ -26,6 +26,9 @@ import LogoutModal from "../modals/logoutModal";
 import axios from "axios";
 import {API_URI, token} from "../../utils/keys";
 import AccordionSidebar from "./accordion";
+import Accordion from "@mui/material/Accordion";
+import AccordionCustom from "../customAccordion/AccordionCustom";
+import {accordionData} from "../../utils/content";
 
 const Sidebar = () => {
 
@@ -55,7 +58,12 @@ const Sidebar = () => {
           <Link to="#" style={{ textDecoration: "none" }}>
             <li>
               <img src={activities} />
-              <span><AccordionSidebar /></span>
+              {/*<span><AccordionSidebar /></span>*/}
+
+              {accordionData.map(({ title, content }) => (
+                  <AccordionCustom title={title} content={content} />
+              ))}
+
             </li>
           </Link>
 
