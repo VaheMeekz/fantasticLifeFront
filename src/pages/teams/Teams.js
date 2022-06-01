@@ -27,12 +27,13 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
+    // width: 600,
     bgcolor: 'background.paper',
     border: '2px solid #19A49C',
     borderRadius: "10px",
     boxShadow: 24,
     p: 4,
+    zIndex:99999
 };
 
 
@@ -90,7 +91,8 @@ const Teams = () => {
 
 
 
-    return (<div>
+    return (
+        <div className="team_section">
         <Navbar/>
 
         <div className="container-fluid">
@@ -185,9 +187,9 @@ const Teams = () => {
                             </div>
                             <div className="uploadBox">
                                 <div className="first">
-                                    <button color="secondary" variant="contained" component="label">
-                                        Upload
-                                        <input type="file" onChange={handleFile}/>
+                                    <button className="btn_media_style" color="secondary" variant="contained" component="label">
+                                        Upload Image <i className="fa-solid fa-upload"></i>
+                                        <input className="upload_file" type="file" onChange={handleFile}/>
                                     </button>
                                 </div>
                                 <div className="second">

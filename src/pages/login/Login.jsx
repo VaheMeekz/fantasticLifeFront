@@ -24,8 +24,6 @@ const Login = () => {
     // const loginInfo= useSelector((state) => state.authReducer.info);
 
     const getAuth= useSelector((state) => state.authReducer.getAuth.role);
-    console.log(getAuth,'getAuth,getAuth,getAuth')
-
 
     const [error, setError] = useState(false)
     const [data, setData] = useState({

@@ -189,12 +189,26 @@
 .team_slice_dashboard {
   width: 86%;
   min-height: 85px;
-  box-shadow: 8px 8px 13px grey;
+  box-shadow: 8px -2px 13px grey;
   border-radius: 10px;
   display: flex;
   justify-content: space-around;
-  margin: 0 auto;
+  margin: 10px auto;
+  font-family: Poppins;
   align-items: center;
+
+  @media (max-width:500px) {
+    width: 100%;
+    min-height: 85px;
+    box-shadow: 1px 10px 13px grey;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px auto;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 400;
+  }
 
   img {
     width: 50px;

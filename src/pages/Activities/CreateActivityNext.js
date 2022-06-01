@@ -12,7 +12,7 @@ import open from "../../images/open.svg"
 import chopen from "../../images/chopen.svg"
 import ActivatySlice from "../../components/activity/ActivatySlice";
 import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {addActivityCredentials} from "../../redux/actions/activityAction";
 
 
@@ -55,13 +55,12 @@ export const CreateActivities = () => {
                     <div className="col-xl-4 col-md-6 col-sm-12">
                         <div className="card card_team">
                             <div className="card-body">
-                                <div className="p-1 d-flex text-muted input_slice_absolute">
-                                    <div className="flex-shrink-0 me-3 align-self-center">
-                                    </div>
-                                    <input id="Search" type="search" placeholder="Search For An Activity"/>
-                                    <i className="fa-solid fa-magnifying-glass"></i>
+                                <div className="p-4 d-flex text-muted input_slice_absolute">
+                                    <div className="flex-shrink-0 me-3 align-self-center"></div>
+                                    <Link to="/activityMap"><i className="fa-solid fa-magnifying-glass"></i>
+                                        <button className="activity_map_btn">Search For An Activity</button>
+                                    </Link></div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>

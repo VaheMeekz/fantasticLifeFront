@@ -30,6 +30,10 @@
 
 .inviteTypesBox{
   display: flex;
+
+  @media (max-width:980px) {
+    justify-content: center;
+  }
 }
 
 .inviteTypeItem{
@@ -45,6 +49,25 @@
   &:hover{
     border: 3px solid #19A49C;
     transition: .5s;
+  }
+
+  @media (max-width:1200px) {
+    padding: 5px;
+  }
+  @media (max-width:980px) {
+    width: 15%;
+  }
+  @media (max-width:675px) {
+    width: 20%;
+  }
+  @media (max-width:530px) {
+    width: 25%;
+  }
+  @media (max-width:430px) {
+    width: 30%;
+  }
+  @media (max-width:370px) {
+    width: 35%;
   }
 }
 
@@ -78,6 +101,10 @@
   border: 2px solid #19A49C;
   border-radius: 5px;
   margin-left:7px ;
+
+  @media (max-width: 980px) {
+    width: 100%;
+  }
 }
 
 .searchBox{
@@ -100,6 +127,7 @@
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   grid-gap: 10px;
 }
 
@@ -111,12 +139,21 @@
   border-radius: 5px;
   margin-left: 10px;
   display: flex;
+  overflow-x: hidden;
   //flex-wrap: wrap;
   position: relative;
 
+  @media (max-width:1200px) {
+    width: 30% !important;
+  }
+
+  @media (max-width:470px) {
+    width: 45% !important;
+  }
+
   .avatar{
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 37px;
   }
 
   .nameBoxik{
@@ -128,6 +165,11 @@
     right: 2%;
     top: 5%;
     cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2)
+    }
   }
 }
 
@@ -151,6 +193,10 @@
       background: #19A49C;
       color: white;
       transition: .5s;
+    }
+
+    @media (max-width:1200px) {
+      width: 20%;
     }
   }
 }

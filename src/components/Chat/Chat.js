@@ -1,14 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react';
 import "./Chat.scss"
-import searchIcon from "../../images/search.svg"
 import Message from "./message/Message";
 import telo from "../../images/telo.svg"
 import {useDispatch, useSelector} from "react-redux";
 import {
-    getConversationMessagesAC,
-    getNotificationsAC,
-    getReceiversAction,
-    getReceiversSearch
+    getConversationMessagesAC, getNotificationsAC, getReceiversAction, getReceiversSearch, showNotification
 } from "../../redux/actions/chatAction";
 import Skeleton from '@mui/material/Skeleton';
 import Box from "@mui/material/Box";
@@ -58,14 +54,10 @@ const Chat = () => {
         socket.current = io("ws://localhost:8900");
         socket.current.on("getMessage", (data) => {
             let condidat = {
-                sender: data.senderId,
-                senderName: "Name",
-                text: data.text,
-                createdAt: Date.now(),
+                sender: data.senderId, senderName: "Name", text: data.text, createdAt: Date.now(),
             }
             if (data.receiverId == id) {
-                // setLength((prev) => parseInt(prev) + parseInt(1));
-                console.log(allMessages, ".......")
+                dispatch(showNotification(true))
                 setAllMessages((prev) => [...prev, condidat])
                 setMessageLength(messagesLength + 1)
             }
@@ -102,9 +94,7 @@ const Chat = () => {
             //broadcast
             socket.current.emit("sendMessage", newMessage);
             axios.post(`${baseUrl}/message`, {
-                sender_id: id,
-                receiver_id: receiverId,
-                text: message
+                sender_id: id, receiver_id: receiverId, text: message
             })
                 .then(function (response) {
                     // allMessages
@@ -123,186 +113,166 @@ const Chat = () => {
         }
     };
 
-    return (
-        <div className="chatMain">
-            <div className="receiversBox">
-                <div className="inboxBox">
-                    <h2>Inbox</h2>
-                    <div className="notificationBox">
-                        <p>
-                            {messagesLength == 0 ? "new messages not found" : messagesLength} new
-                        </p>
-                    </div>
-                </div>
-                <div className="searchBox">
-                    <input className="searchInpust" placeholder="Search" value={search}
-                           onChange={e => handleSearch(e)}/>
-                    {/*<img src={searchIcon} alt="search" className="searchIcon"/>*/}
-                </div>
-                <div className="receiversList" id="style-1">
-                    {
-                        !loading && receiversSearchResult.length !== 0 ? (
-                                receiversSearchResult.map(i => {
-                                    return (
-                                        <div className={i.id == conversation ? "activeReceiver" : "receiver"}
-                                             key={i.id}
-                                             onClick={() => {
-                                                 getConversation(i.id, i);
-                                                 setReceiverId(i.id)
-                                             }}>
-                                            {/*<div className="checkBox">*/}
-                                            {/*    <input type="checkbox"/>*/}
-                                            {/*</div>*/}
-                                            <div className="receiverImageBox">
-                                                <img src={!i.image ? defaultAvatar : i?.image}
-                                                     alt="userAvatar"/>
-                                            </div>
-                                            <div className="receiverInfo">
-                                                <div className="receiverCredentials">
-                                                    <div>
-                                                        <p>{i.firstName} {i.lastName} </p>
-                                                    </div>
-                                                    {/*<div>*/}
-                                                    {/*    <p className="dateCredentials">{i.Messages[i.Messages?.length - 1]?.createdAt.substr(5, 5)} {"  "}*/}
-                                                    {/*        {i?.Messages[i.Messages.length - 1]?.createdAt.substr(11, 5)}</p>*/}
-                                                    {/*</div>*/}
-                                                </div>
-                                                {/*<div className="shortMessageBox">*/}
-                                                {/*    {i.Messages[i.Messages.length - 1]?.text}*/}
-                                                {/*</div>*/}
-                                            </div>
-                                        </div>
-                                    )
-                                })
-
-                            ) :
-
-                            (receivers == null ? (
-                                    <Box sx={{width: 500}}>
-                                        <Skeleton variant="rectangular" width={410} height={118} animation="wave"/>
-                                        <Skeleton variant="rectangular" width={410} height={118} animation="wave"/>
-                                    </Box>
-                                ) : receivers.map(i => {
-                                    return (
-                                        <div>
-                                            {
-                                                i.Receiver.id == userId ? (
-                                                    <div
-                                                        className={i.id == conversation ? "activeReceiver" : "receiver"}
-                                                        key={i.id}
-                                                        onClick={() => {
-                                                            getConversation(i.id, i.Sender);
-                                                            setReceiverId(i.sender_id)
-                                                        }}>
-                                                        {/*<div className="checkBox">*/}
-                                                        {/*    <input type="checkbox"/>*/}
-                                                        {/*</div>*/}
-                                                        <div className="receiverImageBox">
-                                                            <img
-                                                                src={!i?.Sender?.image ? defaultAvatar : i?.Sender?.image}
-                                                                alt="userAvatar"/>
-                                                        </div>
-                                                        <div className="receiverInfo">
-                                                            <div className="receiverCredentials">
-                                                                <div>
-                                                                    <p>{i.Sender?.firstName} {i.Sender?.lastName} </p>
-                                                                </div>
-                                                                <div>
-                                                                    <p className="dateCredentials">{i.Messages[i.Messages?.length - 1]?.createdAt.substr(5, 5)} {"  "}
-                                                                        {i?.Messages[i.Messages.length - 1]?.createdAt.substr(11, 5)}</p>
-                                                                </div>
-                                                            </div>
-                                                            <div className="shortMessageBox">
-                                                                {i.Messages[i.Messages.length - 1]?.text.substr(0, 5)}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                ) : (
-                                                    <div
-                                                        className={i.id == conversation ? "activeReceiver" : "receiver"}
-                                                        key={i.id}
-                                                        onClick={() => {
-                                                            getConversation(i.id, i.Receiver);
-                                                            setReceiverId(i.receiver_id)
-                                                        }}>
-                                                        {/*<div className="checkBox">*/}
-                                                        {/*    <input type="checkbox"/>*/}
-                                                        {/*</div>*/}
-                                                        <div className="receiverImageBox">
-                                                            <img
-                                                                src={!i?.Receiver?.image ? defaultAvatar : i?.Receiver?.image}
-                                                                alt="userAvatar"/>
-                                                        </div>
-                                                        <div className="receiverInfo">
-                                                            <div className="receiverCredentials">
-                                                                <div>
-                                                                    <p>{i.Receiver?.firstName} {i.Receiver?.lastName} </p>
-                                                                </div>
-                                                                <div>
-                                                                    <p className="dateCredentials">{i.Messages[i.Messages?.length - 1]?.createdAt.substr(5, 5)} {"  "}
-                                                                        {i?.Messages[i.Messages.length - 1]?.createdAt.substr(11, 5)}</p>
-                                                                </div>
-                                                            </div>
-                                                            <div className="shortMessageBox">
-                                                                {i.Messages[i.Messages.length - 1]?.text.substr(0, 10)}...
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            }
-                                        </div>
-                                    )
-                                })
-                            )}
-
+    return (<div className="chatMain">
+        <div className="receiversBox">
+            <div className="inboxBox">
+                <h2>Inbox</h2>
+                <div className="notificationBox">
+                    <p>
+                        {messagesLength == 0 ? "new messages not found" : messagesLength} new
+                    </p>
                 </div>
             </div>
-            <div className="dialogBox">
-                {
-                    conversation !== null ? (
-                        <div className="receiverMessageInfo">
-                            <div>
-                                <img src={receiver !== null ? receiver.image : defaultAvatar} alt="receiverAvatar"
-                                     className="recImage"/>
-                            </div>
-                            <div className="receiverCredentialsDialog">
-                                <h3>
-                                    {receiver !== null ? receiver.firstName : null}
-                                    {receiver !== null ? receiver.lastName : null}
-                                </h3>
-                                <p>  {receiver !== null ? receiver.email : null}</p>
-                            </div>
-                        </div>) : null}
-                <hr/>
-                <div className="messagesBox" id="style-1">
-                    {
-                        conversation == null ? <h1>Select Conversation</h1> : allMessages && allMessages.map(i => {
-                            return (<Message own={id == i.sender_id ? true : false}
-                                             key={i.id}
-                                             message={i.text} image={receiver?.image}
-                                             conversation={conversation}
-                                             like={i.like}
-                                             see={i.seen}
-                                             me={me}
-                                             id={i.id} receiver={i.receiver_id}
-                                />
-                            )
+            <div className="searchBox">
+                <input className="searchInpust" placeholder="Search" value={search}
+                       onChange={e => handleSearch(e)}/>
+                {/*<img src={searchIcon} alt="search" className="searchIcon"/>*/}
+            </div>
+            <div className="receiversList" id="style-1">
+                {!loading && receiversSearchResult.length !== 0 ? (receiversSearchResult.map(i => {
+                            return (<div className={i.id == conversation ? "activeReceiver" : "receiver"}
+                                         key={i.id}
+                                         onClick={() => {
+                                             getConversation(i.id, i);
+                                             setReceiverId(i.id)
+                                         }}>
+                                {/*<div className="checkBox">*/}
+                                {/*    <input type="checkbox"/>*/}
+                                {/*</div>*/}
+                                <div className="receiverImageBox">
+                                    <img src={!i.image ? defaultAvatar : i?.image}
+                                         alt="userAvatar"/>
+                                </div>
+                                <div className="receiverInfo">
+                                    <div className="receiverCredentials">
+                                        <div>
+                                            <p>{i.firstName} {i.lastName} </p>
+                                        </div>
+                                        {/*<div>*/}
+                                        {/*    <p className="dateCredentials">{i.Messages[i.Messages?.length - 1]?.createdAt.substr(5, 5)} {"  "}*/}
+                                        {/*        {i?.Messages[i.Messages.length - 1]?.createdAt.substr(11, 5)}</p>*/}
+                                        {/*</div>*/}
+                                    </div>
+                                    {/*<div className="shortMessageBox">*/}
+                                    {/*    {i.Messages[i.Messages.length - 1]?.text}*/}
+                                    {/*</div>*/}
+                                </div>
+                            </div>)
                         })
-                    }
-                    <div ref={messagesBox}/>
+
+                    ) :
+
+                    (receivers == null ? (<Box sx={{width: 500}}>
+                        <Skeleton variant="rectangular" width={410} height={118} animation="wave"/>
+                        <Skeleton variant="rectangular" width={410} height={118} animation="wave"/>
+                    </Box>) : receivers.map((i, index) => {
+                        return (<div key={index}>
+                            {i.Receiver.id == userId ? (<div
+                                className={i.id == conversation ? "activeReceiver" : "receiver"}
+                                key={i.id}
+                                onClick={() => {
+                                    getConversation(i.id, i.Sender);
+                                    setReceiverId(i.sender_id)
+                                }}>
+                                {/*<div className="checkBox">*/}
+                                {/*    <input type="checkbox"/>*/}
+                                {/*</div>*/}
+                                <div className="receiverImageBox">
+                                    <img
+                                        src={!i?.Sender?.image ? defaultAvatar : i?.Sender?.image}
+                                        alt="userAvatar"/>
+                                </div>
+                                <div className="receiverInfo">
+                                    <div className="receiverCredentials">
+                                        <div>
+                                            <p>{i.Sender?.firstName} {i.Sender?.lastName} </p>
+                                        </div>
+                                        <div>
+                                            <p className="dateCredentials">{i.Messages[i.Messages?.length - 1]?.createdAt.substr(5, 5)} {"  "}
+                                                {i?.Messages[i.Messages.length - 1]?.createdAt.substr(11, 5)}</p>
+                                        </div>
+                                    </div>
+                                    <div className="shortMessageBox">
+                                        {i.Messages[i.Messages.length - 1]?.text.substr(0, 5)}
+                                    </div>
+                                </div>
+                            </div>) : (<div
+                                className={i.id == conversation ? "activeReceiver" : "receiver"}
+                                key={i.id}
+                                onClick={() => {
+                                    getConversation(i.id, i.Receiver);
+                                    setReceiverId(i.receiver_id)
+                                }}>
+                                {/*<div className="checkBox">*/}
+                                {/*    <input type="checkbox"/>*/}
+                                {/*</div>*/}
+                                <div className="receiverImageBox">
+                                    <img
+                                        src={!i?.Receiver?.image ? defaultAvatar : i?.Receiver?.image}
+                                        alt="userAvatar"/>
+                                </div>
+                                <div className="receiverInfo">
+                                    <div className="receiverCredentials">
+                                        <div>
+                                            <p>{i.Receiver?.firstName} {i.Receiver?.lastName} </p>
+                                        </div>
+                                        <div>
+                                            <p className="dateCredentials">{i.Messages[i.Messages?.length - 1]?.createdAt.substr(5, 5)} {"  "}
+                                                {i?.Messages[i.Messages.length - 1]?.createdAt.substr(11, 5)}</p>
+                                        </div>
+                                    </div>
+                                    <div className="shortMessageBox">
+                                        {i.Messages[i.Messages.length - 1]?.text.substr(0, 10)}...
+                                    </div>
+                                </div>
+                            </div>)}
+                        </div>)
+                    }))}
+
+            </div>
+        </div>
+        <div className="dialogBox">
+            {conversation !== null ? (<div className="receiverMessageInfo">
+                <div>
+                    <img src={receiver !== null ? receiver.image : defaultAvatar} alt="receiverAvatar"
+                         className="recImage"/>
                 </div>
-                <hr/>
-                <div className="messageWriteBox">
+                <div className="receiverCredentialsDialog">
+                    <h3>
+                        {receiver !== null ? receiver.firstName : null}
+                        {receiver !== null ? receiver.lastName : null}
+                    </h3>
+                    <p>  {receiver !== null ? receiver.email : null}</p>
+                </div>
+            </div>) : null}
+            <hr/>
+            <div className="messagesBox" id="style-1">
+                {conversation == null ? <h1>Select Conversation</h1> : allMessages && allMessages.map(i => {
+                    return (<Message own={id == i.sender_id ? true : false}
+                                     key={i.id}
+                                     message={i.text} image={receiver?.image}
+                                     conversation={conversation}
+                                     like={i.like}
+                                     see={i.seen}
+                                     me={me}
+                                     id={i.id} receiver={i.receiver_id}
+                    />)
+                })}
+                <div ref={messagesBox}/>
+            </div>
+            <hr/>
+            <div className="messageWriteBox">
+                {conversation !== null && (
                     <form>
                         <input value={message} onChange={e => setMessage(e.target.value)} onKeyPress={handleKeypress}/>
                         <button onClick={createMessage} type="submit">
                             <img src={telo} alt="telo"/>
                         </button>
                     </form>
-                </div>
+                )}
             </div>
         </div>
-    );
+    </div>);
 };
 
 export default Chat;

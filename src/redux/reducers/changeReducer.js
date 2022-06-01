@@ -1,8 +1,6 @@
 import { CHANGE_PASSWORD_SEND,CHANGE_PASSWORD } from "../types"
 
 const initialState = {
-    // auth: false,
-    // token:null,
     changePassword:[],
     sendEmail:[]
 }

@@ -77,7 +77,6 @@ export const enterPassword = (data) => {
         axios
             .post(`${API_URI}/users/credentials`, data)
             .then((res) => {
-                console.log(res,'Vahe_MAil')
                 if(res.data.error) {
                     Swal.fire({
                         icon: "error",

@@ -1,6 +1,6 @@
 import axios from "axios";
 import {baseUrl} from "../../config/config";
-import {ACTIVITY_INVITES, ACTIVITY_SENDED, GET_MY_INVITES, SENDEDT_INVITE} from "../types";
+import {ACTIVITY_INVITES, ACTIVITY_SENDED, GET_MY_INVITES, SENDEDT_INVITE, SHOW_INVITE_NOTIFICATIONS} from "../types";
 import Swal from "sweetalert2";
 
 //---------------------------------------------------team
@@ -163,5 +163,12 @@ export const activityRejectAC = (sender_id, activity_id, recivier_id) => {
             showConfirmButton: false,
             timer: 1500,
         });
+    }
+}
+
+export const showInviteNotifications = (value) => {
+    return {
+        type:SHOW_INVITE_NOTIFICATIONS,
+        payload:value
     }
 }

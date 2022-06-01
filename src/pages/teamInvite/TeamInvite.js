@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import "./teamInvite.scss"
 //
 import Navbar from "../../components/navbar/Navbar";
@@ -8,27 +8,25 @@ import {getSingleTeam} from "../../redux/actions/teamAction";
 import Skeleton from "@mui/material/Skeleton";
 import TeamInfo from "../TeamDetail/TeamInfo";
 import list from "../../images/contact_list.svg"
-import email from "../../images/email_Icon.svg"
 import search from "../../images/search.svg"
 import {allUsersAC} from "../../redux/actions/authAction";
 import closeIcon from "../../images/close.svg"
-// poxelu entaka !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 import userImage from "../../images/user.svg"
 import add from "../../images/add.svg"
-// poxelu entaka !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 import Swal from "sweetalert2";
 import {createTeamInvite, inviteWithEmail} from "../../redux/actions/inviteAction";
 import {userId} from "../../utils/keys";
+import {io} from "socket.io-client";
 
 const TeamInvite = () => {
 
     let {id} = useParams();
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const socket = useRef()
     const team = useSelector(state => state?.teamReducer.singleTeam)
     const loading = useSelector(state => state?.teamReducer.loadSingle)
     const allItems = useSelector(state => state?.authReducer.allUsers)
-    // const count = useSelector(state => state?.authReducer.count)
     const userLoading = useSelector(state => state?.authReducer.loading)
     const [show, setShow] = useState(1)
     const [searchVal, setSearch] = useState("")
@@ -58,6 +56,17 @@ const TeamInvite = () => {
 
     const handleAdd = () => {
         if (message !== "" && favorites.length !== 0) {
+            socket.current = io("ws://localhost:8900");
+            const newMessage = {
+                senderId: userId,
+                receiverId: favorites[0].id,
+                teamName: team.name,
+                senderName: team.UserTeams.firstName,
+                status: "New",
+                teamImage: team.image
+            }
+            //broadcast
+            socket.current.emit("sendInvition", newMessage);
             dispatch(createTeamInvite(id, favorites[0].id, message, userId))
             navigate('/teams')
         } else {
@@ -66,10 +75,10 @@ const TeamInvite = () => {
     }
 
     const handlerInviteEmail = () => {
-        if(email !== "" && emailMessage !== ""){
+        if (email !== "" && emailMessage !== "") {
             dispatch(inviteWithEmail(email, emailMessage))
             navigate('/teams')
-        }else {
+        } else {
             Swal.fire("enter email and message")
         }
     }

@@ -1,11 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react';
 import "./chatMedia.scss"
-import searchIcon from "../../images/search.svg"
 import Message from "./message/Message";
 import telo from "../../images/telo.svg"
 import {useDispatch, useSelector} from "react-redux";
 import {
-    getConversationMessagesAC, getNotificationsAC, getReceiversAction, getReceiversSearch
+    getConversationMessagesAC, getNotificationsAC, getReceiversAction, getReceiversSearch, showNotification
 } from "../../redux/actions/chatAction";
 import Skeleton from '@mui/material/Skeleton';
 import Box from "@mui/material/Box";
@@ -61,12 +60,12 @@ const MobileChat = () => {
                 sender: data.senderId, senderName: "Name", text: data.text, createdAt: Date.now(),
             }
             if (data.receiverId == id) {
-                // setLength((prev) => parseInt(prev) + parseInt(1));
-                console.log(allMessages, ".......")
+                dispatch(showNotification(true))
                 setAllMessages((prev) => [...prev, condidat])
                 setMessageLength(messagesLength + 1)
             }
         });
+        console.clear()
     }, []);
 
     useEffect(() => {
@@ -171,8 +170,8 @@ const MobileChat = () => {
                     (receivers == null ? (<Box sx={{width: 500}}>
                         <Skeleton variant="rectangular" width={410} height={118} animation="wave"/>
                         <Skeleton variant="rectangular" width={410} height={118} animation="wave"/>
-                    </Box>) : receivers.map(i => {
-                        return (<div>
+                    </Box>) : receivers.map((i, index) => {
+                        return (<div key={index}>
                             {i.Receiver.id == userId ? (<div
                                 className={i.id == conversation ? "activeReceiver" : "receiver"}
                                 key={i.id}
@@ -263,11 +262,12 @@ const MobileChat = () => {
                 {conversation == null ? <h1>Select Conversation</h1> : allMessages && allMessages.map(i => {
                     return (<Message own={id == i.sender_id ? true : false}
                                      key={i.id}
-                                     message={i.text} image={receiver?.image}
-                                     conversation={conversation}
-                                     like={i.like}
-                                     me={me}
-                                     see={i.seen}
+                                     message={i.text !== null && i.text}
+                                     image={receiver?.image !== null && receiver?.image}
+                                     conversation={conversation !== null && conversation}
+                        // like={i.like}
+                                     me={me !== null && me}
+                                     see={i.seen !== null && i.seen}
                                      id={i.id} receiver={i.receiver_id}
                     />)
                 })}
@@ -275,13 +275,15 @@ const MobileChat = () => {
             </div>
             <hr/>
             <div className="messageWriteBox">
-                <form>
-                    <input value={message} onChange={e => setMessage(e.target.value)}
-                           onKeyPress={handleKeypress}/>
-                    <button onClick={createMessage} type="submit">
-                        <img src={telo} alt="telo"/>
-                    </button>
-                </form>
+                {conversation !== null && (
+                    <form>
+                        <input value={message} onChange={e => setMessage(e.target.value)}
+                               onKeyPress={handleKeypress}/>
+                        <button onClick={createMessage} type="submit">
+                            <img src={telo} alt="telo"/>
+                        </button>
+                    </form>
+                )}
             </div>
         </div>)}
     </div>);

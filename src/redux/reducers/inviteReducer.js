@@ -1,11 +1,12 @@
-import {ACTIVITY_INVITES, ACTIVITY_SENDED, GET_MY_INVITES, SENDEDT_INVITE} from "../types";
+import {ACTIVITY_INVITES, ACTIVITY_SENDED, GET_MY_INVITES, SENDEDT_INVITE, SHOW_INVITE_NOTIFICATIONS} from "../types";
 
 const initialState = {
     invites: null,
     loading: true,
     sended: null,
     activitySend:null,
-    activityInvites:null
+    activityInvites:null,
+    showNotification:false
 }
 
 export const InviteReducer = (state = initialState, action) => {
@@ -31,6 +32,11 @@ export const InviteReducer = (state = initialState, action) => {
             return {
                 ...state,
                 activityInvites: action.payload
+            }
+        case SHOW_INVITE_NOTIFICATIONS:
+            return {
+                ...state,
+                showNotification: action.payload
             }
         default:
             return state;

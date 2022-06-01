@@ -40,3 +40,17 @@
     transform: rotate(360deg);
   }
 }
+
+
+.css-2ulfj5-MuiTypography-root {
+  color: black !important;
+  font-family: Poppins;
+  font-size: 18px;
+}
+
+@media (max-width:631px) {
+  .css-hu5c7e {
+    width: 385px !important;
+    position: absolute;
+  }
+}

@@ -160,6 +160,10 @@
     }
     width: 30%;
 
+    @media (max-width: 700px) {
+      width: 100% !important;
+    }
+
     button {
       background: #2DEDB4;
       color: #fff;

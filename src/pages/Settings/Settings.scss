@@ -30,12 +30,16 @@
 
   .settings_btn {
     background: #19A49C;
-    padding: 8px 75px;
+    width: 200px;
     border: none;
+    text-align: center;
     margin: 0 auto;
     border-radius: 10px;
     color: white;
+    font-weight: 300;
+    font-family: Poppins;
     display: flex;
+    justify-content: center;
 
     &:hover {
       background: #37daab;
@@ -103,19 +107,23 @@
 
 .deactivateBtn{
   background: maroon;
-  padding: 8px 75px;
+  padding: 7px;
   border: 1px solid maroon;
   margin: 0 auto;
+  width: 200px;
   border-radius: 10px;
+  font-weight: 300;
   color: white;
+  font-family: Poppins;
+  display: flex;
+  justify-content: center;
 }
 
 .deactivateBtn:hover{
   border: 1px solid maroon;
   background: white;
   color: maroon;
-  font-weight: bold;
-  transition: .8s;
+  transition: .5s;
 }
 
 .cancleBtn {

@@ -2,7 +2,7 @@
 
 import "./inviteToActivityTabs.scss"
 import * as React from 'react';
-import {useState} from 'react'
+import {useRef, useState} from 'react'
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import {useTheme} from '@mui/material/styles';
@@ -27,6 +27,7 @@ import {createActivityInvite, createTeamInvite, inviteWithEmail} from "../../red
 import {userId} from "../../utils/keys";
 import Swal from "sweetalert2";
 import {allUsersAC} from "../../redux/actions/authAction";
+import {io} from "socket.io-client";
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -64,6 +65,7 @@ function a11yProps(index) {
 export default function InviteToActivityTabs() {
     let {id} = useParams();
     const theme = useTheme();
+    const socket = useRef()
     const [value, setValue] = React.useState(0);
     const [email, setEmail] = useState("0")
     const [contactList, setContactList] = useState("0")
@@ -78,17 +80,13 @@ export default function InviteToActivityTabs() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const allItems = useSelector(state => state?.authReducer.allUsers)
-    // const count = useSelector(state => state?.authReducer.count)
     const userLoading = useSelector(state => state?.authReducer.loading)
-    const [show, setShow] = useState(1)
     const [searchVal, setSearch] = useState("")
     const [favorites, setFavorites] = useState([])
     const [contacts, setContacts] = useState(allItems)
     const [message, setMessage] = useState("")
-    // const [email, setEmail] = useState("")
     const [emailMessage, setEmailMessage] = useState("")
     const [favoritesList, setFavoritesList] = useState([])
-    console.log(favoritesList,"[][]");
 
     useEffect(() => {
         dispatch(getSingleTeam(id))
@@ -110,8 +108,14 @@ export default function InviteToActivityTabs() {
 
     const handleAdd = () => {
         if (message !== "" && favorites.length !== 0) {
+            socket.current = io("ws://localhost:8900");
+            const newMessage = {
+                creatorName:"", name:"", description:"", sport:"", lat:"", long:"", date:"", time:"", receiverId:favoritesList[0]
+            }
+            //broadcast
+            socket.current.emit("sendActivityInvite", newMessage);
             dispatch(createActivityInvite(id, userId, message, favoritesList))
-            // navigate('/teams')
+            navigate('/teams')
         } else {
             Swal.fire("Add message and Favorites")
         }

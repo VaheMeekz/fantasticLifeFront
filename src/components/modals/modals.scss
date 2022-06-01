@@ -145,7 +145,9 @@
 
 
 .font_family {
-    font-family: KoHo !important;
+    font-family: Poppins !important;
+    color: black !important;
+    font-size: 18px !important;
 }
 
 .buttons {
@@ -155,5 +157,9 @@
 }
 
 .logout {
-    color: white !important;
+    //color: black !important;
+}
+
+.css-wwganl {
+    border:none !important;
 }

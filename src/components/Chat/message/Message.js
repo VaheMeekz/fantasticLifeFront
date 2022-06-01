@@ -54,7 +54,7 @@ const Message = ({message, own, id, image, like, see,me}) => {
                 handleClose()
             })
             .catch(function (error) {
-                console.log(error);
+                console.error(error);
             });
     }
 
@@ -66,7 +66,7 @@ const Message = ({message, own, id, image, like, see,me}) => {
                 setSmile(null)
             })
             .catch(function (error) {
-                console.log(error);
+                console.error(error);
             });
     }
     const handleDelete = () => {
@@ -77,7 +77,7 @@ const Message = ({message, own, id, image, like, see,me}) => {
                 setDeleted(true)
             })
             .catch(function (error) {
-                console.log(error);
+                console.error(error);
             });
     }
 

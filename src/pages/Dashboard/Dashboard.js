@@ -35,13 +35,11 @@ const Dashboard = () => {
     useEffect(() => {
         dispatch(getSingleUser(userId))
     }, [])
-    console.log(teams,'Vaheeeeeeeeeeeee')
 
     useEffect(()=>{
         let count = 0;
         if(teams !==null){
             for(let i=0;i<teams.length;i++){
-                console.log()
                 count = Number(count) + Number(teams[i].UserTeams.length)
             }
         }
