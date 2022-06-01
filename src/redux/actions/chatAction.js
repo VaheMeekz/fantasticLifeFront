@@ -1,5 +1,5 @@
 import axios from "axios"
-import {GET_MESSAGES, GET_NOTIFICATIONS, GET_RECEIVERS, GET_RECEIVERS_SEARCH} from "../types"
+import {GET_MESSAGES, GET_NOTIFICATIONS, GET_RECEIVERS, GET_RECEIVERS_SEARCH, SHOW_NOTIFIACATION} from "../types"
 import {baseUrl} from "../../config/config";
 import Swal from "sweetalert2";
 import {userId} from "../../utils/keys";
@@ -55,6 +55,7 @@ export const createConversationAc = (sender_id, receiver_id, text) => {
         Swal.fire({
             icon: "success",
             title: "Success",
+            text: "Something went wrong!",
             timer: 1500,
         });
     }
@@ -71,5 +72,12 @@ export const getReceiversSearch = (search) => {
             type:GET_RECEIVERS_SEARCH,
             payload:response.data
         })
+    }
+}
+
+export const showNotification = (value) => {
+    return {
+        type:SHOW_NOTIFIACATION,
+        payload:value
     }
 }

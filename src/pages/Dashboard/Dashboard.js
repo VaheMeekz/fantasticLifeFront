@@ -9,18 +9,13 @@ import MyActivities from "../../components/myActivities/myActivities";
 // custom imports
 import Calendar from "../../components/calendar/calendar"
 import {Link, useNavigate} from "react-router-dom";
-// import TeamItem from "../../components/teamItem/TeamItem";
-// import Menu from "@mui/material/Menu";
-// import MenuItem from "@mui/material/MenuItem";
-import img_test from "../../images/abela.svg"
+
 import {useEffect, useState} from "react";
 import axios from "axios";
-import dumbl from "../../images/dumbbells.svg"
 import weather from "../../images/Partly Cloudy.svg"
 import {API_URI, userId} from "../../utils/keys";
 import {useDispatch, useSelector} from "react-redux";
 import {getSingleUser} from "../../redux/actions/teamAction";
-import {getSportsThunk} from "../../redux/actions/activityAction";
 
 const Dashboard = () => {
     let navigate = useNavigate();
@@ -36,13 +31,11 @@ const Dashboard = () => {
     useEffect(() => {
         dispatch(getSingleUser(userId))
     }, [])
-    console.log(teams,'Vaheeeeeeeeeeeee')
 
     useEffect(()=>{
         let count = 0;
         if(teams !==null){
             for(let i=0;i<teams.length;i++){
-                console.log()
                 count = Number(count) + Number(teams[i].UserTeams.length)
             }
         }
@@ -85,7 +78,6 @@ const Dashboard = () => {
         } catch (err) {console.error(err);}
     };
 
-    // get activity history
 
     const getHistoryFetch = async () => {
         try {
@@ -98,24 +90,11 @@ const Dashboard = () => {
     // useEffects
     useEffect(()=> {
         fetchPost();
-    }, [0])
-
-    useEffect(()=> {
-        getMyActivity();
-    }, [0])
-
-    useEffect(()=> {
-        getHistoryFetch();
-    }, [0])
-
-
-    useEffect(()=> {
         fetchPostMy();
-    }, [0])
-
-
-
-
+        getMyActivity();
+        getHistoryFetch();
+        console.clear()
+    }, [])
     return (
         <>
             <Navbar/>

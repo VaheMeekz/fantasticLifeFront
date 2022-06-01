@@ -8,7 +8,6 @@ import TextField from '@mui/material/TextField';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {DatePicker} from '@mui/x-date-pickers/DatePicker';
-import {TimePicker} from '@mui/x-date-pickers/TimePicker';
 import {useNavigate} from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
 import {FormControl, InputLabel, Select} from "@mui/material";
@@ -37,7 +36,6 @@ const BasicForm = () => {
 
     const handlerSend = (e) => {
         e.preventDefault()
-        console.log(time, "...")
         dispatch(createActivityAC(id, name, description, sport, curDate, endTime, time, count))
         navigate('/createActivityNext')
     }

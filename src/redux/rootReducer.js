@@ -4,7 +4,6 @@ import {authReducer} from "./reducers/authReducer"
 import {sendEmail} from "./reducers/changeReducer";
 import {appReducer} from "./reducers/loaderReducer";
 import {getUsers} from "./reducers/getUsersReducer";
-import {addTechnicianReducer} from "./reducers/addTechnicianReducer";
 import {ActivityReducer} from "./reducers/activityReducer";
 import {chatReducer} from "./reducers/chatReducer";
 import {settingsReducer} from "./reducers/settingReducer";
@@ -19,7 +18,6 @@ export const rootReducer = combineReducers({
     sendEmail,
     appReducer,
     getUsers,
-    addTechnicianReducer,
     ActivityReducer,
     chatReducer,
     settingsReducer,

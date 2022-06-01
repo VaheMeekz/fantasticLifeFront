@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API_URI, token,userId} from "../../utils/keys";
+import {API_URI,userId} from "../../utils/keys";
 import {GET_USER} from "../types";
 
 export function getUsers() {

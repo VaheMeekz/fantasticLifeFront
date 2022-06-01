@@ -39,15 +39,13 @@ const Sidebar = () => {
               </li>
             </Link>
 
-            <Link to="#" style={{ textDecoration: "none" }}>
               <li>
                 <img src={activities} />
-                {accordionData.map(({ title, content }) => (
+                {accordionData.map(({ title, content, }) => (
                     <AccordionCustom title={title} content={content} key={title.toString()}/>
                 ))}
 
               </li>
-            </Link>
 
             <Link to="teams" style={{ textDecoration: "none" }}>
               <li>
@@ -75,12 +73,12 @@ const Sidebar = () => {
             </Link>
 
 
-            <a to="#" style={{ textDecoration: "none" }}>
+            {/*<a to="#" style={{ textDecoration: "none" }}>*/}
               <li>
                 <img src={logOutIcon} />
                 <span><LogoutModal /></span>
               </li>
-            </a>
+            {/*</a>*/}
           </ul>
         </div>
 

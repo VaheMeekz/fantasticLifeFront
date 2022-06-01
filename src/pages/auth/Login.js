@@ -2,12 +2,10 @@
 import "./SignUp.scss"
 
 
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
-// import {Box} from "@mui/material";
-// import ReactPhoneInput from "react-phone-input-2";
+import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
-import {goLogin, goSendCode, goSignUp} from "../../redux/actions/authAction";
+import {goLogin} from "../../redux/actions/authAction";
 import {useDispatch, useSelector} from "react-redux";
 
 // custom imports
@@ -16,7 +14,6 @@ import {useDispatch, useSelector} from "react-redux";
 const Login = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate();
-    const [userData,setUserData] = useState()
     const loginData = useSelector(state => state.authReducer.loginData)
 
     if(!loginData.length == 0 && (loginData.lastName == null || loginData.firstName == null)) {

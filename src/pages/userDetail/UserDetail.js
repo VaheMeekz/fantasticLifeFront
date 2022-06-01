@@ -11,7 +11,6 @@ import Navbar from "../../components/navbar/Navbar";
 const UserDetail = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const user = useSelector(state => state?.authReducer.otherUser)
     const loading = useSelector(state => state?.authReducer.otherLoading)
     const time = useSelector(state => state?.authReducer.detailHowrs)

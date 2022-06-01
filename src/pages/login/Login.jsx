@@ -9,7 +9,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from 'react'
 import {goSignIn} from "../../redux/actions/authAction";
 import { useNavigate,Link } from "react-router-dom";
-import {authReducer} from "../../redux/reducers/authReducer";
 import {hideLoader} from "../../redux/actions/loaderAction";
 
 // custom imports
@@ -21,10 +20,8 @@ const label = {inputProps: {'aria-label': 'Switch demo'}};
 const Login = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate()
-    // const loginInfo= useSelector((state) => state.authReducer.info);
 
     const getAuth= useSelector((state) => state.authReducer.getAuth.role);
-    console.log(getAuth,'getAuth,getAuth,getAuth')
 
 
     const [error, setError] = useState(false)

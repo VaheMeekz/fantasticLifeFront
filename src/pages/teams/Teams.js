@@ -17,9 +17,6 @@ import {getSportsThunk} from "../../redux/actions/activityAction";
 import {useState} from "react";
 import axios from "axios";
 import {userId} from "../../utils/keys";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import {useNavigate} from "react-router-dom";
 import TeamItem from "../../components/teamItem/TeamItem";
 
 const style = {

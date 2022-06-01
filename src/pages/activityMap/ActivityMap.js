@@ -3,9 +3,7 @@ import Navbar from "../../components/navbar/Navbar";
 import "./ActivityMap.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {getActivityThunk} from "../../redux/actions/activityAction";
-import pin from "../../images/pin.svg"
 import GoogleMapReact from "google-map-react";
-import {Link} from "react-router-dom";
 
 const markerStyle = {
     position: "absolute",
@@ -41,13 +39,6 @@ const ActivityMap = () => {
                     defaultCenter={defaultProps.center}
                     defaultZoom={defaultProps.zoom}
                 >
-                    {/*{data && data?.map(i => {*/}
-                    {/*    return (*/}
-                    {/*        <Link to={"/" + i.name} key={i.id} lat={i.lat} lng={i.lng}>*/}
-                    {/*            <img style={markerStyle} src={pin} alt="pin"/>*/}
-                    {/*        </Link>*/}
-                    {/*    );*/}
-                    {/*})}*/}
                     <AnyReactComponent
                         lat={59.955413}
                         lng={30.337844}

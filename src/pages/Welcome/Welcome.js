@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import React,{ useRef, useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 
@@ -14,8 +14,6 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import onboardingOne from "../../images/onboardingOne.png"
 import onboardingTwo from "../../images/teenagers_on_bikes.png"
 import onboardingThree from "../../images/onboardingThree.png"
-import onboardingFor from "../../images/onboardingFor.png"
-import circle from "../../images/circle.svg"
 import {Link} from "react-router-dom";
 
 const Welcome = () => {

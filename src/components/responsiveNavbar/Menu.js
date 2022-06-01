@@ -4,9 +4,6 @@ import "./navbarStyle.scss"
 import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-import MessageSlice from "../navbar/MessageSlice";
-import Notification from "../navbar/Notification";
-import {useSelector} from "react-redux";
 
 const StyledMenu = styled.nav`
   display: flex;

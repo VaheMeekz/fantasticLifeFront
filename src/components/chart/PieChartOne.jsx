@@ -1,11 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import "./chart.scss";
 
 import {
     VictoryLabel,
-    VictoryTooltip,
     VictoryContainer,
     VictoryPie
 } from "victory";
@@ -15,14 +13,12 @@ import {useEffect, useState} from "react";
 
 const CounterWidgetOne = () => {
     const [getHistory, setGetHistory] = useState();
-    console.log(getHistory,'ok')
-    // get activity history
     const getHistoryFetch = async () => {
         try {
             const response = await axios(`${API_URI}/activityInvite/singleHistory`,
                 {params:{id:userId,activity_id:userId}});
             setGetHistory(response.data);
-        } catch (err) {console.error(err);}
+        } catch (err) {}
     };
 
 

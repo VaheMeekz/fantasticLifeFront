@@ -12,8 +12,6 @@ import completed from "../../images/complited.png"
 import completed_other from "../../images/check_done.svg"
 import activity_minutes from "../../images/activity_minutes.svg"
 import {API_URI, userId,} from "../../utils/keys";
-import {settingsReducer} from "../../redux/reducers/settingReducer";
-import {useSelector} from "react-redux";
 
 
 const ActivatesStatistic = () => {

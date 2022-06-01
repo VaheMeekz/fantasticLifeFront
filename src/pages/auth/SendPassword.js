@@ -20,7 +20,6 @@ const SendPassword = () => {
     const navigate = useNavigate()
     let { id } = useParams();
     const enter_password_data = useSelector(state => state.authReducer.enterPassword)
-    const [userData,setUserData] = useState()
 
     const [error, setError] = useState(false)
     const [data, setData] = useState({

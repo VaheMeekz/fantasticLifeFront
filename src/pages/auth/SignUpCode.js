@@ -2,13 +2,10 @@
 import "./SignUp.scss"
 
 
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
-// import {Box} from "@mui/material";
-// import MaterialUiPhoneNumber from "material-ui-phone-number";
-// import ReactPhoneInput from "react-phone-input-2";
+import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
-import {goSendCode, goSignUp} from "../../redux/actions/authAction";
+import {goSendCode} from "../../redux/actions/authAction";
 import {useDispatch, useSelector} from "react-redux";
 
 // custom imports
@@ -17,11 +14,7 @@ import {useDispatch, useSelector} from "react-redux";
 const SignUpCode = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate();
-    const [userData,setUserData] = useState()
     const sendRegisterData = useSelector(state => state.authReducer.sendCode)
-
-    console.log(sendRegisterData,'sendRegisterData')
-
 
     const [error, setError] = useState(false)
     const [data, setData] = useState({
