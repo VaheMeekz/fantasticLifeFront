@@ -12,10 +12,9 @@ import {Link, useNavigate} from "react-router-dom";
 // import TeamItem from "../../components/teamItem/TeamItem";
 // import Menu from "@mui/material/Menu";
 // import MenuItem from "@mui/material/MenuItem";
-import img_test from "../../images/abela.svg"
+// import img_test from "../../images/abela.svg"
 import {useEffect, useState} from "react";
 import axios from "axios";
-import dumbl from "../../images/dumbbells.svg"
 import weather from "../../images/Partly Cloudy.svg"
 import {API_URI, userId} from "../../utils/keys";
 import {useDispatch, useSelector} from "react-redux";

@@ -14,6 +14,7 @@ import activity_minutes from "../../images/activity_minutes.svg"
 import {API_URI, userId,} from "../../utils/keys";
 import {settingsReducer} from "../../redux/reducers/settingReducer";
 import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 
 const ActivatesStatistic = () => {
@@ -72,9 +73,11 @@ const ActivatesStatistic = () => {
                         <h2>Welcome {user?.firstName}</h2>
                         <p>Start A New Activity And Improve</p>
                         <p>Your Result</p>
+                        <Link to="/activities">
                         <button>
                             get Started
                         </button>
+                        </Link>
                     </div>
                 </div>
 

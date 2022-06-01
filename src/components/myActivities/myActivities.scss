@@ -97,6 +97,7 @@
 
     span {
       color: #10275A;
+      padding: 5px 0px 0 0px;
     }
   }
 
@@ -107,7 +108,7 @@
 
     .bool_slice_image {
       display: flex;
-      grid-gap: 5px;
+      grid-gap: 15px;
 
       .bool_text {
         display: flex;

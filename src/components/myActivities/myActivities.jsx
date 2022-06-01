@@ -93,8 +93,6 @@ const MyActivities = () => {
                                     {/*<img src={bool} alt="image"/>*/}
                                     {my?.myActivity[my?.myActivity.length - 1]?.Sport.sportName}
                                     <div className="bool_text">
-
-                                        <span>Dec</span>
                                         <span
                                             className="bool_text_day">{my?.myActivity[my?.myActivity.length - 1]?.createdAt.substring(0, 10)}</span>
                                     </div>

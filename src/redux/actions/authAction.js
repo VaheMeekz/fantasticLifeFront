@@ -115,11 +115,13 @@ export const goLogin = (data) => {
                     Swal.fire({
                         icon: "error",
                         title: "Oops...",
-                        text: "user whit this email already exist !!",
+                        text: "incorrect Password Or Email",
                         timer: 1500,
                     });
                     return
                 }
+
+
                 dispatch({ type: LOGIN_DATA, payload: res.data });
                 localStorage.setItem("myTokenSport", res.data.token);
                 localStorage.setItem("userId",res.data.id)

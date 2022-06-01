@@ -7,10 +7,11 @@ import {Box} from "@mui/material";
 import MaterialUiPhoneNumber from "material-ui-phone-number";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import {useParams,useNavigate} from "react-router-dom";
+import {useParams, useNavigate, Link} from "react-router-dom";
 import {enterPassword, goSendCode, goSignUp} from "../../redux/actions/authAction";
 import {useDispatch, useSelector} from "react-redux";
 import {authReducer} from "../../redux/reducers/authReducer";
+import Swal from "sweetalert2";
 
 // custom imports
 
@@ -38,12 +39,20 @@ const SendPassword = () => {
 
     const sendCodeHandlerPassword = e => {
         e.preventDefault()
-        if (!data.email.trim() || !data.password.trim()) {
-            setError(true)
-            setTimeout(() => {
-                setError(false)
-            }, 3000)
-        } else {
+
+        if(data.password.trim().length < 8) {
+
+        }
+
+        if (!data.email.trim() || !data.password.trim() || data.password.trim().length < 8) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password of minimum length 8 characters',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+            return
+        }else {
             dispatch(enterPassword(data))
         }
     }
@@ -72,6 +81,8 @@ const SendPassword = () => {
                                 <button type="submit">Send</button>
                             </form>
                         </div>
+                        <br/>
+                        <span>Do You Have An Account? <Link to="/login">Sign In</Link></span>
 
                         <div className="forgot-pass-form">
                             <h1>Forgot Password?</h1>
