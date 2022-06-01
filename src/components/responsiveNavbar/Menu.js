@@ -118,10 +118,6 @@ const Menu = ({ open ,setOpen}) => {
             <Link to="/settings">
                 Settings
             </Link>
-            <Link to="/settings">
-                Settings
-            </Link>
-
 
         </StyledMenu>
     );

@@ -18,12 +18,36 @@ import axios from "axios";
 import dumbl from "../../images/dumbbells.svg"
 import weather from "../../images/Partly Cloudy.svg"
 import {API_URI, userId} from "../../utils/keys";
+import {useDispatch, useSelector} from "react-redux";
+import {getSingleUser} from "../../redux/actions/teamAction";
+import {getSportsThunk} from "../../redux/actions/activityAction";
 
 const Dashboard = () => {
     let navigate = useNavigate();
+    const dispatch = useDispatch()
     const [user, setUser] = useState();
     const [getActivity,setGetActivity] = useState()
     const [getHistory, setGetHistory] = useState();
+    const [my,setMy] = useState()
+    const [memberCount,setMemberCount] = useState(null)
+    const teams = useSelector(state => state?.teamReducer.myTeams)
+
+
+    useEffect(() => {
+        dispatch(getSingleUser(userId))
+    }, [])
+    console.log(teams,'Vaheeeeeeeeeeeee')
+
+    useEffect(()=>{
+        let count = 0;
+        if(teams !==null){
+            for(let i=0;i<teams.length;i++){
+                console.log()
+                count = Number(count) + Number(teams[i].UserTeams.length)
+            }
+        }
+        setMemberCount(count)
+    },[teams])
 
 
     // get single user info
@@ -40,6 +64,15 @@ const Dashboard = () => {
         } catch (err) {console.error(err);}
     };
 
+    // get my activity statistic
+
+    const fetchPostMy = async () => {
+        try {
+            const response = await axios(`${API_URI}/activity/my`,
+                {params:{id:userId}});
+            setMy(response.data?.myActivity);
+        } catch (err) {console.error(err);}
+    };
 
 
     // get my activity
@@ -76,6 +109,12 @@ const Dashboard = () => {
     }, [0])
 
 
+    useEffect(()=> {
+        fetchPostMy();
+    }, [0])
+
+
+
 
     return (
         <>
@@ -99,23 +138,31 @@ const Dashboard = () => {
                         <div className="card-body">
                             <div className="my_teams_slice">
                                 <h5>My Teams</h5>
-                                <span>5 members</span>
+                                <span>{memberCount !== null && memberCount} members</span>
                                 <Link to="/teams">See</Link>
                             </div><br/>
 
-                            <div className="team_slice_dashboard">
-                                <div className="image_and_members">
-                                    <img src={img_test} alt="image"/>
-                                    <div className="team_slice_members">
-                                        <span>Team Name</span><br/>
-                                        <span>members</span>
-                                    </div>
-                                </div>
+                            {
+                                teams !== null && teams?.slice(0,3).map(i=>{
+                                    return (
+                                        <div className="team_slice_dashboard" key={i.id}>
+                                        <div className="image_and_members">
+                                            <img src={i.image} alt="image"/>
+                                            <div className="team_slice_members">
+                                                <span>{i.name.toLowerCase()}</span><br/>
+                                                <span> {i.UserTeams.length} members</span>
+                                            </div>
+                                        </div>
 
-                                <div>
-                                    <img src={dumbl} alt="image"/>
-                                </div>
-                            </div>
+                                        <div>
+                                            {/*<img src={dumbl} alt="image"/>*/}
+                                            {i.Sport.sportName}
+                                        </div>
+                                    </div>
+                                    )
+                                })
+                            }
+
 
 
                         </div>

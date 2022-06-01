@@ -13,9 +13,9 @@ import MessageSlice from "./MessageSlice";
 import Notification from "./Notification";
 import {settingsReducer} from "../../redux/reducers/settingReducer";
 import {useSelector} from "react-redux";
-// import {useEffect} from "@types/react";
 import {getSingleUser} from "../../redux/actions/settingAction";
 import default_avatar from "../../images/user.png"
+import image from "../../images/Partly Cloudy.svg"
 
 const useOnClickOutside = (ref, handler) => {
   React.useEffect(() => {
@@ -45,10 +45,9 @@ const Navbar = () => {
     <div className="navbar">
       <div className="wrapper">
         <div className="search">
-          {/*<img src={homeBottomIcon} alt="icon"/>*/}
-          Monday - 11 January
-          <h4>եղանակ ---- <i className="fa-solid fa-cloud-bolt"></i></h4>
-          <h4><i className="fa-solid fa-location-pin"></i>Location</h4>
+          Wednesday - 01 June
+          <h4>Yerevan 30°C <img src={image} alt="image"/></h4>
+          <h4><i className="fa-solid fa-location-pin"></i>Yerevan Armenia</h4>
         </div>
         <div className="items">
 

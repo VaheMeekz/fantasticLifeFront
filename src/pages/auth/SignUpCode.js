@@ -22,6 +22,7 @@ const SignUpCode = () => {
 
     console.log(sendRegisterData,'sendRegisterData')
 
+
     const [error, setError] = useState(false)
     const [data, setData] = useState({
         email:'',
@@ -55,9 +56,13 @@ const SignUpCode = () => {
 
     localStorage.setItem('sendRegisterData',sendRegisterData.id)
 
-    if(!sendRegisterData == 0) {
-        navigate(`/sendPassword`);
-    }
+
+        if(sendRegisterData.length !== 0) {
+            navigate(`/sendPassword`);
+        }
+
+
+
 
 
     return (

@@ -83,7 +83,7 @@ const ActivatesStatistic = () => {
                     <div className="dashboard_right_slice">
                         <div>
                             <img src={completed} alt="completed"/>
-                            <span>15</span>
+                            <span>{activityMy}</span>
                             <span>Completed</span>
                         </div>
                         <div>

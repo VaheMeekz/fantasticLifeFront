@@ -1,7 +1,5 @@
 import "./sidebar.scss";
-import {Link, Route} from "react-router-dom";
-import {useEffect, useState} from "react";
-
+import {Link} from "react-router-dom";
 import homeIcon from "../../images/homeImage.svg"
 import invitationsIcon from "../../images/invitationsIcon.svg"
 import activities from "../../images/Activities.svg"
@@ -10,25 +8,11 @@ import logOutIcon from "../../images/logout.svg"
 import schedule from "../../images/Schedule .svg"
 import inbox from "../../images/inbox.svg"
 import settings from "../../images/settings.svg"
-// import Layout from "../Layout";
-// import Dashboard from "../../pages/Dashboard/Dashboard";
-// import List from "../../pages/list/List";
-// import ChangePassword from "../../pages/changePassword/ChangePassword";
-// import SendCode from "../../pages/sendCode/SendCode";
-// import EnterCode from "../../pages/enterCode/EnterCode";
-// import FinishChange from "../../pages/finishChange/FinishChange";
-// import Single from "../../pages/single/Single";
-// import UserDashboard from "../../pages/UserDashboard/UserDashboard";
-// import NestedModal from "../modals/Modal";
 import * as React from "react";
 import LogoutModal from "../modals/logoutModal";
-// import {useSelector} from "react-redux";
-import axios from "axios";
-import {API_URI, token} from "../../utils/keys";
-import AccordionSidebar from "./accordion";
-import Accordion from "@mui/material/Accordion";
 import AccordionCustom from "../customAccordion/AccordionCustom";
 import {accordionData} from "../../utils/content";
+
 
 const Sidebar = () => {
 
@@ -58,8 +42,6 @@ const Sidebar = () => {
             <Link to="#" style={{ textDecoration: "none" }}>
               <li>
                 <img src={activities} />
-                {/*<span><AccordionSidebar /></span>*/}
-
                 {accordionData.map(({ title, content }) => (
                     <AccordionCustom title={title} content={content} key={title.toString()}/>
                 ))}

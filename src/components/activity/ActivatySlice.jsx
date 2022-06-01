@@ -8,20 +8,18 @@ import red_clock from "../../images/red_clock.svg"
 import ball from "../../images/boal.svg"
 import abela from "../../images/abela.svg"
 import map from "../../images/miniSvg.svg"
+import axios from "axios";
+import {API_URI, userId} from "../../utils/keys";
+import {useEffect, useState} from "react";
+
+
 const ActivatySlice = () => {
 
-    const arr = [
-        {id:1,name:"Stepan"},{id:2,name:"Hmayak"},{id:3,name:"Vahe"}
-    ]
     return (
         <div>
             <div class="container p-5">
                 <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-4">
                     {/*1*/}
-
-                    {
-                        arr.map((users) => {
-                            return(
                                 <div className="col col-xl-4 col-md-12 col-sm-12">
                                     <div className="card h-100 shadow-sm">
                                         <div className="card-body">
@@ -76,11 +74,6 @@ const ActivatySlice = () => {
                                         </div>
                                     </div>
                                 </div>
-                            )
-                        })
-                    }
-
-
 
                 </div>
             </div>
