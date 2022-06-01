@@ -15,7 +15,7 @@ import {baseUrl} from "../../config/config";
 import {io} from "socket.io-client";
 import {userId} from "../../utils/keys";
 import {getSingleUser} from "../../redux/actions/settingAction";
-import goBackIcon from "../../images/boal.svg"
+import goBackIcon from "../../images/arrowBack.svg"
 
 
 const MobileChat = () => {
@@ -140,6 +140,7 @@ const MobileChat = () => {
                                          onClick={() => {
                                              getConversation(i.id, i);
                                              setReceiverId(i.id)
+                                             setOpenConversation(true)
                                          }}>
                                 {/*<div className="checkBox">*/}
                                 {/*    <input type="checkbox"/>*/}

@@ -46,7 +46,6 @@ const Chat = () => {
         // setMessageLength(messages.length)
     }, [messages, search])
 
-    console.log(me,"meeeeeeeeeeeeeeeeeeeeeeeee")
     useEffect(() => {
         setMessageLength(notificationsCount)
         setMessageLength(messagesLength + 1)
@@ -284,6 +283,7 @@ const Chat = () => {
                                              conversation={conversation}
                                              like={i.like}
                                              see={i.seen}
+                                             me={me}
                                              id={i.id} receiver={i.receiver_id}
                                 />
                             )

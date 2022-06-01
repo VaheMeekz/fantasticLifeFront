@@ -25,13 +25,13 @@ const Message = ({message, own, id, image, like, see,me}) => {
     const [deleted, setDeleted] = useState(false)
     const smiles = [{id: 1, icon: sirt}, {id: 2, icon: disSirt}, {id: 3, icon: lampushka},]
     const open = Boolean(anchorEl);
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
     };
+
 
     useEffect(() => {
         see && setSeen(true)
@@ -89,7 +89,7 @@ const Message = ({message, own, id, image, like, see,me}) => {
     return (<div className={own ? "message own" : "message"}>
         <div className="imgBox">
             {
-                own ? <img src={me?.image} alt="avatar"/> : <img src={image} alt="image"/>
+                own ? <img src={me?.image !== null ? me?.image : minin} alt="avatar"/> : <img src={image} alt="image"/>
             }
         </div>
         {!deleted ? (<div className={own ? "ownMessageTextBox" : "messageTextBox"}>
