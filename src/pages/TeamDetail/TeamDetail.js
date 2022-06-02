@@ -173,6 +173,7 @@ const TeamDetailMain = () => {
                         <th scope="col">First name</th>
                         <th scope="col">Last name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">View</th>
                         {team?.creator_id == userId ? (<th scope="col">
                             <img src={deleteIcon} alt="delete"/>
                         </th>) : null}
@@ -191,7 +192,13 @@ const TeamDetailMain = () => {
                             <td>{i.User.firstName}</td>
                             <td>{i.User.lastName}</td>
                             <td>{i.User.email}</td>
-                            {team?.creator_id == userId ? (<td>
+                            <td>
+                                {(i.User.id != userId && team?.creator_id == userId) ? (<td>
+                                    <button className="delBtn" onClick={() => navigate(`/user/${id}`) }>View
+                                    </button>
+                                </td>) : null}
+                            </td>
+                            {(i.User.id != userId && team?.creator_id == userId) ? (<td>
                                 <button className="delBtn" onClick={() => {
                                     setCurrentId(i.User.id);
                                     setOpenDel(true)

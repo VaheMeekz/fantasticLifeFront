@@ -187,6 +187,10 @@
   .input_slice_absolute {
     position: relative;
 
+    @media (max-width: 500px) {
+      padding: 0 !important;
+    }
+
     @media only screen and (max-width:340px) {
       margin: 0px 0 0px -45px;
     }
@@ -213,11 +217,17 @@
   .pin_slice {
     padding: 0 35px;
 
+    @media (max-width: 600px) {
+      width: 100%;
+      padding: 0;
+    }
+
   }
   .form_check_custom {
     display: flex;
     grid-gap: 15px;
     margin: 0 0 10px 0px;
+    flex-wrap: wrap;
   }
 
   .pin_slice_btn {

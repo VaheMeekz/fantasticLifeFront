@@ -31,9 +31,9 @@
 
 
 @media only screen and (max-width: 500px) {
-  .team_slice_image {
-    display: none;
-  }
+  //.team_slice_image {
+  //  display: none;
+  //}
 
   .card_team {
     p {
@@ -42,7 +42,7 @@
     }
 
     img {
-      width: 70%;
+      width: 120px;
     }
   }
 }

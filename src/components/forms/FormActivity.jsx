@@ -53,7 +53,7 @@ const BasicForm = () => {
 
             <label htmlFor="floatingTextarea">Description</label>
             <div className="form-floating">
-                <textarea className="form-control" placeholder="Description" value={description}
+                <textarea className="form-control custom_styles_textarea" placeholder="Description" value={description}
                           onChange={e => setDescription(e.target.value)}/>
             </div>
             <label htmlFor="age">I Want To ...</label>
@@ -69,8 +69,8 @@ const BasicForm = () => {
                 }
             </select>
 
-            <div className="d-flex" style={{gridGap: "10px"}}>
-                <div className="col-xl-12 col-md-12 col-sm-12">
+            <div className="d-flex justify-content-start" style={{gridGap: "10px",margin:"0.5rem"}}>
+                <div>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
                             label="Date"

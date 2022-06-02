@@ -51,13 +51,26 @@ function App() {
         dispatch(getUsers());
     }, []);
 
-    useEffect(()=>{
-        if(token)
-        {
+
+    useEffect(() => {
+        if (token) {
+            //online
             socket.current = io("ws://localhost:8900")
             socket.current.emit("addUser", userId)
+            //teamInvites
+            socket.current.on("getInvitions", data => {
+                if (data.receiverId == userId) {
+                    dispatch(showInviteNotifications(true))
+                }
+            })
+            socket.current.on("getActivityInvite", data => {
+                if (data.receiverId == userId) {
+                    dispatch(showInviteNotifications(true))
+                }
+            })
+            console.clear()
         }
-    },[])
+    }, [])
 
     const notAuth = () => {
         return (

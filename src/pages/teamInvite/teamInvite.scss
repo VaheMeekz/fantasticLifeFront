@@ -17,7 +17,7 @@
 }
 
 .line {
-  width: 600%;
+  width: 100%;
   color: #19A49C;
   font-weight: bolder;
 
@@ -220,6 +220,11 @@
     padding: 10px;
     border: 1px solid #19A49C;
     border-radius: 5px;
+
+    @media (max-width: 500px) {
+      width: 100%;
+      margin: 0;
+    }
   }
   button{
     margin: 10px;

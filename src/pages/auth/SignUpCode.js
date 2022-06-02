@@ -6,7 +6,7 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 // import {Box} from "@mui/material";
 // import MaterialUiPhoneNumber from "material-ui-phone-number";
 // import ReactPhoneInput from "react-phone-input-2";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
 import {goSendCode, goSignUp} from "../../redux/actions/authAction";
 import {useDispatch, useSelector} from "react-redux";
@@ -17,15 +17,15 @@ import {useDispatch, useSelector} from "react-redux";
 const SignUpCode = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate();
-    const [userData,setUserData] = useState()
+    const [userData, setUserData] = useState()
     const sendRegisterData = useSelector(state => state.authReducer.sendCode)
 
     const [error, setError] = useState(false)
     const [data, setData] = useState({
-        email:'',
+        email: '',
         number: '',
-        type:'',
-        code:''
+        type: '',
+        code: ''
     })
 
     let data_user = sessionStorage.getItem('dataUser')
@@ -51,15 +51,12 @@ const SignUpCode = () => {
         }
     }
 
-    localStorage.setItem('sendRegisterData',sendRegisterData.id)
+    localStorage.setItem('sendRegisterData', sendRegisterData.id)
 
 
-        if(sendRegisterData.length !== 0) {
-            navigate(`/sendPassword`);
-        }
-
-
-
+    if (sendRegisterData.length !== 0) {
+        navigate(`/sendPassword`);
+    }
 
 
     return (
@@ -77,7 +74,7 @@ const SignUpCode = () => {
                             <form className="form_signCode" onChange={onChangeHandler} onSubmit={sendCodeHandler}>
                                 {/*<input name="number" type="text"/>*/}
                                 <label htmlFor="">Code</label>
-                                <input required name="code" className="code_send_input"  type="text"/><br/>
+                                <input required name="code" className="code_send_input" type="text"/><br/>
                                 <button className="send_code_btn" type="submit">Send</button>
                             </form>
 

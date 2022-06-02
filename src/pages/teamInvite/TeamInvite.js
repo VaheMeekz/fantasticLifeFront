@@ -129,7 +129,7 @@ const TeamInvite = () => {
                             </div>)
                         }) : <h2>loading...</h2>}
                     </div>
-                    <h3>Favorites</h3>
+                    <h3 style={{textIndent:"20px"}}>Favorites</h3>
                     <div className="contentSection">
 
                         {favorites !== null ? favorites.map(({id, firstName, image}) => {
