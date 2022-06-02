@@ -191,7 +191,7 @@ const TeamDetailMain = () => {
                             <td>{i.User.firstName}</td>
                             <td>{i.User.lastName}</td>
                             <td>{i.User.email}</td>
-                            {team?.creator_id == userId ? (<td>
+                            {(i.User.id != userId && team?.creator_id == userId) ? (<td>
                                 <button className="delBtn" onClick={() => {
                                     setCurrentId(i.User.id);
                                     setOpenDel(true)

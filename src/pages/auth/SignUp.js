@@ -2,10 +2,10 @@
 import "./SignUp.scss"
 
 
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -15,15 +15,14 @@ import Box from '@mui/material/Box';
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import {goSignUp} from "../../redux/actions/authAction";
-import { useDispatch } from "react-redux";
+import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 
 // custom imports
 
 
-
 function TabPanel(props) {
-    const { children, value, index, ...other } = props;
+    const {children, value, index, ...other} = props;
 
     return (
         <div
@@ -34,7 +33,7 @@ function TabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{p: 3}}>
                     <Typography>{children}</Typography>
                 </Box>
             )}
@@ -61,6 +60,7 @@ const SignUp = () => {
 
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
+    const [number, setNumber] = useState("")
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -74,8 +74,8 @@ const SignUp = () => {
     const [error, setError] = useState(false)
     const [data, setData] = useState({
         number: '',
-        type:'',
-        email:''
+        type: '',
+        email: ''
     })
 
 
@@ -83,6 +83,28 @@ const SignUp = () => {
         data[event.target.name] = event.target.value;
         data.type = "2"
         setData(data)
+    }
+
+    const onChangeNumber = e => {
+        e.preventDefault()
+        setNumber(e.target.value)
+    }
+
+    const handleSubmitNumber = (e) => {
+        e.preventDefault()
+        // if (number !== "null") {
+        //     setError(true)
+        //     setTimeout(() => {
+        //         setError(false)
+        //     }, 3000)
+        // } else {
+            dispatch(goSignUp({
+                number,
+                type:"1",
+                email:""
+            }))
+        // }
+
     }
 
     const signUpHandler = e => {
@@ -104,7 +126,7 @@ const SignUp = () => {
 
                         <div className="sign-in-form active">
                             <h1>Sign Up</h1>
-                            <Box sx={{ bgcolor: 'background.paper', width: 500 }}>
+                            <Box sx={{bgcolor: 'background.paper', width: 500}}>
                                 <AppBar position="static">
                                     <Tabs
                                         value={value}
@@ -124,37 +146,38 @@ const SignUp = () => {
                                     onChangeIndex={handleChangeIndex}
                                 >
                                     <TabPanel value={value} index={0} dir={theme.direction}>
-                                        <form onSubmit={signUpHandler}>
+                                        <form onSubmit={handleSubmitNumber} onChange={onChangeNumber}>
 
-                                           <ReactPhoneInput
-                                               name="number"
-                                               defaultCountry="no"
-                                               inputStyle={{
-                                                   borderRadius: "3px",
-                                                   height: "44px",
-                                                   width: "100%"
-                                               }}
-                                               copyNumbersOnly={false}
-                                               enableSearch={true}
-                                               disableSearchIcon={true}
-                                               excludeCountries={["us", "ca"]}
-                                           />
-                                                <br/>
+                                            <ReactPhoneInput
+                                                name="number"
+                                                defaultCountry="no"
+                                                inputStyle={{
+                                                    borderRadius: "3px",
+                                                    height: "44px",
+                                                    width: "100%"
+                                                }}
+                                                copyNumbersOnly={false}
+                                                enableSearch={true}
+                                                disableSearchIcon={true}
+                                                excludeCountries={["us", "ca"]}
+                                            />
+                                            <br/>
                                             <div className="form-group">
                                                 <button type="submit">SIGN UP</button>
                                             </div>
                                             <div className="create-aacount">
                                                 Do You Have An Account?
-                                                <Link to="/login" className="text-underline sign-up-form-btn">Sign In</Link>
+                                                <Link to="/login" className="text-underline sign-up-form-btn">Sign
+                                                    In</Link>
                                             </div>
                                         </form>
                                     </TabPanel>
 
                                     <TabPanel value={value} index={1} dir={theme.direction}>
-                                        <form onChange={onChangeHandlerEmail } onSubmit={signUpHandler}>
-                                            <input name="type" defaultValue="2" value='2'  type="hidden"/>
+                                        <form onChange={onChangeHandlerEmail} onSubmit={signUpHandler}>
+                                            <input name="type" defaultValue="2" value='2' type="hidden"/>
                                             <label htmlFor="">Your Email</label>
-                                            <input className="form-control mt-2" name="email"  type="email" required/>
+                                            <input className="form-control mt-2" name="email" type="email" required/>
                                             <br/>
                                             <button className="email_signup_button" type="submit">Sign Up</button>
                                         </form>

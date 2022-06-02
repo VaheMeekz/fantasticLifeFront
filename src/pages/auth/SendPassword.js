@@ -21,6 +21,8 @@ const SendPassword = () => {
     const navigate = useNavigate()
     let { id } = useParams();
     const enter_password_data = useSelector(state => state.authReducer.enterPassword)
+
+    console.log(enter_password_data,'enter_password_data')
     const [userData,setUserData] = useState()
 
     const [error, setError] = useState(false)
@@ -54,12 +56,21 @@ const SendPassword = () => {
             return
         }else {
             dispatch(enterPassword(data))
+            navigate('/login')
+
         }
     }
 
-    if(!enter_password_data == 0) {
+    if(!enter_password_data.length == 0) {
         navigate('/login')
     }
+
+    // const storage_token = localStorage.getItem("sendRegisterData")
+    // useEffect(() => {
+    //     if (storage_token == 'undefined') {
+    //         navigate("/signup")
+    //     }
+    // },[])
 
 
     return (
