@@ -75,7 +75,7 @@ const MyActivities = () => {
 
                         <div className="bool_slice">
                             <div className="bool_slice_image">
-                                {my?.myActivity[my?.myActivity.length - 1]?.Sport.sportName}
+                                {my?.myActivity[my?.myActivity.length - 1]?.Sport?.sportName}
                                 <div className="bool_text">
 
                                     <span>Dec</span>
@@ -117,7 +117,7 @@ const MyActivities = () => {
                                             {i.Sport?.sportName}
                                             <div className="stolb"></div>  <div className="bool_text">
                                             {/*<span>Dec</span>*/}
-                                            <span className="bool_text_day">{i.date.substring(0,10)}</span>
+                                            <span className="bool_text_day">{i?.date?.substring(0,10)}</span>
                                         </div>
                                         </div>
                                         <div className="stolb"></div>

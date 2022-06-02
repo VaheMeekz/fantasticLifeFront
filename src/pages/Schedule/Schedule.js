@@ -24,8 +24,8 @@ export default function Schedule() {
         let allActivity = myActivity?.concat(myCreatedActivity)
         allActivity?.map(i => {
             events.push({
-                start: new Date(i.date.substr(0, 4), i.date.substr(5, 2), i.date.substr(8, 2)),
-                end: new Date(i.date.substr(0, 4), i.date.substr(5, 2), i.date.substr(8, 2)),
+                start: new Date(i.date?.substr(0, 4), i.date?.substr(5, 2), i.date?.substr(8, 2)),
+                end: new Date(i.date?.substr(0, 4), i.date?.substr(5, 2), i.date?.substr(8, 2)),
                 title: i.name
             })
         })
@@ -33,13 +33,14 @@ export default function Schedule() {
 
     return (
         <div>
-
             <Navbar/>
-
-            <Calendar
-                events={events}
-                localizer={localizer}
-                style={{height: 500}}
-            /></div>
+            <div style={{padding:"30px"}}>
+                <Calendar
+                    events={events}
+                    localizer={localizer}
+                    style={{height: 500}}
+                />
+            </div>
+        </div>
     )
 }
