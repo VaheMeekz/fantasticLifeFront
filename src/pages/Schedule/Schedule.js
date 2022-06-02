@@ -34,6 +34,7 @@ export default function Schedule() {
     return (
         <div>
             <Navbar/>
+
             <div style={{padding:"30px"}}>
                 <Calendar
                     events={events}
