@@ -9,4 +9,4 @@ export const WS_URI = "ws://localhost:8900"
 export const token = localStorage.getItem("myTokenSport")
 export const userId = localStorage.getItem("userId")
 
-export const myUrl = "https://fantastic-life-front-61loa6ynu-vahemeekz.vercel.app/"
+export const myUrl = "https://fantastic-life-front-61loa6ynu-vahemeekz.vercel.app"
