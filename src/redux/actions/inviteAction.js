@@ -168,7 +168,7 @@ export const activityRejectAC = (sender_id, activity_id, recivier_id) => {
 
 export const showInviteNotifications = (value) => {
     return {
-        type:SHOW_INVITE_NOTIFICATIONS,
-        payload:value
+        type: SHOW_INVITE_NOTIFICATIONS,
+        payload: value
     }
 }
