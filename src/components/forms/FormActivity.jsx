@@ -67,13 +67,14 @@ const BasicForm = () => {
                         )
                     })
                 }
-            </select>
+            </select><br/>
 
             <div className="d-flex justify-content-start" style={{gridGap: "10px",margin:"0.5rem"}}>
                 <div>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
                             label="Date"
+                            minDate={new Date()}
                             value={curDate}
                             onChange={(newValue) => {
                                 setDate(newValue);

@@ -38,6 +38,7 @@ import TeamInvite from "./pages/teamInvite/TeamInvite";
 import ChatMain from "./pages/Chat/ChatMain";
 import UserDetail from "./pages/userDetail/UserDetail";
 import {io} from "socket.io-client";
+import {showInviteNotifications} from "./redux/actions/inviteAction";
 
 function App() {
     const dispatch = useDispatch()

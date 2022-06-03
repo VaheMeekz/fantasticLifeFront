@@ -1,6 +1,7 @@
 // styles
 
 import "./inviteToActivityTabs.scss"
+
 import * as React from 'react';
 import {useRef, useState} from 'react'
 import PropTypes from 'prop-types';
@@ -137,6 +138,7 @@ export default function InviteToActivityTabs() {
     }, [favorites])
 
     return (
+        <div className="inviteToActivityTabs">
         <Box className="tabs_slice" sx={{bgcolor: 'background.paper', width: 500}}>
             <AppBar position="static">
                 <Tabs
@@ -184,7 +186,7 @@ export default function InviteToActivityTabs() {
                     {contactList == "1" && (
                         <div className="contentBox content_box_invite">
                             <div className="searchBox">
-                                <input type="text" placeholder="Search" value={searchVal}
+                                <input style={{textIndent:"20px"}} type="text" placeholder="Search" value={searchVal}
                                        onChange={e => setSearch(e.target.value)}/>
                                 <img src={search} alt="search" className="searchIcon"/>
                             </div>
@@ -205,7 +207,7 @@ export default function InviteToActivityTabs() {
                                     </div>)
                                 }) : <h2>loading...</h2>}
                             </div>
-                            <h3>Favorites</h3>
+                            <h3 style={{textIndent:"20px"}}>Favorites</h3>
                             <div className="contentSection">
 
                                 {favorites !== null ? favorites.map(({id, firstName, image}) => {
@@ -227,7 +229,7 @@ export default function InviteToActivityTabs() {
                             <div className="messageTextsBox">
                         <textarea cols="72" rows="10" placeholder="write your message"
                                   className="messageTexts" value={message} onChange={e => setMessage(e.target.value)}/>
-                                <button onClick={handleAdd}>Send</button>
+                                <button style={{width:"150px"}} onClick={handleAdd}>Send</button>
                             </div>
                         </div>
                     )}
@@ -240,5 +242,6 @@ export default function InviteToActivityTabs() {
 
             </SwipeableViews>
         </Box>
+        </div>
     );
 }
