@@ -16,7 +16,6 @@ import {useDispatch, useSelector} from "react-redux";
 const Login = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate();
-    const [userData,setUserData] = useState()
     const loginData = useSelector(state => state.authReducer.loginData)
 
     if(!loginData.length == 0 && (loginData.lastName == null || loginData.firstName == null)) {
