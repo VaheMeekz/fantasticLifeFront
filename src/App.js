@@ -27,10 +27,9 @@ import Schedule from "./pages/Schedule/Schedule";
 import SignUpCode from "./pages/auth/SignUpCode";
 import SendPassword from "./pages/auth/SendPassword";
 import Login from "./pages/auth/Login"
-import { token,API_URI,userId } from "./utils/keys";
+import { token,userId } from "./utils/keys";
 import {useDispatch, useSelector} from "react-redux";
 import { useEffect, useState, useRef} from "react";
-import axios from "axios";
 import {getUsers} from "./redux/actions/getUsersAction";
 import TeamDetail from "./pages/TeamDetail/TeamDetail";
 import InviteToActivity from "./pages/Activities/InviteToActivity";
@@ -42,12 +41,7 @@ import {showInviteNotifications} from "./redux/actions/inviteAction";
 
 function App() {
     const dispatch = useDispatch()
-    let navigate = useNavigate();
     const socket = useRef();
-    const user = useSelector(state => state.getUsers.userData)
-    const [submitting, setSubmitting] = useState(true)
-    const [data,setData] = useState()
-    const [query, setQuery] = useState("react hooks")
     useEffect(() => {
         dispatch(getUsers());
     }, []);

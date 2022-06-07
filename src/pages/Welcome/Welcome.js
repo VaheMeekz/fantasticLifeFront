@@ -50,6 +50,9 @@ const Welcome = () => {
                            <img src={onboardingOne} alt="onboarding"/>
                             <span><Link to="login">skip</Link></span>
                        </div>
+                       <div className="logoBoxe">
+                           This Active <span className="kaputKlor"></span> Life
+                       </div>
                    </div>
 
                     <div className="effect-wrap">
